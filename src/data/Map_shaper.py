@@ -10,6 +10,7 @@ import json
 import os
 import math
 
+
 INPUT  = r"C:\Users\emily\OneDrive\Desktop\CASA_MSc_Desktop\MSc_Term02\Group_Project_0028\src\data\countries.geojson"
 OUTPUT = r"C:\Users\emily\OneDrive\Desktop\CASA_MSc_Desktop\MSc_Term02\Group_Project_0028\public\data\countries.geojson"
 
