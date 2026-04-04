@@ -1,5 +1,6 @@
 // src/components/CountryPanel.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getTopImports } from "./TradeArcs";
 
 const CATEGORIES = ["All", "Cereals & Grains", "Oils", "Sugar", "Meat & Fish", "Dairy", "Fruits & Veg", "Other"];
 
@@ -14,11 +15,19 @@ const CAT_ICONS = {
   "Other":           "📦",
 };
 
+const CATEGORY_COLORS = {
+  "Cereals & Grains": "#ffd700",
+  "Oils":             "#ff8c00",
+  "Sugar":            "#ff69b4",
+  "Meat & Fish":      "#ff4444",
+  "Dairy":            "#87ceeb",
+  "Fruits & Veg":     "#44ff88",
+  "Other":            "#aaaaaa",
+};
+
 function fmt(n) {
   if (!n || n === 0) return "—";
-
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M t`;
-
   if (n >= 1_000)     return `${(n / 1_000).toFixed(0)}K t`;
   return `${Math.round(n)} t`;
 }
@@ -38,6 +47,7 @@ function getCategoryData(countryData, category) {
   return countryData.categories[category] || null;
 }
 
+// ── Supply bar chart ──────────────────────────────────────────────────────────
 function TradeBar({ catData }) {
   if (!catData) return null;
   const bars = [
@@ -62,7 +72,14 @@ function TradeBar({ catData }) {
             <span style={{ fontSize: 11, color: bar.color, fontFamily: "monospace" }}>{fmt(bar.value)}</span>
           </div>
           <div style={{ height: 5, background: "#ffffff10", borderRadius: 3, overflow: "hidden" }}>
-            <div style={{ height: "100%", width: `${(bar.value / max) * 100}%`, background: bar.color, borderRadius: 3, transition: "width 0.5s ease", boxShadow: `0 0 5px ${bar.color}50` }} />
+            <div style={{
+              height: "100%",
+              width: `${(bar.value / max) * 100}%`,
+              background: bar.color,
+              borderRadius: 3,
+              transition: "width 0.5s ease",
+              boxShadow: `0 0 5px ${bar.color}50`,
+            }} />
           </div>
         </div>
       ))}
@@ -80,77 +97,119 @@ function TradeBar({ catData }) {
   );
 }
 
-function TradeFlows({ iso, category, tradeData }) {
-  if (!tradeData || !tradeData.length) return (
-    <div style={{ padding: 16, color: "#9ca3af", fontSize: 12, fontStyle: "italic" }}>Trade flow data loading...</div>
-  );
+const LANDLOCKED = new Set([
+  "AFG","AND","ARM","AUT","AZE","BDI","BFA","BGD","BLR","BOL","BTN","BWA",
+  "CAF","CHE","CZE","ETH","HUN","KAZ","KGZ","LAO","LSO","LUX","MDA",
+  "MKD","MLI","MNG","MWI","NER","NPL","PRY","RWA","SDN","SRB","SSD","SWZ",
+  "TCD","TJK","TKM","UGA","UZB","ZMB","ZWE","LIE","SMR",
+]);
 
-  const filter = row => category === "All" || row.category === category;
+// ── Top import origins (fetched from real GeoJSONs) ───────────────────────────
+function MaritimeImports({ iso, category }) {
+  const [imports, setImports] = useState(null); // null = loading
+  const [error, setError]     = useState(false);
 
-  const importAgg = tradeData
-    .filter(d => d.to === iso && filter(d))
-    .reduce((acc, d) => {
-      if (!acc[d.from]) acc[d.from] = { name: d.from_name, iso: d.from, qty: 0 };
-      acc[d.from].qty += d.qty;
-      return acc;
-    }, {});
+  useEffect(() => {
+    setImports(null);
+    setError(false);
+    getTopImports(iso, category, 5)
+      .then(data => setImports(data))
+      .catch(() => setError(true));
+  }, [iso, category]);
 
-  const top5imports = Object.values(importAgg).sort((a, b) => b.qty - a.qty).slice(0, 5);
+  if (imports === null) {
+    return (
+      <div style={{ padding: "16px", color: "#9ca3af", fontSize: 12 }}>
+        <span style={{ marginRight: 8 }}>⏳</span>Loading maritime flows…
+      </div>
+    );
+  }
 
-  const exportAgg = tradeData
-    .filter(d => d.from === iso && filter(d))
-    .reduce((acc, d) => {
-      if (!acc[d.to]) acc[d.to] = { name: d.to_name, iso: d.to, qty: 0 };
-      acc[d.to].qty += d.qty;
-      return acc;
-    }, {});
+  if (error || imports.length === 0) {
+    return (
+      <div style={{ padding: "16px", color: "#9ca3af", fontSize: 12, fontStyle: "italic" }}>
+        No maritime import data for this selection
+      </div>
+    );
+  }
 
-  const top5exports = Object.values(exportAgg).sort((a, b) => b.qty - a.qty).slice(0, 5);
-
-  const maxI = top5imports[0]?.qty || 1;
-  const maxE = top5exports[0]?.qty || 1;
-
-  const FlowList = ({ items, max, color, label }) => (
-    <div style={{ marginBottom: 20 }}>
-      <div style={{ fontSize: 10, color, letterSpacing: 2, marginBottom: 10, textTransform: "uppercase" }}>{label}</div>
-      {items.length === 0
-        ? <div style={{ fontSize: 11, color: "#9ca3af", fontStyle: "italic" }}>No flows for this selection</div>
-        : items.map((row, i) => (
-          <div key={row.iso} style={{ marginBottom: 8 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 3 }}>
-              <span style={{ fontSize: 10, color: "#ffffff40", fontFamily: "monospace", width: 14 }}>{i + 1}</span>
-              <span style={{ fontSize: 12, color: "#e0e0e0", flex: 1 }}>{row.name}</span>
-              <span style={{ fontSize: 11, color, fontFamily: "monospace" }}>{fmt(row.qty)}</span>
-            </div>
-            <div style={{ height: 4, background: "#ffffff08", borderRadius: 2, overflow: "hidden", marginLeft: 22 }}>
-              <div style={{ height: "100%", width: `${(row.qty / max) * 100}%`, background: color, borderRadius: 2, opacity: 0.7 }} />
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  );
+  const maxFlow = imports[0]?.flow_tonnes || 1;
 
   return (
     <div style={{ padding: "12px 16px" }}>
-      <FlowList items={top5imports} max={maxI} color="#ff8c00" label="▼ Top Import Origins" />
-      <FlowList items={top5exports} max={maxE} color="#44ff88" label="▲ Top Export Destinations" />
+      <div style={{ fontSize: 10, color: "#ff8c00", letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>
+        {LANDLOCKED.has(iso) ? "▼ Top Land Import Origins" : "▼ Top Maritime Import Origins"}
+      </div>
+
+      {imports.map((row, i) => {
+        // Show breakdown by group if "All"
+        const groupEntries = Object.entries(row.groups || {})
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 3);
+
+        return (
+          <div key={row.country_from} style={{ marginBottom: 14 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+              <span style={{ fontSize: 10, color: "#ffffff40", fontFamily: "monospace", width: 14 }}>
+                {i + 1}
+              </span>
+              <span style={{ fontSize: 12, color: "#e0e0e0", flex: 1 }}>{row.name_from}</span>
+              <span style={{ fontSize: 11, color: "#ff8c00", fontFamily: "monospace" }}>
+                {fmt(row.flow_tonnes)}
+              </span>
+            </div>
+
+            {/* Main bar */}
+            <div style={{ height: 4, background: "#ffffff08", borderRadius: 2, overflow: "hidden", marginLeft: 22, marginBottom: 4 }}>
+              <div style={{
+                height: "100%",
+                width: `${(row.flow_tonnes / maxFlow) * 100}%`,
+                background: "#ff8c00",
+                borderRadius: 2,
+                opacity: 0.7,
+                transition: "width 0.5s ease",
+              }} />
+            </div>
+
+            {/* Category breakdown pills */}
+            {category === "All" && groupEntries.length > 0 && (
+              <div style={{ display: "flex", gap: 4, marginLeft: 22, flexWrap: "wrap" }}>
+                {groupEntries.map(([grp, val]) => (
+                  <span key={grp} style={{
+                    fontSize: 9,
+                    color: CATEGORY_COLORS[grp] || "#aaa",
+                    background: `${CATEGORY_COLORS[grp]}18` || "#ffffff08",
+                    border: `1px solid ${CATEGORY_COLORS[grp]}40` || "1px solid #ffffff20",
+                    borderRadius: 3,
+                    padding: "1px 5px",
+                    fontFamily: "monospace",
+                  }}>
+                    {CAT_ICONS[grp]} {fmt(val)}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
 
+// ── Nutrition tab ─────────────────────────────────────────────────────────────
 function NutritionTab({ iso, category }) {
-  const [data, setData] = useState(null);
+  const [data, setData]     = useState(null);
   const [loaded, setLoaded] = useState(false);
 
-  if (!loaded) {
+  useEffect(() => {
+    setLoaded(false);
     fetch("/data/nutrition_by_country.json")
       .then(r => r.json())
       .then(d => { setData(d[iso] || null); setLoaded(true); })
       .catch(() => setLoaded(true));
-  }
+  }, [iso]);
 
-  if (!loaded) return <div style={{ padding: 16, color: "#9ca3af", fontSize: 12 }}>Loading...</div>;
+  if (!loaded) return <div style={{ padding: 16, color: "#9ca3af", fontSize: 12 }}>Loading…</div>;
   if (!data)   return <div style={{ padding: 16, color: "#9ca3af", fontSize: 12, fontStyle: "italic" }}>No nutrition data available</div>;
 
   const cats = category === "All" ? Object.keys(data) : [category];
@@ -165,11 +224,11 @@ function NutritionTab({ iso, category }) {
   });
 
   const fmtN = n => {
-  if (!n || n === 0) return "—";
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000)     return `${(n / 1_000).toFixed(1)}K`;
-  return `${n.toFixed(1)}`;
-};
+    if (!n || n === 0) return "—";
+    if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
+    if (n >= 1_000)     return `${(n / 1_000).toFixed(1)}K`;
+    return `${n.toFixed(1)}`;
+  };
 
   const nutBars = [
     { label: "Energy (kcal)", value: totals.energy,  color: "#ffd700" },
@@ -177,9 +236,6 @@ function NutritionTab({ iso, category }) {
     { label: "Fat (kg)",      value: totals.fat,     color: "#ff69b4" },
     { label: "Carbs (kg)",    value: totals.carbs,   color: "#87ceeb" },
   ].filter(b => b.value > 0);
-
-  // Each bar is 100% of itself — shows relative scale per nutrient
-const maxN = 1; // not used
 
   return (
     <div style={{ padding: "12px 16px" }}>
@@ -193,15 +249,13 @@ const maxN = 1; // not used
             <span style={{ fontSize: 11, color: bar.color, fontFamily: "monospace" }}>{fmtN(bar.value)}</span>
           </div>
           <div style={{ height: 5, background: "#ffffff10", borderRadius: 3, overflow: "hidden" }}>
-            <div
-              style={{
-                height: "100%",
-                width: `${Math.min((bar.value / (totals.energy / 100 || 1)) * 100, 100)}%`,
-                background: bar.color,
-                borderRadius: 3,
-                transition: "width 0.5s ease",
-              }}
-            />
+            <div style={{
+              height: "100%",
+              width: `${Math.min((bar.value / (totals.energy / 100 || 1)) * 100, 100)}%`,
+              background: bar.color,
+              borderRadius: 3,
+              transition: "width 0.5s ease",
+            }} />
           </div>
         </div>
       ))}
@@ -209,10 +263,14 @@ const maxN = 1; // not used
   );
 }
 
-export default function CountryPanel({ country, category, onClose, onSelectCategory, tradeData }) {
-  const [tab, setTab] = useState("trade");
-  const catData = getCategoryData(country.data, category);
-  const displayName = country.data?.name || country.name;
+// ── Main panel ────────────────────────────────────────────────────────────────
+export default function CountryPanel({ country, category, onClose, onSelectCategory }) {
+  const [tab, setTab]  = useState("trade");
+  const catData        = getCategoryData(country.data, category);
+  const displayName    = country.data?.name || country.name;
+
+  // Reset to trade tab when country changes
+  useEffect(() => { setTab("trade"); }, [country.iso]);
 
   return (
     <div className="country-panel">
@@ -224,30 +282,45 @@ export default function CountryPanel({ country, category, onClose, onSelectCateg
         <button className="panel-close" onClick={onClose}>✕</button>
       </div>
 
+      {/* Category selector */}
       <div className="panel-categories">
         {CATEGORIES.map(cat => (
-          <button key={cat} className={`panel-cat-btn ${category === cat ? "active" : ""}`} onClick={() => onSelectCategory(cat)} title={cat}>
+          <button
+            key={cat}
+            className={`panel-cat-btn ${category === cat ? "active" : ""}`}
+            onClick={() => onSelectCategory(cat)}
+            title={cat}
+          >
             <span className="cat-icon">{CAT_ICONS[cat]}</span>
             <span className="cat-label">{cat}</span>
           </button>
         ))}
       </div>
 
+      {/* Tabs */}
       <div className="panel-tabs">
-        <button className={`panel-tab ${tab === "trade" ? "active" : ""}`} onClick={() => setTab("trade")}>Supply & Trade</button>
-        <button className={`panel-tab ${tab === "nutrition" ? "active" : ""}`} onClick={() => setTab("nutrition")}>Nutrition</button>
+        <button className={`panel-tab ${tab === "trade" ? "active" : ""}`} onClick={() => setTab("trade")}>
+          Supply & Trade
+        </button>
+        <button className={`panel-tab ${tab === "nutrition" ? "active" : ""}`} onClick={() => setTab("nutrition")}>
+          Nutrition
+        </button>
       </div>
 
       <div style={{ overflowY: "auto", flex: 1 }}>
         {tab === "trade" && (
           !country.data
-            ? <div style={{ padding: 16, color: "#9ca3af", fontSize: 12, fontStyle: "italic" }}>No supply data for {displayName}</div>
+            ? <div style={{ padding: 16, color: "#9ca3af", fontSize: 12, fontStyle: "italic" }}>
+                No supply data for {displayName}
+              </div>
             : <>
                 <TradeBar catData={catData} />
-                <TradeFlows iso={country.iso} category={category} tradeData={tradeData} />
+                <MaritimeImports iso={country.iso} category={category} />
               </>
         )}
-        {tab === "nutrition" && <NutritionTab iso={country.iso} category={category} />}
+        {tab === "nutrition" && (
+          <NutritionTab iso={country.iso} category={category} />
+        )}
       </div>
     </div>
   );
