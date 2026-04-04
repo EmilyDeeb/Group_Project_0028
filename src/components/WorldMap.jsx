@@ -1,18 +1,12 @@
 // src/components/WorldMap.jsx
-// ─────────────────────────────────────────────────────
-// Uses react-leaflet for the map.
-// Loads countries.geojson from /public/data/
-// Loads countries_supply.json and bilateral_trade.json
-// ─────────────────────────────────────────────────────
 import { useEffect, useState, useRef } from "react";
-import { MapContainer, TileLayer, GeoJSON, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import CountryPanel from "./CountryPanel";
 import TradeArcs from "./TradeArcs";
 
 const CATEGORIES = ["All", "Cereals & Grains", "Oils", "Sugar", "Meat & Fish", "Dairy", "Fruits & Veg", "Other"];
 
-// Dark map tile — CartoDB dark matter (free, no API key)
 const DARK_TILE = "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
 const DARK_ATTR = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>';
 
@@ -25,18 +19,16 @@ export default function WorldMap({
 }) {
   const [geoData, setGeoData]       = useState(null);
   const [supplyData, setSupplyData] = useState({});
-  const [tradeData, setTradeData]   = useState([]);
   const [hoveredCountry, setHoveredCountry] = useState(null);
-  const geoJsonRef = useRef(null);
-  const supplyDataRef = useRef({});
+  const geoJsonRef     = useRef(null);
+  const supplyDataRef  = useRef({});
 
-  // Load GeoJSON polygons
+  // Load GeoJSON country polygons
   useEffect(() => {
     fetch("/data/countries.geojson")
       .then(r => r.json())
       .then(setGeoData)
       .catch(() => {
-        // Placeholder — shows empty map until real GeoJSON is added
         console.warn("countries.geojson not found — add to /public/data/");
         setGeoData({ type: "FeatureCollection", features: [] });
       });
@@ -44,72 +36,60 @@ export default function WorldMap({
 
   // Load supply data
   useEffect(() => {
-  fetch("/data/countries_supply.json")
-    .then(r => r.json())
-    .then(d => { setSupplyData(d); supplyDataRef.current = d; }) // ← add this
-    .catch(() => setSupplyData({}));
-  }, []);
-
-  // Load bilateral trade arcs
-  useEffect(() => {
-    fetch("/data/bilateral_trade.json")
+    fetch("/data/countries_supply.json")
       .then(r => r.json())
-      .then(setTradeData)
-      .catch(() => setTradeData([]));
+      .then(d => { setSupplyData(d); supplyDataRef.current = d; })
+      .catch(() => setSupplyData({}));
   }, []);
 
-  useEffect(() => {
-  if (!geoJsonRef.current) return;
-  geoJsonRef.current.eachLayer(layer => {
-    const feature = layer.feature;
-    const iso = feature?.properties?.ISO_A3 || feature?.properties?.iso3 || "";
-    const isSelected = selectedCountry?.iso === iso;
-    const isHovered  = hoveredCountry === iso;
-    const hasData    = !!supplyData[iso];
-    layer.setStyle({
-      fillColor:   isSelected ? "#e63946" : isHovered ? "#ff8c00" : hasData ? "#1e3a5f" : "#0d1b2a",
-      fillOpacity: isSelected ? 0.85 : isHovered ? 0.7 : hasData ? 0.5 : 0.3,
-      color:       isSelected ? "#e63946" : "#2a4a6b",
-      weight:      isSelected ? 2 : 0.5,
-    });
+  // ── Single source of truth for country styles ──────────────────────────────
+  const styleFor = (isSelected, isHovered, hasData) => ({
+    fillColor:   isSelected ? "#e63946" : isHovered ? "#ff8c00" : hasData ? "#1e3a5f" : "#0d1b2a",
+    fillOpacity: isSelected ? 0.85      : isHovered ? 0.7       : hasData ? 0.5       : 0.3,
+    color:       isSelected ? "#e63946" : "#2a4a6b",
+    weight:      isSelected ? 2 : 0.5,
   });
-}, [selectedCountry, hoveredCountry, supplyData]);
 
-  // Style for country polygons
+  // Re-style countries when selection / hover changes
+  useEffect(() => {
+    if (!geoJsonRef.current) return;
+    geoJsonRef.current.eachLayer(layer => {
+      const iso = layer.feature?.properties?.ISO_A3
+               || layer.feature?.properties?.iso3
+               || "";
+      const isSelected = selectedCountry?.iso === iso;
+      const isHovered  = hoveredCountry === iso;
+      const hasData    = !!supplyData[iso];
+      layer.setStyle(styleFor(isSelected, isHovered, hasData));
+    });
+  }, [selectedCountry, hoveredCountry, supplyData]);
+
   const getStyle = (feature) => {
     const iso = feature?.properties?.ISO_A3 || feature?.properties?.iso3 || "";
     const isSelected = selectedCountry?.iso === iso;
     const isHovered  = hoveredCountry === iso;
     const hasData    = !!supplyData[iso];
-
-    return {
-      fillColor:   isSelected ? "#e63946" : isHovered ? "#ff8c00" : hasData ? "#1e3a5f" : "#0d1b2a",
-      fillOpacity: isSelected ? 0.85 : isHovered ? 0.7 : hasData ? 0.5 : 0.3,
-      color:       isSelected ? "#e63946" : "#2a4a6b",
-      weight:      isSelected ? 2 : 0.5,
-    };
+    return styleFor(isSelected, isHovered, hasData);
   };
 
-  // Events on each country polygon
-const onEachFeature = (feature, layer) => {
-  const iso  = feature?.properties?.ISO_A3 || feature?.properties?.iso3 || "";
-  const name = feature?.properties?.NAM_0
-    || feature?.properties?.NAME
-    || feature?.properties?.name
-    || iso;
+  const onEachFeature = (feature, layer) => {
+    const iso  = feature?.properties?.ISO_A3 || feature?.properties?.iso3 || "";
+    const name = feature?.properties?.NAM_0
+      || feature?.properties?.NAME
+      || feature?.properties?.name
+      || iso;
 
-  layer.on({
-    mouseover: () => setHoveredCountry(iso),
-    mouseout:  () => setHoveredCountry(null),
-    click: () => {
-  const sd = supplyDataRef.current;
-  console.log('Click ISO:', iso, 'SD entry:', sd[iso]); // ← add this
-  const displayName = sd[iso]?.name || name;
-  onSelectCountry({ iso, name: displayName, data: sd[iso] || null });
-  onSelectCategory("All");
-},
-});
-};
+    layer.on({
+      mouseover: () => setHoveredCountry(iso),
+      mouseout:  () => setHoveredCountry(null),
+      click: () => {
+        const sd = supplyDataRef.current;
+        const displayName = sd[iso]?.name || name;
+        onSelectCountry({ iso, name: displayName, data: sd[iso] || null });
+        onSelectCategory("All");
+      },
+    });
+  };
 
   return (
     <div className="map-wrapper">
@@ -148,16 +128,15 @@ const onEachFeature = (feature, layer) => {
           />
         )}
 
-        {/* Trade flow arcs — Nadia's component */}
+        {/* Maritime trade flow arcs */}
         <TradeArcs
-          tradeData={tradeData}
           selectedCountry={selectedCountry}
           selectedCategory={selectedCategory}
           activeCrisis={activeCrisis}
         />
       </MapContainer>
 
-      {/* Country side panel */}
+      {/* Country side panel — note: no tradeData prop needed anymore */}
       {selectedCountry && (
         <CountryPanel
           country={selectedCountry}
@@ -175,11 +154,15 @@ const onEachFeature = (feature, layer) => {
         </div>
         <div className="legend-item">
           <span className="legend-dot" style={{ background: "#1e3a5f" }} />
-          Has trade data
+          Has supply data
         </div>
         <div className="legend-item">
-          <span className="legend-dot arc" style={{ background: "#ff8c00" }} />
-          Trade flows
+          <span className="legend-dot arc" style={{ background: "#e0f0ff" }} />
+          🚢 Maritime flows
+        </div>
+        <div className="legend-item">
+          <span className="legend-dot arc" style={{ background: "#90ee90", opacity: 0.7 }} />
+          🚛 Land flows
         </div>
       </div>
 
