@@ -28,6 +28,7 @@ export default function WorldMap({
   const [tradeData, setTradeData]   = useState([]);
   const [hoveredCountry, setHoveredCountry] = useState(null);
   const geoJsonRef = useRef(null);
+  const supplyDataRef = useRef({});
 
   // Load GeoJSON polygons
   useEffect(() => {
@@ -43,10 +44,10 @@ export default function WorldMap({
 
   // Load supply data
   useEffect(() => {
-    fetch("/data/countries_supply.json")
-      .then(r => r.json())
-      .then(setSupplyData)
-      .catch(() => setSupplyData({}));
+  fetch("/data/countries_supply.json")
+    .then(r => r.json())
+    .then(d => { setSupplyData(d); supplyDataRef.current = d; }) // ← add this
+    .catch(() => setSupplyData({}));
   }, []);
 
   // Load bilateral trade arcs
@@ -56,6 +57,23 @@ export default function WorldMap({
       .then(setTradeData)
       .catch(() => setTradeData([]));
   }, []);
+
+  useEffect(() => {
+  if (!geoJsonRef.current) return;
+  geoJsonRef.current.eachLayer(layer => {
+    const feature = layer.feature;
+    const iso = feature?.properties?.ISO_A3 || feature?.properties?.iso3 || "";
+    const isSelected = selectedCountry?.iso === iso;
+    const isHovered  = hoveredCountry === iso;
+    const hasData    = !!supplyData[iso];
+    layer.setStyle({
+      fillColor:   isSelected ? "#e63946" : isHovered ? "#ff8c00" : hasData ? "#1e3a5f" : "#0d1b2a",
+      fillOpacity: isSelected ? 0.85 : isHovered ? 0.7 : hasData ? 0.5 : 0.3,
+      color:       isSelected ? "#e63946" : "#2a4a6b",
+      weight:      isSelected ? 2 : 0.5,
+    });
+  });
+}, [selectedCountry, hoveredCountry, supplyData]);
 
   // Style for country polygons
   const getStyle = (feature) => {
@@ -73,19 +91,25 @@ export default function WorldMap({
   };
 
   // Events on each country polygon
-  const onEachFeature = (feature, layer) => {
-    const iso  = feature?.properties?.ISO_A3 || feature?.properties?.iso3 || "";
-    const name = feature?.properties?.NAME || feature?.properties?.name || iso;
+const onEachFeature = (feature, layer) => {
+  const iso  = feature?.properties?.ISO_A3 || feature?.properties?.iso3 || "";
+  const name = feature?.properties?.NAM_0
+    || feature?.properties?.NAME
+    || feature?.properties?.name
+    || iso;
 
-    layer.on({
-      mouseover: () => setHoveredCountry(iso),
-      mouseout:  () => setHoveredCountry(null),
-      click: () => {
-        onSelectCountry({ iso, name, data: supplyData[iso] || null });
-        onSelectCategory("All");
-      },
-    });
-  };
+  layer.on({
+    mouseover: () => setHoveredCountry(iso),
+    mouseout:  () => setHoveredCountry(null),
+    click: () => {
+  const sd = supplyDataRef.current;
+  console.log('Click ISO:', iso, 'SD entry:', sd[iso]); // ← add this
+  const displayName = sd[iso]?.name || name;
+  onSelectCountry({ iso, name: displayName, data: sd[iso] || null });
+  onSelectCategory("All");
+},
+});
+};
 
   return (
     <div className="map-wrapper">
@@ -120,7 +144,7 @@ export default function WorldMap({
             data={geoData}
             style={getStyle}
             onEachFeature={onEachFeature}
-            key={selectedCountry?.iso + selectedCategory}
+            key={`geo-${Object.keys(supplyData).length}`}
           />
         )}
 

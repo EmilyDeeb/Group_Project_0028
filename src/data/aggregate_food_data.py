@@ -1,18 +1,29 @@
 """
-Food Shock — Data Aggregation Script
-=====================================
-Reads raw Harvard Dataverse + FAO files and outputs
-clean, category-aggregated JSON files ready for React.
+Food Shock — Data Aggregation Script (FIXED)
+============================================
+Verified column names from actual CSV files:
 
-Run from your data folder:
+bilateral:  fbs_item_code, reporter_ISO3, reporter_country,
+            partner_iso3, partner_country, export_quantity,
+            share_sea_predict, reporter_country_code, partner_country_code
+
+SUA:        reporter_country_code, reporter_country, fbs_item_code,
+            Export Quantity, Import Quantity, Production,
+            Domestic supply quantity
+
+supply:     admin1, iso3c, fbs_item, domestic supply quantity,
+            food demand, losses, production, stock variation, pct_loss
+
+nutrition:  reporter_country_code, reporter_country, fbs_item_code,
+            Energy (kcal), Protein (kg), Fat (kg), Carbs (kg)
+
+FAO price:  row 1 = title, row 2 = subtitle, row 3 = blank,
+            row 4 = header: Date, Food Price Index, Meat, Dairy,
+                            Cereals, Oils, Sugar
+
+Run:
     cd C:\\Users\\emily\\OneDrive\\Desktop\\CASA_MSc_Desktop\\MSc_Term02\\Group_Project_0028\\src\\data
     python aggregate_food_data.py
-
-Outputs (written to same folder):
-    countries_supply.json       → Step 3: country click panel
-    bilateral_trade.json        → Step 3: trade flow arcs
-    nutrition_by_country.json   → Step 3: calorie modal
-    fao_price_index.json        → Step 4: timeline chart
 """
 
 import pandas as pd
@@ -21,529 +32,377 @@ import os
 import warnings
 warnings.filterwarnings("ignore")
 
-# ─────────────────────────────────────────────
-# CONFIG — file names (adjust if yours differ)
-# ─────────────────────────────────────────────
-DATA_DIR = r"C:\Users\emily\OneDrive\Desktop\CASA_MSc_Desktop\MSc_Term02\Group_Project_0028\src\data"
+DATA_DIR   = r"C:\Users\emily\OneDrive\Desktop\CASA_MSc_Desktop\MSc_Term02\Group_Project_0028\src\data"
+PUBLIC_DIR = r"C:\Users\emily\OneDrive\Desktop\CASA_MSc_Desktop\MSc_Term02\Group_Project_0028\food-shock\public\data"
+os.makedirs(PUBLIC_DIR, exist_ok=True)
 
 FILES = {
-    "supply":    "foodgroup1_totalsupply_utilization_admin1.csv",
     "bilateral": "foodgroup1_2020bilateraltradebymodality_withexportcoeff.csv",
-    "nutrition": "foodgroup1_tradenutritionconversions_bycountry_byitem.csv",
     "sua":       "foodgroup1_SUA_exportcoeff.csv",
-    "fao_price": "food_price_indices_data_csv_mar.csv",  # your FAO file
+    "supply":    "foodgroup1_totalsupply_utilization_admin1.csv",
+    "nutrition": "foodgroup1_tradenutritionconversions_bycountry_byitem.csv",
+    "fao_price": "food_price_indices_data_csv_mar.csv",
 }
 
-# ─────────────────────────────────────────────
-# CATEGORY MAPPING  (fbs_item_code → category)
-# Based on unique_fbs_items.csv — all 100 items covered
-# ─────────────────────────────────────────────
 CATEGORY_MAP = {
-    # ── CEREALS & GRAINS ──────────────────────
-    # Grains
-    2511: "Cereals & Grains",  # Wheat and products
-    2513: "Cereals & Grains",  # Barley and products
-    2514: "Cereals & Grains",  # Maize and products
-    2515: "Cereals & Grains",  # Rye and products
-    2516: "Cereals & Grains",  # Oats
-    2517: "Cereals & Grains",  # Millet and products
-    2518: "Cereals & Grains",  # Sorghum and products
-    2520: "Cereals & Grains",  # Cereals, Other
-    2807: "Cereals & Grains",  # Rice and products
-    # Pulses & beans → Cereals & Grains (as decided)
-    2546: "Cereals & Grains",  # Beans
-    2547: "Cereals & Grains",  # Peas
-    2549: "Cereals & Grains",  # Pulses, Other and products
-
-    # ── OILS ──────────────────────────────────
-    # Oil crops (raw)
-    2555: "Oils",  # Soyabeans
-    2557: "Oils",  # Sunflower seed
-    2558: "Oils",  # Rape and Mustardseed
-    2559: "Oils",  # Cottonseed
-    2560: "Oils",  # Coconuts - Incl Copra
-    2561: "Oils",  # Sesame seed
-    2562: "Oils",  # Palm kernels
-    2563: "Oils",  # Olives (including preserved)
-    2570: "Oils",  # Oilcrops, Other
-    # Processed oils
-    2571: "Oils",  # Soyabean Oil
-    2572: "Oils",  # Groundnut Oil
-    2573: "Oils",  # Sunflowerseed Oil
-    2574: "Oils",  # Rape and Mustard Oil
-    2575: "Oils",  # Cottonseed Oil
-    2576: "Oils",  # Palmkernel Oil
-    2577: "Oils",  # Palm Oil
-    2578: "Oils",  # Coconut Oil
-    2579: "Oils",  # Sesameseed Oil
-    2580: "Oils",  # Olive Oil
-    2581: "Oils",  # Ricebran Oil
-    2582: "Oils",  # Maize Germ Oil
-    2586: "Oils",  # Oilcrops Oil, Other
-    # Fish oils → Oils (as decided)
-    2781: "Oils",  # Fish, Body Oil
-    2782: "Oils",  # Fish, Liver Oil
-
-    # ── SUGAR ─────────────────────────────────
-    2536: "Sugar",  # Sugar cane
-    2537: "Sugar",  # Sugar beet
-    2541: "Sugar",  # Sugar non-centrifugal
-    2542: "Sugar",  # Sugar (Raw Equivalent)
-    2543: "Sugar",  # Sweeteners, Other
-    2745: "Sugar",  # Honey → Sugar (as decided)
-
-    # ── MEAT & FISH ───────────────────────────
-    # Meat
-    2731: "Meat & Fish",  # Bovine Meat
-    2732: "Meat & Fish",  # Mutton & Goat Meat
-    2733: "Meat & Fish",  # Pigmeat
-    2734: "Meat & Fish",  # Poultry Meat
-    2735: "Meat & Fish",  # Meat, Other
-    2736: "Meat & Fish",  # Offals, Edible
-    2737: "Meat & Fish",  # Fats, Animals, Raw
-    # Fish & seafood
-    2761: "Meat & Fish",  # Freshwater Fish
-    2762: "Meat & Fish",  # Demersal Fish
-    2763: "Meat & Fish",  # Pelagic Fish
-    2764: "Meat & Fish",  # Marine Fish, Other
-    2765: "Meat & Fish",  # Crustaceans
-    2766: "Meat & Fish",  # Cephalopods
-    2767: "Meat & Fish",  # Molluscs, Other
-    2768: "Meat & Fish",  # Meat, Aquatic Mammals
-    2769: "Meat & Fish",  # Aquatic Animals, Others
-    2775: "Meat & Fish",  # Aquatic Plants
-
-    # ── DAIRY ─────────────────────────────────
-    2740: "Dairy",  # Butter, Ghee
-    2743: "Dairy",  # Cream
-    2744: "Dairy",  # Eggs
-    2848: "Dairy",  # Milk - Excluding Butter
-
-    # ── FRUITS & VEG ──────────────────────────
-    # Root vegetables & tubers
-    2531: "Fruits & Veg",  # Potatoes and products
-    2532: "Fruits & Veg",  # Cassava and products
-    2533: "Fruits & Veg",  # Sweet potatoes
-    2534: "Fruits & Veg",  # Roots, Other
-    2535: "Fruits & Veg",  # Yams
-    # Vegetables
-    2601: "Fruits & Veg",  # Tomatoes and products
-    2602: "Fruits & Veg",  # Onions
-    2605: "Fruits & Veg",  # Vegetables, other
-    # Citrus
-    2611: "Fruits & Veg",  # Oranges, Mandarines
-    2612: "Fruits & Veg",  # Lemons, Limes and products
-    2613: "Fruits & Veg",  # Grapefruit and products
-    2614: "Fruits & Veg",  # Citrus, Other
-    # Fruit
-    2615: "Fruits & Veg",  # Bananas
-    2616: "Fruits & Veg",  # Plantains
-    2617: "Fruits & Veg",  # Apples and products
-    2618: "Fruits & Veg",  # Pineapples and products
-    2619: "Fruits & Veg",  # Dates
-    2620: "Fruits & Veg",  # Grapes and products (excl wine)
-    2625: "Fruits & Veg",  # Fruits, other
-
-    # ── OTHER ─────────────────────────────────
-    2551: "Other",  # Nuts and products
-    2552: "Other",  # Groundnuts
-    2630: "Other",  # Coffee and products
-    2633: "Other",  # Cocoa Beans and products
-    2635: "Other",  # Tea (including mate)
-    2640: "Other",  # Pepper
-    2641: "Other",  # Pimento
-    2642: "Other",  # Cloves
-    2645: "Other",  # Spices, Other
-    2655: "Other",  # Wine
-    2656: "Other",  # Beer
-    2657: "Other",  # Beverages, Fermented
-    2658: "Other",  # Beverages, Alcoholic
-    2659: "Other",  # Alcohol, Non-Food
-    2680: "Other",  # Infant food
-    2899: "Other",  # Miscellaneous
+    2511: "Cereals & Grains", 2513: "Cereals & Grains", 2514: "Cereals & Grains",
+    2515: "Cereals & Grains", 2516: "Cereals & Grains", 2517: "Cereals & Grains",
+    2518: "Cereals & Grains", 2520: "Cereals & Grains", 2807: "Cereals & Grains",
+    2546: "Cereals & Grains", 2547: "Cereals & Grains", 2549: "Cereals & Grains",
+    2555: "Oils", 2557: "Oils", 2558: "Oils", 2559: "Oils", 2560: "Oils",
+    2561: "Oils", 2562: "Oils", 2563: "Oils", 2570: "Oils", 2571: "Oils",
+    2572: "Oils", 2573: "Oils", 2574: "Oils", 2575: "Oils", 2576: "Oils",
+    2577: "Oils", 2578: "Oils", 2579: "Oils", 2580: "Oils", 2581: "Oils",
+    2582: "Oils", 2586: "Oils", 2781: "Oils", 2782: "Oils",
+    2536: "Sugar", 2537: "Sugar", 2541: "Sugar", 2542: "Sugar",
+    2543: "Sugar", 2745: "Sugar",
+    2731: "Meat & Fish", 2732: "Meat & Fish", 2733: "Meat & Fish", 2734: "Meat & Fish",
+    2735: "Meat & Fish", 2736: "Meat & Fish", 2737: "Meat & Fish",
+    2761: "Meat & Fish", 2762: "Meat & Fish", 2763: "Meat & Fish", 2764: "Meat & Fish",
+    2765: "Meat & Fish", 2766: "Meat & Fish", 2767: "Meat & Fish", 2768: "Meat & Fish",
+    2769: "Meat & Fish", 2775: "Meat & Fish",
+    2740: "Dairy", 2743: "Dairy", 2744: "Dairy", 2848: "Dairy",
+    2531: "Fruits & Veg", 2532: "Fruits & Veg", 2533: "Fruits & Veg", 2534: "Fruits & Veg",
+    2535: "Fruits & Veg", 2601: "Fruits & Veg", 2602: "Fruits & Veg", 2605: "Fruits & Veg",
+    2611: "Fruits & Veg", 2612: "Fruits & Veg", 2613: "Fruits & Veg", 2614: "Fruits & Veg",
+    2615: "Fruits & Veg", 2616: "Fruits & Veg", 2617: "Fruits & Veg", 2618: "Fruits & Veg",
+    2619: "Fruits & Veg", 2620: "Fruits & Veg", 2625: "Fruits & Veg",
+    2551: "Other", 2552: "Other", 2630: "Other", 2633: "Other", 2635: "Other",
+    2640: "Other", 2641: "Other", 2642: "Other", 2645: "Other", 2655: "Other",
+    2656: "Other", 2657: "Other", 2658: "Other", 2659: "Other", 2680: "Other",
+    2899: "Other",
 }
-
-CATEGORIES = ["Cereals & Grains", "Oils", "Sugar", "Meat & Fish", "Dairy", "Fruits & Veg", "Other"]
 
 def get_category(code):
-    return CATEGORY_MAP.get(int(code), "Other")
+    try:
+        return CATEGORY_MAP.get(int(code), "Other")
+    except:
+        return "Other"
 
-def load(key):
-    path = os.path.join(DATA_DIR, FILES[key])
-    print(f"Loading {FILES[key]}...")
-    if path.endswith(".csv"):
-        # Try different encodings
-        for enc in ["utf-8", "latin-1", "cp1252"]:
-            try:
-                return pd.read_csv(path, encoding=enc, low_memory=False)
-            except:
-                continue
-    else:
-        return pd.read_excel(path)
+def load_csv(path, skiprows=None):
+    for enc in ["utf-8", "latin-1", "cp1252"]:
+        try:
+            if skiprows is not None:
+                return pd.read_csv(path, encoding=enc, low_memory=False, skiprows=skiprows)
+            return pd.read_csv(path, encoding=enc, low_memory=False)
+        except:
+            continue
+    return None
 
-# ─────────────────────────────────────────────
+def save_json(data, filename):
+    for d in [DATA_DIR, PUBLIC_DIR]:
+        path = os.path.join(d, filename)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, separators=(",", ":"))
+        print(f"  ✓ {path}")
+
+# ═══════════════════════════════════════════════════════
+# STEP 0: ISO lookup
+# bilateral has reporter_country_code ↔ reporter_ISO3
+# SUA only has reporter_country_code, no ISO
+# So we build lookup from bilateral then join to SUA
+# ═══════════════════════════════════════════════════════
+print("\n=== STEP 0: Building ISO lookup ===")
+bil_raw = load_csv(os.path.join(DATA_DIR, FILES["bilateral"]))
+
+code_to_iso  = {}
+code_to_name = {}
+
+# From reporter side
+for _, row in bil_raw[["reporter_country_code", "reporter_ISO3", "reporter_country"]].drop_duplicates().iterrows():
+    try:
+        code = int(row["reporter_country_code"])
+        iso  = str(row["reporter_ISO3"]).strip()
+        name = str(row["reporter_country"]).strip()
+        if iso and iso != "nan":
+            code_to_iso[code]  = iso
+            code_to_name[code] = name
+    except:
+        continue
+
+# From partner side
+for _, row in bil_raw[["partner_country_code", "partner_iso3", "partner_country"]].drop_duplicates().iterrows():
+    try:
+        code = int(row["partner_country_code"])
+        iso  = str(row["partner_iso3"]).strip()
+        name = str(row["partner_country"]).strip()
+        if iso and iso != "nan" and code not in code_to_iso:
+            code_to_iso[code]  = iso
+            code_to_name[code] = name
+    except:
+        continue
+
+print(f"  ISO lookup: {len(code_to_iso)} countries")
+
+# ═══════════════════════════════════════════════════════
 # OUTPUT 1: countries_supply.json
-# Country-level import/export/production per category
-# Used for: Step 3 country click panel
-# ─────────────────────────────────────────────
-print("\n=== Building countries_supply.json ===")
+# Source: SUA file
+# Columns used:
+#   reporter_country_code → join to ISO lookup
+#   Export Quantity, Import Quantity,
+#   Production, Domestic supply quantity
+# ═══════════════════════════════════════════════════════
+print("\n=== OUTPUT 1: countries_supply.json ===")
 try:
-    sua = load("sua")
-    print(f"  Columns: {list(sua.columns[:10])}")
+    sua = load_csv(os.path.join(DATA_DIR, FILES["sua"]))
+    print(f"  SUA rows: {len(sua)}")
+    print(f"  SUA cols: {list(sua.columns)}")
 
-    # Identify key columns (flexible naming)
-    col_map = {}
-    for col in sua.columns:
-        cl = col.lower().strip()
-        if "reporter_country" == cl and "code" not in cl:
-            col_map["country"] = col
-        elif "reporter_iso" in cl or "iso3" in cl:
-            col_map["iso3"] = col
-        elif "fbs_item_code" in cl or "item_code" in cl:
-            col_map["item_code"] = col
-        elif "export" in cl and "quant" in cl:
-            col_map["export"] = col
-        elif "import" in cl and "quant" in cl:
-            col_map["import"] = col
-        elif "production" == cl:
-            col_map["production"] = col
-        elif "domestic" in cl and "supply" in cl:
-            col_map["domestic"] = col
+    # Add category and ISO
+    sua["category"] = sua["fbs_item_code"].apply(get_category)
+    sua["iso3"]     = sua["reporter_country_code"].apply(
+        lambda x: code_to_iso.get(int(x), None) if pd.notna(x) else None
+    )
 
-    print(f"  Mapped columns: {col_map}")
+    # Keep only rows with a known ISO
+    sua_ok = sua[sua["iso3"].notna()].copy()
+    # Exclude "World" (code 1) — it's a global aggregate not a country
+    sua_ok = sua_ok[sua_ok["iso3"] != "nan"]
+    print(f"  Rows with ISO (excl World): {len(sua_ok)}")
 
-    sua["category"] = sua[col_map.get("item_code", "fbs_item_code")].apply(get_category)
+    # Aggregate by ISO + category
+    agg = sua_ok.groupby(["iso3", "category"]).agg(
+        export_qty      = ("Export Quantity",          "sum"),
+        import_qty      = ("Import Quantity",          "sum"),
+        production      = ("Production",               "sum"),
+        domestic_supply = ("Domestic supply quantity", "sum"),
+    ).reset_index()
 
-    group_cols = [col_map.get("iso3", "reporter_iso3"),
-                  col_map.get("country", "reporter_country"),
-                  "category"]
-    group_cols = [c for c in group_cols if c in sua.columns]
-
-    agg_dict = {}
-    for k, v in col_map.items():
-        if k in ["export", "import", "production", "domestic"] and v in sua.columns:
-            agg_dict[v] = "sum"
-
-    agg = sua.groupby(group_cols).agg(agg_dict).reset_index()
-
-    # Rename to standard names
-    rename = {}
-    for k, v in col_map.items():
-        if k == "export":   rename[v] = "export_qty"
-        elif k == "import": rename[v] = "import_qty"
-        elif k == "production": rename[v] = "production"
-        elif k == "domestic": rename[v] = "domestic_supply"
-    agg = agg.rename(columns=rename)
-
-    # Build nested JSON: { "UKR": { "Cereals": { export, import, production }, ... } }
+    # Build result dict keyed by ISO3
     result = {}
-    iso_col = col_map.get("iso3", group_cols[0])
-    country_col = col_map.get("country", group_cols[1]) if len(group_cols) > 1 else group_cols[0]
+    iso_to_code = {v: k for k, v in code_to_iso.items()}
 
     for _, row in agg.iterrows():
-        iso = str(row.get(iso_col, "")).strip()
-        if not iso or iso == "nan" or len(iso) > 4:
-            continue
-        country_name = str(row.get(country_col, iso)).strip()
+        iso = row["iso3"]
         cat = row["category"]
-
         if iso not in result:
-            result[iso] = {"name": country_name, "categories": {}}
-
+            code = iso_to_code.get(iso)
+            result[iso] = {
+                "name":       code_to_name.get(code, iso),
+                "categories": {},
+            }
         result[iso]["categories"][cat] = {
-            "export_qty":      round(float(row.get("export_qty", 0) or 0)),
-            "import_qty":      round(float(row.get("import_qty", 0) or 0)),
-            "production":      round(float(row.get("production", 0) or 0)),
-            "domestic_supply": round(float(row.get("domestic_supply", 0) or 0)),
+            "export_qty":      int(row["export_qty"]),
+            "import_qty":      int(row["import_qty"]),
+            "production":      int(row["production"]),
+            "domestic_supply": int(row["domestic_supply"]),
         }
 
-    out_path = os.path.join(DATA_DIR, "countries_supply.json")
-    with open(out_path, "w") as f:
-        json.dump(result, f, separators=(",", ":"))
-    print(f"  ✓ Saved {len(result)} countries → countries_supply.json")
+    print(f"  Countries built: {len(result)}")
+    print(f"  Sample ISO keys: {list(result.keys())[:10]}")
+
+    # Spot check
+    for chk in ["UKR", "GBR", "USA", "CHN"]:
+        if chk in result:
+            c = result[chk]["categories"].get("Cereals & Grains", {})
+            print(f"  {chk} Cereals → export:{c.get('export_qty',0):,} import:{c.get('import_qty',0):,}")
+
+    save_json(result, "countries_supply.json")
 
 except Exception as e:
-    print(f"  ✗ Error: {e}")
     import traceback; traceback.print_exc()
 
-# ─────────────────────────────────────────────
+# ═══════════════════════════════════════════════════════
 # OUTPUT 2: bilateral_trade.json
-# Trade flows between countries per category (sea routes only, top flows)
-# Used for: Step 3 globe arcs
-# ─────────────────────────────────────────────
-print("\n=== Building bilateral_trade.json ===")
+# Source: bilateral file
+# Columns: reporter_ISO3, partner_iso3,
+#          export_quantity, share_sea_predict, category
+# ═══════════════════════════════════════════════════════
+print("\n=== OUTPUT 2: bilateral_trade.json ===")
 try:
-    bil = load("bilateral")
-    print(f"  Columns: {list(bil.columns[:12])}")
-    print(f"  Rows: {len(bil)}")
+    bil = bil_raw.copy()
+    bil["category"] = bil["fbs_item_code"].apply(get_category)
 
-    # Map columns
-    bil_map = {}
-    for col in bil.columns:
-        cl = col.lower().strip()
-        if "fbs_item_code" in cl:
-            bil_map["item_code"] = col
-        elif "reporter_iso" in cl or ("reporter" in cl and "iso" in cl):
-            bil_map["reporter_iso"] = col
-        elif "reporter_country" in cl and "code" not in cl:
-            bil_map["reporter_country"] = col
-        elif "partner_iso" in cl or ("partner" in cl and "iso" in cl):
-            bil_map["partner_iso"] = col
-        elif "partner_country" in cl and "code" not in cl:
-            bil_map["partner_country"] = col
-        elif "export_quantity" in cl or ("export" in cl and "quant" in cl):
-            bil_map["export_qty"] = col
-        elif "sea" in cl or "maritime" in cl:
-            bil_map["sea_pct"] = col
-        elif "val_per_ton" in cl or "value_per" in cl:
-            bil_map["value_per_ton"] = col
-
-    print(f"  Mapped columns: {bil_map}")
-
-    bil["category"] = bil[bil_map.get("item_code", "fbs_item_code")].apply(get_category)
-
-    # Filter to sea routes only if sea column exists
-    if "sea_pct" in bil_map:
-        bil_sea = bil[bil[bil_map["sea_pct"]] > 0.3].copy()
-        print(f"  Sea routes (>30%): {len(bil_sea)} rows")
-    else:
-        bil_sea = bil.copy()
-        print("  No sea column found — using all routes")
+    # Sea routes only (share_sea_predict > 0.3)
+    bil_sea = bil[bil["share_sea_predict"] > 0.3].copy()
+    print(f"  Sea route rows: {len(bil_sea)}")
 
     # Aggregate by reporter → partner → category
-    grp = [
-        bil_map.get("reporter_iso", "reporter_iso3"),
-        bil_map.get("reporter_country", "reporter_country"),
-        bil_map.get("partner_iso", "partner_iso3"),
-        bil_map.get("partner_country", "partner_country"),
+    agg_bil = bil_sea.groupby([
+        "reporter_ISO3", "reporter_country",
+        "partner_iso3",  "partner_country",
         "category"
-    ]
-    grp = [c for c in grp if c in bil_sea.columns]
+    ])["export_quantity"].sum().reset_index()
 
-    agg_bil = bil_sea.groupby(grp)[bil_map.get("export_qty", "export_quantity")].sum().reset_index()
-    agg_bil.columns = [*grp[:-1], "category", "export_qty"] if len(grp) == 5 else [*grp, "export_qty"]
+    # Drop tiny flows
+    agg_bil = agg_bil[agg_bil["export_quantity"] > 1000]
+    print(f"  Flows > 1000t: {len(agg_bil)}")
 
-    # Keep top flows per category (above 1000 tonnes to reduce file size)
-    agg_bil = agg_bil[agg_bil["export_qty"] > 1000]
-
-    # Build list of arc objects
     arcs = []
-    rep_iso = bil_map.get("reporter_iso", grp[0])
-    rep_name = bil_map.get("reporter_country", grp[1]) if len(grp) > 4 else grp[0]
-    par_iso = bil_map.get("partner_iso", grp[2]) if len(grp) > 2 else grp[1]
-    par_name = bil_map.get("partner_country", grp[3]) if len(grp) > 3 else grp[2]
-
     for _, row in agg_bil.iterrows():
-        r_iso = str(row.get(rep_iso, "")).strip()
-        p_iso = str(row.get(par_iso, "")).strip()
-        if not r_iso or not p_iso or r_iso == "nan" or p_iso == "nan":
+        f = str(row["reporter_ISO3"]).strip()
+        t = str(row["partner_iso3"]).strip()
+        if not f or not t or f == "nan" or t == "nan":
             continue
         arcs.append({
-            "from":     r_iso,
-            "from_name": str(row.get(rep_name, r_iso)).strip(),
-            "to":       p_iso,
-            "to_name":  str(row.get(par_name, p_iso)).strip(),
-            "category": row["category"],
-            "qty":      round(float(row.get("export_qty", 0) or 0)),
+            "from":      f,
+            "from_name": str(row["reporter_country"]).strip(),
+            "to":        t,
+            "to_name":   str(row["partner_country"]).strip(),
+            "category":  row["category"],
+            "qty":       int(row["export_quantity"]),
         })
 
-    out_path = os.path.join(DATA_DIR, "bilateral_trade.json")
-    with open(out_path, "w") as f:
-        json.dump(arcs, f, separators=(",", ":"))
-    print(f"  ✓ Saved {len(arcs)} trade arcs → bilateral_trade.json")
+    print(f"  Total arcs: {len(arcs)}")
+    save_json(arcs, "bilateral_trade.json")
 
 except Exception as e:
-    print(f"  ✗ Error: {e}")
     import traceback; traceback.print_exc()
 
-# ─────────────────────────────────────────────
+# ═══════════════════════════════════════════════════════
 # OUTPUT 3: nutrition_by_country.json
-# Calories + macros per country per category
-# Used for: Step 3 nutrition modal
-# ─────────────────────────────────────────────
-print("\n=== Building nutrition_by_country.json ===")
+# Source: nutrition file
+# Columns: reporter_country_code, fbs_item_code,
+#          Energy (kcal), Protein (kg), Fat (kg), Carbs (kg)
+# ═══════════════════════════════════════════════════════
+print("\n=== OUTPUT 3: nutrition_by_country.json ===")
 try:
-    nut = load("nutrition")
-    print(f"  Columns: {list(nut.columns[:10])}")
+    nut = load_csv(os.path.join(DATA_DIR, FILES["nutrition"]))
+    print(f"  Nutrition cols: {list(nut.columns[:8])}")
 
-    nut_map = {}
-    for col in nut.columns:
-        cl = col.lower().strip()
-        if "reporter_iso" in cl or "iso3" in cl:
-            nut_map["iso3"] = col
-        elif "reporter_country" in cl and "code" not in cl:
-            nut_map["country"] = col
-        elif "fbs_item_code" in cl:
-            nut_map["item_code"] = col
-        elif "energy" in cl or "kcal" in cl:
-            nut_map["energy"] = col
-        elif "protein" in cl:
-            nut_map["protein"] = col
-        elif "fat" in cl:
-            nut_map["fat"] = col
-        elif "carb" in cl:
-            nut_map["carbs"] = col
+    # Add ISO and category
+    nut["iso3"]     = nut["reporter_country_code"].apply(
+        lambda x: code_to_iso.get(int(x), None) if pd.notna(x) else None
+    )
+    nut["category"] = nut["fbs_item_code"].apply(get_category)
+    nut_ok = nut[nut["iso3"].notna()].copy()
 
-    print(f"  Mapped columns: {nut_map}")
+    # Column names from your sample:
+    # Energy (kcal), Protein (kg), Fat (kg), Carbs (kg)
+    eng_col  = "Energy (kcal)"
+    pro_col  = "Protein (kg)"
+    fat_col  = "Fat (kg)"
+    carb_col = "Carbs (kg)"
 
-    nut["category"] = nut[nut_map.get("item_code", "fbs_item_code")].apply(get_category)
+    # Check columns exist
+    available = {k: v for k, v in {
+        "energy": eng_col, "protein": pro_col,
+        "fat": fat_col, "carbs": carb_col
+    }.items() if v in nut_ok.columns}
+    print(f"  Available nutrition cols: {available}")
 
-    grp = [nut_map.get("iso3", "reporter_iso3"), "category"]
-    grp = [c for c in grp if c in nut.columns]
-
-    agg_dict = {}
-    for k in ["energy", "protein", "fat", "carbs"]:
-        if k in nut_map and nut_map[k] in nut.columns:
-            agg_dict[nut_map[k]] = "sum"
-
-    agg_nut = nut.groupby(grp).agg(agg_dict).reset_index()
+    agg_nut = nut_ok.groupby(["iso3", "category"]).agg(
+        **{k: (v, "sum") for k, v in available.items()}
+    ).reset_index()
 
     result_nut = {}
-    iso_col = nut_map.get("iso3", grp[0])
-
     for _, row in agg_nut.iterrows():
-        iso = str(row.get(iso_col, "")).strip()
+        iso = str(row["iso3"]).strip()
         if not iso or iso == "nan":
             continue
         cat = row["category"]
         if iso not in result_nut:
             result_nut[iso] = {}
+        result_nut[iso][cat] = {
+            k: round(float(row.get(k, 0) or 0), 2)
+            for k in available.keys()
+        }
 
-        entry = {}
-        for k, v in nut_map.items():
-            if k in ["energy", "protein", "fat", "carbs"] and v in agg_nut.columns:
-                entry[k] = round(float(row.get(v, 0) or 0), 2)
-        result_nut[iso][cat] = entry
-
-    out_path = os.path.join(DATA_DIR, "nutrition_by_country.json")
-    with open(out_path, "w") as f:
-        json.dump(result_nut, f, separators=(",", ":"))
-    print(f"  ✓ Saved {len(result_nut)} countries → nutrition_by_country.json")
+    print(f"  Countries: {len(result_nut)}")
+    save_json(result_nut, "nutrition_by_country.json")
 
 except Exception as e:
-    print(f"  ✗ Error: {e}")
     import traceback; traceback.print_exc()
 
-# ─────────────────────────────────────────────
+# ═══════════════════════════════════════════════════════
 # OUTPUT 4: fao_price_index.json
-# Monthly price index per food category 1990–2026
-# Used for: Step 4 timeline chart
-# ─────────────────────────────────────────────
-print("\n=== Building fao_price_index.json ===")
+# FAO CSV structure:
+#   Row 1: "FAO Food Price Index,..."  (title)
+#   Row 2: "2014-2016=100,..."         (subtitle)
+#   Row 3: blank
+#   Row 4: Date, Food Price Index, Meat, Dairy, Cereals, Oils, Sugar
+#   Row 5+: data
+# So skiprows=3 gets us to the header on row 4
+# ═══════════════════════════════════════════════════════
+print("\n=== OUTPUT 4: fao_price_index.json ===")
 try:
-    fao = load("fao_price")
-    print(f"  Columns: {list(fao.columns)}")
-    print(f"  Rows: {len(fao)}")
+    fao_path = os.path.join(DATA_DIR, FILES["fao_price"])
+    fao = pd.read_csv(fao_path, skiprows=3, header=0, encoding="utf-8")
+    fao.columns = [str(c).strip() for c in fao.columns]
+    fao = fao.dropna(how="all")
+    print(f"  FAO cols: {list(fao.columns[:8])}")
+    print(f"  FAO rows: {len(fao)}")
+    print(f"  First date: {fao.iloc[0, 0]}")
 
-    # Find the date column and category columns
-    date_col = None
-    for col in fao.columns:
-        if "date" in col.lower() or "year" in col.lower() or "month" in col.lower():
-            date_col = col
-            break
+    # Map our category labels to actual column names
+    # From your file: Date, Food Price Index, Meat, Dairy, Cereals, Oils, Sugar
+    col_map = {
+        "Food Price Index": "Food Price Index",
+        "Cereals & Grains": "Cereals",
+        "Oils":             "Oils",
+        "Sugar":            "Sugar",
+        "Meat & Fish":      "Meat",
+        "Dairy":            "Dairy",
+    }
 
-    if date_col is None:
-        date_col = fao.columns[0]
+    # Filter to only columns that exist
+    col_map = {k: v for k, v in col_map.items() if v in fao.columns}
+    print(f"  Matched price cols: {col_map}")
 
-    print(f"  Date column: {date_col}")
+    date_col = fao.columns[0]  # "Date"
 
-    # Map category columns flexibly
-    price_cols = {}
-    for col in fao.columns:
-        cl = col.lower().strip()
-        if "food" in cl and "price" in cl:
-            price_cols["Food Price Index"] = col
-        elif "meat" in cl:
-            price_cols["Meat"] = col
-        elif "dairy" in cl:
-            price_cols["Dairy"] = col
-        elif "cereal" in cl or "grain" in cl:
-            price_cols["Cereals & Grains"] = col
-        elif "oil" in cl or "fat" in cl:
-            price_cols["Oils"] = col
-        elif "sugar" in cl:
-            price_cols["Sugar"] = col
-        elif "meat" in cl:
-            price_cols["Meat & Fish"] = col
-
-    print(f"  Price columns: {price_cols}")
-
-    # Clean and filter — only keep rows with valid dates
-    fao = fao.dropna(subset=[date_col])
-    fao[date_col] = fao[date_col].astype(str).str.strip()
-
-    # Build records
     records = []
     for _, row in fao.iterrows():
         date_val = str(row[date_col]).strip()
         if not date_val or date_val == "nan":
             continue
-        record = {"date": date_val}
-        for cat, col in price_cols.items():
+        rec = {"date": date_val}
+        for label, col in col_map.items():
             try:
-                val = float(row[col])
-                record[cat] = round(val, 2)
+                rec[label] = round(float(row[col]), 2)
             except:
-                record[cat] = None
-        records.append(record)
+                rec[label] = None
+        records.append(rec)
 
-    # Crisis events hardcoded
+    print(f"  Records: {len(records)}")
+    print(f"  Date range: {records[0]['date']} → {records[-1]['date']}")
+
     crisis_events = [
         {
-            "id": 1,
-            "start": "2007-09",
-            "end": "2008-09",
+            "id": 1, "start": "2007-09", "end": "2008-09",
             "label": "Global Food Crisis",
             "commodities": ["Cereals & Grains", "Oils"],
-            "description": "Oil price surge, biofuel demand, and Australian drought caused the first major 21st century food crisis. Food riots in 30+ countries.",
+            "description": "Oil price surge, biofuel demand, and Australian drought caused food riots in 30+ countries.",
             "articles": [
                 {"title": "Add article title here", "url": "#", "source": "Add source"},
                 {"title": "Add article title here", "url": "#", "source": "Add source"},
             ]
         },
         {
-            "id": 2,
-            "start": "2010-07",
-            "end": "2015-02",
+            "id": 2, "start": "2010-07", "end": "2015-02",
             "label": "Sustained Price Shock",
             "commodities": ["Cereals & Grains", "Oils", "Sugar"],
-            "description": "Russian drought and wheat export ban (2010), Arab Spring food unrest (2011), prolonged global supply tightness through 2014.",
+            "description": "Russian drought and wheat export ban (2010), Arab Spring food unrest (2011), prolonged supply tightness through 2014.",
             "articles": [
                 {"title": "Add article title here", "url": "#", "source": "Add source"},
                 {"title": "Add article title here", "url": "#", "source": "Add source"},
             ]
         },
         {
-            "id": 3,
-            "start": "2020-10",
-            "end": "2021-06",
+            "id": 3, "start": "2020-10", "end": "2021-06",
             "label": "COVID Supply Shock",
             "commodities": ["Oils", "Sugar"],
-            "description": "Pandemic disrupted global logistics, labour shortages hit harvests, and panic buying inflated demand across supply chains.",
+            "description": "Pandemic disrupted global logistics, labour shortages hit harvests, panic buying inflated demand.",
             "articles": [
                 {"title": "Add article title here", "url": "#", "source": "Add source"},
                 {"title": "Add article title here", "url": "#", "source": "Add source"},
             ]
         },
         {
-            "id": 4,
-            "start": "2022-03",
-            "end": "2022-12",
+            "id": 4, "start": "2022-03", "end": "2022-12",
             "label": "Ukraine War",
             "commodities": ["Cereals & Grains", "Oils"],
-            "description": "Russia invaded Ukraine in February 2022. Together they supply ~30% of global wheat and ~60% of sunflower oil. Biggest single-month spike in the dataset.",
+            "description": "Russia invaded Ukraine in February 2022. Together they supply ~30% of global wheat and ~60% of sunflower oil.",
             "articles": [
                 {"title": "Add article title here", "url": "#", "source": "Add source"},
                 {"title": "Add article title here", "url": "#", "source": "Add source"},
             ]
         },
         {
-            "id": 5,
-            "start": "2024-01",
-            "end": "2026-03",
+            "id": 5, "start": "2024-01", "end": "2026-03",
             "label": "Red Sea & Iran Conflict",
             "commodities": ["Oils", "Cereals & Grains", "Sugar"],
-            "description": "Houthi Red Sea attacks from late 2023, escalating to US-Israel strikes on Iran and effective Hormuz closure in February 2026. Fertiliser, oils and sugar badly affected.",
+            "description": "Houthi Red Sea attacks from 2023, escalating to US-Israel strikes on Iran and Hormuz closure in 2026.",
             "articles": [
                 {"title": "Add article title here", "url": "#", "source": "Add source"},
                 {"title": "Add article title here", "url": "#", "source": "Add source"},
@@ -554,31 +413,12 @@ try:
     output = {
         "prices": records,
         "crisis_events": crisis_events,
-        "categories": list(price_cols.keys()),
+        "categories": list(col_map.keys()),
     }
-
-    out_path = os.path.join(DATA_DIR, "fao_price_index.json")
-    with open(out_path, "w") as f:
-        json.dump(output, f, separators=(",", ":"))
-    print(f"  ✓ Saved {len(records)} monthly records + {len(crisis_events)} crisis events → fao_price_index.json")
+    save_json(output, "fao_price_index.json")
 
 except Exception as e:
-    print(f"  ✗ Error: {e}")
     import traceback; traceback.print_exc()
 
-# ─────────────────────────────────────────────
-# SUMMARY
-# ─────────────────────────────────────────────
-print("\n=== DONE ===")
-print("Files written to:", DATA_DIR)
-print("""
-Output files:
-  countries_supply.json      → Step 3 country panel (import/export/production)
-  bilateral_trade.json       → Step 3 globe arcs (trade flows)
-  nutrition_by_country.json  → Step 3 calorie modal
-  fao_price_index.json       → Step 4 timeline + crisis events
-
-Next step:
-  Place your countries.geojson in the same folder
-  then run: npm create vite@latest food-shock -- --template react
-""")
+print("\n=== ALL DONE ===")
+print(f"Check public/data/ folder — all 4 JSON files should be updated")
