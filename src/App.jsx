@@ -16,7 +16,10 @@ export default function App() {
     <div className="app">
       {/* Welcome Modal */}
       {step === "welcome" && (
-        <WelcomeModal onStart={() => setStep("tour")} />
+        <WelcomeModal 
+        onStart={() => setStep("tour")}
+        onSkip={() => setStep("app")}
+        />
       )}
 
       {/* Guided Tour */}

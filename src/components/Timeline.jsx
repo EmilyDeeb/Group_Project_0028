@@ -17,7 +17,7 @@ const LINE_COLORS = {
 export default function Timeline({ activeCrisis, onSelectCrisis }) {
   const [priceData, setPriceData]     = useState([]);
   const [crisisEvents, setCrisisEvents] = useState([]);
-  const [categories, setCategories]   = useState([]);
+  const [categories, setCategories]   = useState(["Cereals & Grains", "Oils", "Sugar", "Meat & Fish", "Dairy"]);
   const [activeLines, setActiveLines] = useState(["Food Price Index", "Cereals & Grains", "Oils"]);
   const [modalCrisis, setModalCrisis] = useState(null);
   const [isExpanded, setIsExpanded]   = useState(false);
@@ -28,7 +28,7 @@ export default function Timeline({ activeCrisis, onSelectCrisis }) {
       .then(d => {
         setPriceData(d.prices || []);
         setCrisisEvents(d.crisis_events || []);
-        setCategories(d.categories || []);
+        // setCategories(d.categories || []);
       })
       .catch(() => console.warn("fao_price_index.json not found"));
   }, []);
@@ -59,7 +59,7 @@ export default function Timeline({ activeCrisis, onSelectCrisis }) {
         <div className="timeline-header">
           <div className="timeline-title">
             FAO Food Price Index
-            <span className="timeline-subtitle">2014–2016 = 100 · Monthly · 1990–2026</span>
+            <span className="timeline-subtitle">Indexed to 2014–2016 average (100) · Monthly data · 1990–2026</span>
           </div>
 
           {/* Line toggles */}
@@ -79,12 +79,13 @@ export default function Timeline({ activeCrisis, onSelectCrisis }) {
 
         {/* Price chart */}
         <div className="chart-wrapper">
-          <ResponsiveContainer width="100%" height={180}>
-            <LineChart data={priceData} margin={{ top: 8, right: 20, bottom: 8, left: 0 }}>
+          <ResponsiveContainer width="100%" height={270}>
+            <LineChart data={priceData} margin={{ top: 30, right: 20, bottom: 55, left: 0 }}>
               <XAxis
                 dataKey="date"
                 tick={{ fill: "#ffffff50", fontSize: 9 }}
                 interval={23}
+                tickMargin={10}
                 tickLine={false}
                 axisLine={{ stroke: "#ffffff15" }}
               />
@@ -111,7 +112,10 @@ export default function Timeline({ activeCrisis, onSelectCrisis }) {
                     value: crisis.label,
                     position: "top",
                     fill: "#ff4444",
-                    fontSize: 8,
+                    fontSize: 9,
+                    angle: -15,
+                    textAnchor: "middle",
+                    dy: -4,
                   }}
                 />
               ))}
