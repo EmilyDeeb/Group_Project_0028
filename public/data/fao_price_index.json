@@ -1,1 +1,4046 @@
-{"prices":[{"date":"1990-01"},{"date":"1990-02"},{"date":"1990-03"},{"date":"1990-04"},{"date":"1990-05"},{"date":"1990-06"},{"date":"1990-07"},{"date":"1990-08"},{"date":"1990-09"},{"date":"1990-10"},{"date":"1990-11"},{"date":"1990-12"},{"date":"1991-01"},{"date":"1991-02"},{"date":"1991-03"},{"date":"1991-04"},{"date":"1991-05"},{"date":"1991-06"},{"date":"1991-07"},{"date":"1991-08"},{"date":"1991-09"},{"date":"1991-10"},{"date":"1991-11"},{"date":"1991-12"},{"date":"1992-01"},{"date":"1992-02"},{"date":"1992-03"},{"date":"1992-04"},{"date":"1992-05"},{"date":"1992-06"},{"date":"1992-07"},{"date":"1992-08"},{"date":"1992-09"},{"date":"1992-10"},{"date":"1992-11"},{"date":"1992-12"},{"date":"1993-01"},{"date":"1993-02"},{"date":"1993-03"},{"date":"1993-04"},{"date":"1993-05"},{"date":"1993-06"},{"date":"1993-07"},{"date":"1993-08"},{"date":"1993-09"},{"date":"1993-10"},{"date":"1993-11"},{"date":"1993-12"},{"date":"1994-01"},{"date":"1994-02"},{"date":"1994-03"},{"date":"1994-04"},{"date":"1994-05"},{"date":"1994-06"},{"date":"1994-07"},{"date":"1994-08"},{"date":"1994-09"},{"date":"1994-10"},{"date":"1994-11"},{"date":"1994-12"},{"date":"1995-01"},{"date":"1995-02"},{"date":"1995-03"},{"date":"1995-04"},{"date":"1995-05"},{"date":"1995-06"},{"date":"1995-07"},{"date":"1995-08"},{"date":"1995-09"},{"date":"1995-10"},{"date":"1995-11"},{"date":"1995-12"},{"date":"1996-01"},{"date":"1996-02"},{"date":"1996-03"},{"date":"1996-04"},{"date":"1996-05"},{"date":"1996-06"},{"date":"1996-07"},{"date":"1996-08"},{"date":"1996-09"},{"date":"1996-10"},{"date":"1996-11"},{"date":"1996-12"},{"date":"1997-01"},{"date":"1997-02"},{"date":"1997-03"},{"date":"1997-04"},{"date":"1997-05"},{"date":"1997-06"},{"date":"1997-07"},{"date":"1997-08"},{"date":"1997-09"},{"date":"1997-10"},{"date":"1997-11"},{"date":"1997-12"},{"date":"1998-01"},{"date":"1998-02"},{"date":"1998-03"},{"date":"1998-04"},{"date":"1998-05"},{"date":"1998-06"},{"date":"1998-07"},{"date":"1998-08"},{"date":"1998-09"},{"date":"1998-10"},{"date":"1998-11"},{"date":"1998-12"},{"date":"1999-01"},{"date":"1999-02"},{"date":"1999-03"},{"date":"1999-04"},{"date":"1999-05"},{"date":"1999-06"},{"date":"1999-07"},{"date":"1999-08"},{"date":"1999-09"},{"date":"1999-10"},{"date":"1999-11"},{"date":"1999-12"},{"date":"2000-01"},{"date":"2000-02"},{"date":"2000-03"},{"date":"2000-04"},{"date":"2000-05"},{"date":"2000-06"},{"date":"2000-07"},{"date":"2000-08"},{"date":"2000-09"},{"date":"2000-10"},{"date":"2000-11"},{"date":"2000-12"},{"date":"2001-01"},{"date":"2001-02"},{"date":"2001-03"},{"date":"2001-04"},{"date":"2001-05"},{"date":"2001-06"},{"date":"2001-07"},{"date":"2001-08"},{"date":"2001-09"},{"date":"2001-10"},{"date":"2001-11"},{"date":"2001-12"},{"date":"2002-01"},{"date":"2002-02"},{"date":"2002-03"},{"date":"2002-04"},{"date":"2002-05"},{"date":"2002-06"},{"date":"2002-07"},{"date":"2002-08"},{"date":"2002-09"},{"date":"2002-10"},{"date":"2002-11"},{"date":"2002-12"},{"date":"2003-01"},{"date":"2003-02"},{"date":"2003-03"},{"date":"2003-04"},{"date":"2003-05"},{"date":"2003-06"},{"date":"2003-07"},{"date":"2003-08"},{"date":"2003-09"},{"date":"2003-10"},{"date":"2003-11"},{"date":"2003-12"},{"date":"2004-01"},{"date":"2004-02"},{"date":"2004-03"},{"date":"2004-04"},{"date":"2004-05"},{"date":"2004-06"},{"date":"2004-07"},{"date":"2004-08"},{"date":"2004-09"},{"date":"2004-10"},{"date":"2004-11"},{"date":"2004-12"},{"date":"2005-01"},{"date":"2005-02"},{"date":"2005-03"},{"date":"2005-04"},{"date":"2005-05"},{"date":"2005-06"},{"date":"2005-07"},{"date":"2005-08"},{"date":"2005-09"},{"date":"2005-10"},{"date":"2005-11"},{"date":"2005-12"},{"date":"2006-01"},{"date":"2006-02"},{"date":"2006-03"},{"date":"2006-04"},{"date":"2006-05"},{"date":"2006-06"},{"date":"2006-07"},{"date":"2006-08"},{"date":"2006-09"},{"date":"2006-10"},{"date":"2006-11"},{"date":"2006-12"},{"date":"2007-01"},{"date":"2007-02"},{"date":"2007-03"},{"date":"2007-04"},{"date":"2007-05"},{"date":"2007-06"},{"date":"2007-07"},{"date":"2007-08"},{"date":"2007-09"},{"date":"2007-10"},{"date":"2007-11"},{"date":"2007-12"},{"date":"2008-01"},{"date":"2008-02"},{"date":"2008-03"},{"date":"2008-04"},{"date":"2008-05"},{"date":"2008-06"},{"date":"2008-07"},{"date":"2008-08"},{"date":"2008-09"},{"date":"2008-10"},{"date":"2008-11"},{"date":"2008-12"},{"date":"2009-01"},{"date":"2009-02"},{"date":"2009-03"},{"date":"2009-04"},{"date":"2009-05"},{"date":"2009-06"},{"date":"2009-07"},{"date":"2009-08"},{"date":"2009-09"},{"date":"2009-10"},{"date":"2009-11"},{"date":"2009-12"},{"date":"2010-01"},{"date":"2010-02"},{"date":"2010-03"},{"date":"2010-04"},{"date":"2010-05"},{"date":"2010-06"},{"date":"2010-07"},{"date":"2010-08"},{"date":"2010-09"},{"date":"2010-10"},{"date":"2010-11"},{"date":"2010-12"},{"date":"2011-01"},{"date":"2011-02"},{"date":"2011-03"},{"date":"2011-04"},{"date":"2011-05"},{"date":"2011-06"},{"date":"2011-07"},{"date":"2011-08"},{"date":"2011-09"},{"date":"2011-10"},{"date":"2011-11"},{"date":"2011-12"},{"date":"2012-01"},{"date":"2012-02"},{"date":"2012-03"},{"date":"2012-04"},{"date":"2012-05"},{"date":"2012-06"},{"date":"2012-07"},{"date":"2012-08"},{"date":"2012-09"},{"date":"2012-10"},{"date":"2012-11"},{"date":"2012-12"},{"date":"2013-01"},{"date":"2013-02"},{"date":"2013-03"},{"date":"2013-04"},{"date":"2013-05"},{"date":"2013-06"},{"date":"2013-07"},{"date":"2013-08"},{"date":"2013-09"},{"date":"2013-10"},{"date":"2013-11"},{"date":"2013-12"},{"date":"2014-01"},{"date":"2014-02"},{"date":"2014-03"},{"date":"2014-04"},{"date":"2014-05"},{"date":"2014-06"},{"date":"2014-07"},{"date":"2014-08"},{"date":"2014-09"},{"date":"2014-10"},{"date":"2014-11"},{"date":"2014-12"},{"date":"2015-01"},{"date":"2015-02"},{"date":"2015-03"},{"date":"2015-04"},{"date":"2015-05"},{"date":"2015-06"},{"date":"2015-07"},{"date":"2015-08"},{"date":"2015-09"},{"date":"2015-10"},{"date":"2015-11"},{"date":"2015-12"},{"date":"2016-01"},{"date":"2016-02"},{"date":"2016-03"},{"date":"2016-04"},{"date":"2016-05"},{"date":"2016-06"},{"date":"2016-07"},{"date":"2016-08"},{"date":"2016-09"},{"date":"2016-10"},{"date":"2016-11"},{"date":"2016-12"},{"date":"2017-01"},{"date":"2017-02"},{"date":"2017-03"},{"date":"2017-04"},{"date":"2017-05"},{"date":"2017-06"},{"date":"2017-07"},{"date":"2017-08"},{"date":"2017-09"},{"date":"2017-10"},{"date":"2017-11"},{"date":"2017-12"},{"date":"2018-01"},{"date":"2018-02"},{"date":"2018-03"},{"date":"2018-04"},{"date":"2018-05"},{"date":"2018-06"},{"date":"2018-07"},{"date":"2018-08"},{"date":"2018-09"},{"date":"2018-10"},{"date":"2018-11"},{"date":"2018-12"},{"date":"2019-01"},{"date":"2019-02"},{"date":"2019-03"},{"date":"2019-04"},{"date":"2019-05"},{"date":"2019-06"},{"date":"2019-07"},{"date":"2019-08"},{"date":"2019-09"},{"date":"2019-10"},{"date":"2019-11"},{"date":"2019-12"},{"date":"2020-01"},{"date":"2020-02"},{"date":"2020-03"},{"date":"2020-04"},{"date":"2020-05"},{"date":"2020-06"},{"date":"2020-07"},{"date":"2020-08"},{"date":"2020-09"},{"date":"2020-10"},{"date":"2020-11"},{"date":"2020-12"},{"date":"2021-01"},{"date":"2021-02"},{"date":"2021-03"},{"date":"2021-04"},{"date":"2021-05"},{"date":"2021-06"},{"date":"2021-07"},{"date":"2021-08"},{"date":"2021-09"},{"date":"2021-10"},{"date":"2021-11"},{"date":"2021-12"},{"date":"2022-01"},{"date":"2022-02"},{"date":"2022-03"},{"date":"2022-04"},{"date":"2022-05"},{"date":"2022-06"},{"date":"2022-07"},{"date":"2022-08"},{"date":"2022-09"},{"date":"2022-10"},{"date":"2022-11"},{"date":"2022-12"},{"date":"2023-01"},{"date":"2023-02"},{"date":"2023-03"},{"date":"2023-04"},{"date":"2023-05"},{"date":"2023-06"},{"date":"2023-07"},{"date":"2023-08"},{"date":"2023-09"},{"date":"2023-10"},{"date":"2023-11"},{"date":"2023-12"},{"date":"2024-01"},{"date":"2024-02"},{"date":"2024-03"},{"date":"2024-04"},{"date":"2024-05"},{"date":"2024-06"},{"date":"2024-07"},{"date":"2024-08"},{"date":"2024-09"},{"date":"2024-10"},{"date":"2024-11"},{"date":"2024-12"},{"date":"2025-01"},{"date":"2025-02"},{"date":"2025-03"},{"date":"2025-04"},{"date":"2025-05"},{"date":"2025-06"},{"date":"2025-07"},{"date":"2025-08"},{"date":"2025-09"},{"date":"2025-10"},{"date":"2025-11"},{"date":"2025-12"},{"date":"2026-01"},{"date":"2026-02"}],"crisis_events":[{"id":1,"start":"2007-09","end":"2008-09","label":"Global Food Crisis","commodities":["Cereals & Grains","Oils"],"description":"Oil price surge, biofuel demand, and Australian drought caused food riots in 30+ countries.","articles":[{"title":"Add article title here","url":"#","source":"Add source"},{"title":"Add article title here","url":"#","source":"Add source"}]},{"id":2,"start":"2010-07","end":"2015-02","label":"Sustained Price Shock","commodities":["Cereals & Grains","Oils","Sugar"],"description":"Russian drought and wheat export ban (2010), Arab Spring food unrest (2011), prolonged supply tightness through 2014.","articles":[{"title":"Add article title here","url":"#","source":"Add source"},{"title":"Add article title here","url":"#","source":"Add source"}]},{"id":3,"start":"2020-10","end":"2021-06","label":"COVID Supply Shock","commodities":["Oils","Sugar"],"description":"Pandemic disrupted global logistics, labour shortages hit harvests, panic buying inflated demand.","articles":[{"title":"Add article title here","url":"#","source":"Add source"},{"title":"Add article title here","url":"#","source":"Add source"}]},{"id":4,"start":"2022-03","end":"2022-12","label":"Ukraine War","commodities":["Cereals & Grains","Oils"],"description":"Russia invaded Ukraine in February 2022. Together they supply ~30% of global wheat and ~60% of sunflower oil.","articles":[{"title":"Add article title here","url":"#","source":"Add source"},{"title":"Add article title here","url":"#","source":"Add source"}]},{"id":5,"start":"2024-01","end":"2026-03","label":"Red Sea & Iran Conflict","commodities":["Oils","Cereals & Grains","Sugar"],"description":"Houthi Red Sea attacks from 2023, escalating to US-Israel strikes on Iran and Hormuz closure in 2026.","articles":[{"title":"Add article title here","url":"#","source":"Add source"},{"title":"Add article title here","url":"#","source":"Add source"}]}],"categories":[]}
+{
+    "prices": [
+        {
+            "date": "1990-01",
+            "Food Price Index": 64.4,
+            "Meat & Fish": 74.3,
+            "Dairy": 53.5,
+            "Cereals & Grains": 64.1,
+            "Oils": 44.59,
+            "Sugar": 87.9
+        },
+        {
+            "date": "1990-02",
+            "Food Price Index": 64.7,
+            "Meat & Fish": 76.8,
+            "Dairy": 52.2,
+            "Cereals & Grains": 62.2,
+            "Oils": 44.5,
+            "Sugar": 90.7
+        },
+        {
+            "date": "1990-03",
+            "Food Price Index": 64.0,
+            "Meat & Fish": 78.5,
+            "Dairy": 41.4,
+            "Cereals & Grains": 61.3,
+            "Oils": 45.75,
+            "Sugar": 95.1
+        },
+        {
+            "date": "1990-04",
+            "Food Price Index": 66.0,
+            "Meat & Fish": 81.2,
+            "Dairy": 48.4,
+            "Cereals & Grains": 62.8,
+            "Oils": 44.02,
+            "Sugar": 94.3
+        },
+        {
+            "date": "1990-05",
+            "Food Price Index": 64.6,
+            "Meat & Fish": 81.8,
+            "Dairy": 39.2,
+            "Cereals & Grains": 62.0,
+            "Oils": 45.5,
+            "Sugar": 90.4
+        },
+        {
+            "date": "1990-06",
+            "Food Price Index": 64.1,
+            "Meat & Fish": 84.2,
+            "Dairy": 39.2,
+            "Cereals & Grains": 60.7,
+            "Oils": 43.8,
+            "Sugar": 80.3
+        },
+        {
+            "date": "1990-07",
+            "Food Price Index": 62.9,
+            "Meat & Fish": 84.5,
+            "Dairy": 39.2,
+            "Cereals & Grains": 57.9,
+            "Oils": 43.72,
+            "Sugar": 74.2
+        },
+        {
+            "date": "1990-08",
+            "Food Price Index": 61.8,
+            "Meat & Fish": 84.5,
+            "Dairy": 36.8,
+            "Cereals & Grains": 55.7,
+            "Oils": 45.37,
+            "Sugar": 67.6
+        },
+        {
+            "date": "1990-09",
+            "Food Price Index": 61.3,
+            "Meat & Fish": 85.5,
+            "Dairy": 38.1,
+            "Cereals & Grains": 52.5,
+            "Oils": 44.79,
+            "Sugar": 68.5
+        },
+        {
+            "date": "1990-10",
+            "Food Price Index": 61.4,
+            "Meat & Fish": 86.2,
+            "Dairy": 38.9,
+            "Cereals & Grains": 52.8,
+            "Oils": 45.72,
+            "Sugar": 60.8
+        },
+        {
+            "date": "1990-11",
+            "Food Price Index": 62.3,
+            "Meat & Fish": 87.6,
+            "Dairy": 39.4,
+            "Cereals & Grains": 52.4,
+            "Oils": 48.3,
+            "Sugar": 62.3
+        },
+        {
+            "date": "1990-12",
+            "Food Price Index": 62.2,
+            "Meat & Fish": 84.4,
+            "Dairy": 45.1,
+            "Cereals & Grains": 52.6,
+            "Oils": 49.6,
+            "Sugar": 60.3
+        },
+        {
+            "date": "1991-01",
+            "Food Price Index": 61.0,
+            "Meat & Fish": 80.5,
+            "Dairy": 46.9,
+            "Cereals & Grains": 53.7,
+            "Oils": 49.47,
+            "Sugar": 54.5
+        },
+        {
+            "date": "1991-02",
+            "Food Price Index": 61.8,
+            "Meat & Fish": 82.4,
+            "Dairy": 46.7,
+            "Cereals & Grains": 55.2,
+            "Oils": 48.42,
+            "Sugar": 52.7
+        },
+        {
+            "date": "1991-03",
+            "Food Price Index": 62.3,
+            "Meat & Fish": 81.6,
+            "Dairy": 45.8,
+            "Cereals & Grains": 57.3,
+            "Oils": 48.75,
+            "Sugar": 56.6
+        },
+        {
+            "date": "1991-04",
+            "Food Price Index": 61.0,
+            "Meat & Fish": 80.5,
+            "Dairy": 42.8,
+            "Cereals & Grains": 57.6,
+            "Oils": 47.0,
+            "Sugar": 52.7
+        },
+        {
+            "date": "1991-05",
+            "Food Price Index": 60.8,
+            "Meat & Fish": 82.0,
+            "Dairy": 42.1,
+            "Cereals & Grains": 57.2,
+            "Oils": 46.56,
+            "Sugar": 46.9
+        },
+        {
+            "date": "1991-06",
+            "Food Price Index": 61.3,
+            "Meat & Fish": 81.3,
+            "Dairy": 43.4,
+            "Cereals & Grains": 56.5,
+            "Oils": 46.73,
+            "Sugar": 56.9
+        },
+        {
+            "date": "1991-07",
+            "Food Price Index": 62.2,
+            "Meat & Fish": 83.6,
+            "Dairy": 40.4,
+            "Cereals & Grains": 55.7,
+            "Oils": 48.22,
+            "Sugar": 63.8
+        },
+        {
+            "date": "1991-08",
+            "Food Price Index": 61.8,
+            "Meat & Fish": 80.4,
+            "Dairy": 41.7,
+            "Cereals & Grains": 58.3,
+            "Oils": 48.81,
+            "Sugar": 58.5
+        },
+        {
+            "date": "1991-09",
+            "Food Price Index": 62.4,
+            "Meat & Fish": 80.6,
+            "Dairy": 45.4,
+            "Cereals & Grains": 58.8,
+            "Oils": 48.58,
+            "Sugar": 57.5
+        },
+        {
+            "date": "1991-10",
+            "Food Price Index": 64.5,
+            "Meat & Fish": 83.0,
+            "Dairy": 48.8,
+            "Cereals & Grains": 60.6,
+            "Oils": 51.13,
+            "Sugar": 56.4
+        },
+        {
+            "date": "1991-11",
+            "Food Price Index": 64.6,
+            "Meat & Fish": 82.6,
+            "Dairy": 50.8,
+            "Cereals & Grains": 60.8,
+            "Oils": 51.79,
+            "Sugar": 53.6
+        },
+        {
+            "date": "1991-12",
+            "Food Price Index": 64.3,
+            "Meat & Fish": 79.2,
+            "Dairy": 50.8,
+            "Cereals & Grains": 62.7,
+            "Oils": 52.63,
+            "Sugar": 55.7
+        },
+        {
+            "date": "1992-01",
+            "Food Price Index": 65.1,
+            "Meat & Fish": 80.2,
+            "Dairy": 52.9,
+            "Cereals & Grains": 63.9,
+            "Oils": 52.84,
+            "Sugar": 51.5
+        },
+        {
+            "date": "1992-02",
+            "Food Price Index": 65.9,
+            "Meat & Fish": 81.6,
+            "Dairy": 52.9,
+            "Cereals & Grains": 66.5,
+            "Oils": 51.96,
+            "Sugar": 48.5
+        },
+        {
+            "date": "1992-03",
+            "Food Price Index": 66.5,
+            "Meat & Fish": 82.4,
+            "Dairy": 52.4,
+            "Cereals & Grains": 65.9,
+            "Oils": 54.08,
+            "Sugar": 50.9
+        },
+        {
+            "date": "1992-04",
+            "Food Price Index": 64.8,
+            "Meat & Fish": 78.3,
+            "Dairy": 52.4,
+            "Cereals & Grains": 63.0,
+            "Oils": 53.95,
+            "Sugar": 58.5
+        },
+        {
+            "date": "1992-05",
+            "Food Price Index": 65.1,
+            "Meat & Fish": 78.9,
+            "Dairy": 54.6,
+            "Cereals & Grains": 62.0,
+            "Oils": 54.02,
+            "Sugar": 59.3
+        },
+        {
+            "date": "1992-06",
+            "Food Price Index": 65.9,
+            "Meat & Fish": 78.9,
+            "Dairy": 57.7,
+            "Cereals & Grains": 61.8,
+            "Oils": 54.82,
+            "Sugar": 64.1
+        },
+        {
+            "date": "1992-07",
+            "Food Price Index": 64.7,
+            "Meat & Fish": 79.5,
+            "Dairy": 58.1,
+            "Cereals & Grains": 58.5,
+            "Oils": 51.93,
+            "Sugar": 63.8
+        },
+        {
+            "date": "1992-08",
+            "Food Price Index": 63.1,
+            "Meat & Fish": 78.6,
+            "Dairy": 56.6,
+            "Cereals & Grains": 56.1,
+            "Oils": 51.02,
+            "Sugar": 60.8
+        },
+        {
+            "date": "1992-09",
+            "Food Price Index": 63.8,
+            "Meat & Fish": 78.1,
+            "Dairy": 58.1,
+            "Cereals & Grains": 58.3,
+            "Oils": 52.2,
+            "Sugar": 57.6
+        },
+        {
+            "date": "1992-10",
+            "Food Price Index": 61.8,
+            "Meat & Fish": 74.4,
+            "Dairy": 54.9,
+            "Cereals & Grains": 58.2,
+            "Oils": 52.22,
+            "Sugar": 53.9
+        },
+        {
+            "date": "1992-11",
+            "Food Price Index": 62.7,
+            "Meat & Fish": 76.2,
+            "Dairy": 53.8,
+            "Cereals & Grains": 58.8,
+            "Oils": 53.88,
+            "Sugar": 53.0
+        },
+        {
+            "date": "1992-12",
+            "Food Price Index": 61.3,
+            "Meat & Fish": 73.7,
+            "Dairy": 53.2,
+            "Cereals & Grains": 58.5,
+            "Oils": 53.0,
+            "Sugar": 50.4
+        },
+        {
+            "date": "1993-01",
+            "Food Price Index": 61.6,
+            "Meat & Fish": 73.4,
+            "Dairy": 53.3,
+            "Cereals & Grains": 59.1,
+            "Oils": 53.98,
+            "Sugar": 51.0
+        },
+        {
+            "date": "1993-02",
+            "Food Price Index": 61.4,
+            "Meat & Fish": 72.9,
+            "Dairy": 54.0,
+            "Cereals & Grains": 58.1,
+            "Oils": 54.24,
+            "Sugar": 53.0
+        },
+        {
+            "date": "1993-03",
+            "Food Price Index": 63.2,
+            "Meat & Fish": 76.5,
+            "Dairy": 53.3,
+            "Cereals & Grains": 57.8,
+            "Oils": 53.05,
+            "Sugar": 65.7
+        },
+        {
+            "date": "1993-04",
+            "Food Price Index": 62.8,
+            "Meat & Fish": 75.7,
+            "Dairy": 52.4,
+            "Cereals & Grains": 57.3,
+            "Oils": 52.83,
+            "Sugar": 69.0
+        },
+        {
+            "date": "1993-05",
+            "Food Price Index": 62.4,
+            "Meat & Fish": 76.0,
+            "Dairy": 51.7,
+            "Cereals & Grains": 55.4,
+            "Oils": 51.9,
+            "Sugar": 73.2
+        },
+        {
+            "date": "1993-06",
+            "Food Price Index": 61.8,
+            "Meat & Fish": 78.6,
+            "Dairy": 51.8,
+            "Cereals & Grains": 52.8,
+            "Oils": 51.24,
+            "Sugar": 64.3
+        },
+        {
+            "date": "1993-07",
+            "Food Price Index": 62.2,
+            "Meat & Fish": 78.1,
+            "Dairy": 49.7,
+            "Cereals & Grains": 55.8,
+            "Oils": 53.28,
+            "Sugar": 59.9
+        },
+        {
+            "date": "1993-08",
+            "Food Price Index": 60.9,
+            "Meat & Fish": 74.8,
+            "Dairy": 48.0,
+            "Cereals & Grains": 56.6,
+            "Oils": 52.61,
+            "Sugar": 57.8
+        },
+        {
+            "date": "1993-09",
+            "Food Price Index": 61.2,
+            "Meat & Fish": 75.1,
+            "Dairy": 45.1,
+            "Cereals & Grains": 58.4,
+            "Oils": 52.54,
+            "Sugar": 59.0
+        },
+        {
+            "date": "1993-10",
+            "Food Price Index": 61.5,
+            "Meat & Fish": 74.5,
+            "Dairy": 41.0,
+            "Cereals & Grains": 61.4,
+            "Oils": 52.12,
+            "Sugar": 63.7
+        },
+        {
+            "date": "1993-11",
+            "Food Price Index": 63.4,
+            "Meat & Fish": 73.6,
+            "Dairy": 41.2,
+            "Cereals & Grains": 66.7,
+            "Oils": 56.22,
+            "Sugar": 62.6
+        },
+        {
+            "date": "1993-12",
+            "Food Price Index": 64.7,
+            "Meat & Fish": 71.1,
+            "Dairy": 41.8,
+            "Cereals & Grains": 68.9,
+            "Oils": 63.58,
+            "Sugar": 65.1
+        },
+        {
+            "date": "1994-01",
+            "Food Price Index": 64.8,
+            "Meat & Fish": 70.2,
+            "Dairy": 45.5,
+            "Cereals & Grains": 68.6,
+            "Oils": 63.88,
+            "Sugar": 63.7
+        },
+        {
+            "date": "1994-02",
+            "Food Price Index": 64.5,
+            "Meat & Fish": 72.1,
+            "Dairy": 45.4,
+            "Cereals & Grains": 66.8,
+            "Oils": 60.4,
+            "Sugar": 67.0
+        },
+        {
+            "date": "1994-03",
+            "Food Price Index": 64.8,
+            "Meat & Fish": 73.4,
+            "Dairy": 46.0,
+            "Cereals & Grains": 64.1,
+            "Oils": 61.31,
+            "Sugar": 72.7
+        },
+        {
+            "date": "1994-04",
+            "Food Price Index": 64.1,
+            "Meat & Fish": 74.0,
+            "Dairy": 42.3,
+            "Cereals & Grains": 62.4,
+            "Oils": 63.66,
+            "Sugar": 68.1
+        },
+        {
+            "date": "1994-05",
+            "Food Price Index": 65.9,
+            "Meat & Fish": 77.0,
+            "Dairy": 42.3,
+            "Cereals & Grains": 62.0,
+            "Oils": 67.78,
+            "Sugar": 71.7
+        },
+        {
+            "date": "1994-06",
+            "Food Price Index": 65.5,
+            "Meat & Fish": 75.4,
+            "Dairy": 45.1,
+            "Cereals & Grains": 60.1,
+            "Oils": 68.47,
+            "Sugar": 74.6
+        },
+        {
+            "date": "1994-07",
+            "Food Price Index": 64.2,
+            "Meat & Fish": 75.9,
+            "Dairy": 45.6,
+            "Cereals & Grains": 56.0,
+            "Oils": 67.15,
+            "Sugar": 72.8
+        },
+        {
+            "date": "1994-08",
+            "Food Price Index": 66.6,
+            "Meat & Fish": 77.7,
+            "Dairy": 46.6,
+            "Cereals & Grains": 57.5,
+            "Oils": 73.33,
+            "Sugar": 74.9
+        },
+        {
+            "date": "1994-09",
+            "Food Price Index": 69.6,
+            "Meat & Fish": 78.8,
+            "Dairy": 49.9,
+            "Cereals & Grains": 60.2,
+            "Oils": 80.5,
+            "Sugar": 77.9
+        },
+        {
+            "date": "1994-10",
+            "Food Price Index": 70.3,
+            "Meat & Fish": 79.2,
+            "Dairy": 52.0,
+            "Cereals & Grains": 61.7,
+            "Oils": 79.0,
+            "Sugar": 78.9
+        },
+        {
+            "date": "1994-11",
+            "Food Price Index": 73.6,
+            "Meat & Fish": 83.0,
+            "Dairy": 53.2,
+            "Cereals & Grains": 61.1,
+            "Oils": 88.31,
+            "Sugar": 86.3
+        },
+        {
+            "date": "1994-12",
+            "Food Price Index": 73.3,
+            "Meat & Fish": 78.9,
+            "Dairy": 55.0,
+            "Cereals & Grains": 62.7,
+            "Oils": 88.62,
+            "Sugar": 90.8
+        },
+        {
+            "date": "1995-01",
+            "Food Price Index": 73.0,
+            "Meat & Fish": 79.1,
+            "Dairy": 58.9,
+            "Cereals & Grains": 62.9,
+            "Oils": 82.66,
+            "Sugar": 91.3
+        },
+        {
+            "date": "1995-02",
+            "Food Price Index": 74.7,
+            "Meat & Fish": 84.0,
+            "Dairy": 61.1,
+            "Cereals & Grains": 62.5,
+            "Oils": 82.67,
+            "Sugar": 89.2
+        },
+        {
+            "date": "1995-03",
+            "Food Price Index": 75.5,
+            "Meat & Fish": 85.1,
+            "Dairy": 61.8,
+            "Cereals & Grains": 62.2,
+            "Oils": 84.42,
+            "Sugar": 90.3
+        },
+        {
+            "date": "1995-04",
+            "Food Price Index": 74.3,
+            "Meat & Fish": 85.9,
+            "Dairy": 61.1,
+            "Cereals & Grains": 62.7,
+            "Oils": 77.94,
+            "Sugar": 84.8
+        },
+        {
+            "date": "1995-05",
+            "Food Price Index": 74.1,
+            "Meat & Fish": 84.1,
+            "Dairy": 61.2,
+            "Cereals & Grains": 64.9,
+            "Oils": 76.79,
+            "Sugar": 83.7
+        },
+        {
+            "date": "1995-06",
+            "Food Price Index": 75.3,
+            "Meat & Fish": 81.7,
+            "Dairy": 61.2,
+            "Cereals & Grains": 69.1,
+            "Oils": 80.33,
+            "Sugar": 86.8
+        },
+        {
+            "date": "1995-07",
+            "Food Price Index": 79.6,
+            "Meat & Fish": 87.8,
+            "Dairy": 64.6,
+            "Cereals & Grains": 74.0,
+            "Oils": 83.96,
+            "Sugar": 84.1
+        },
+        {
+            "date": "1995-08",
+            "Food Price Index": 78.1,
+            "Meat & Fish": 87.4,
+            "Dairy": 64.3,
+            "Cereals & Grains": 72.6,
+            "Oils": 79.95,
+            "Sugar": 80.3
+        },
+        {
+            "date": "1995-09",
+            "Food Price Index": 78.5,
+            "Meat & Fish": 89.0,
+            "Dairy": 64.3,
+            "Cereals & Grains": 75.9,
+            "Oils": 76.28,
+            "Sugar": 72.3
+        },
+        {
+            "date": "1995-10",
+            "Food Price Index": 80.5,
+            "Meat & Fish": 89.2,
+            "Dairy": 64.8,
+            "Cereals & Grains": 80.2,
+            "Oils": 79.95,
+            "Sugar": 73.3
+        },
+        {
+            "date": "1995-11",
+            "Food Price Index": 80.0,
+            "Meat & Fish": 87.9,
+            "Dairy": 64.8,
+            "Cereals & Grains": 80.5,
+            "Oils": 78.99,
+            "Sugar": 74.1
+        },
+        {
+            "date": "1995-12",
+            "Food Price Index": 78.2,
+            "Meat & Fish": 81.8,
+            "Dairy": 64.4,
+            "Cereals & Grains": 82.7,
+            "Oils": 75.58,
+            "Sugar": 76.2
+        },
+        {
+            "date": "1996-01",
+            "Food Price Index": 77.1,
+            "Meat & Fish": 80.3,
+            "Dairy": 64.3,
+            "Cereals & Grains": 83.3,
+            "Oils": 70.75,
+            "Sugar": 77.5
+        },
+        {
+            "date": "1996-02",
+            "Food Price Index": 77.6,
+            "Meat & Fish": 80.3,
+            "Dairy": 64.2,
+            "Cereals & Grains": 85.7,
+            "Oils": 68.63,
+            "Sugar": 79.3
+        },
+        {
+            "date": "1996-03",
+            "Food Price Index": 78.7,
+            "Meat & Fish": 83.2,
+            "Dairy": 63.0,
+            "Cereals & Grains": 86.9,
+            "Oils": 68.17,
+            "Sugar": 79.9
+        },
+        {
+            "date": "1996-04",
+            "Food Price Index": 80.9,
+            "Meat & Fish": 81.2,
+            "Dairy": 62.7,
+            "Cereals & Grains": 95.3,
+            "Oils": 73.56,
+            "Sugar": 74.1
+        },
+        {
+            "date": "1996-05",
+            "Food Price Index": 82.5,
+            "Meat & Fish": 83.6,
+            "Dairy": 61.0,
+            "Cereals & Grains": 100.0,
+            "Oils": 73.37,
+            "Sugar": 70.5
+        },
+        {
+            "date": "1996-06",
+            "Food Price Index": 80.7,
+            "Meat & Fish": 84.1,
+            "Dairy": 61.1,
+            "Cereals & Grains": 94.3,
+            "Oils": 68.85,
+            "Sugar": 75.3
+        },
+        {
+            "date": "1996-07",
+            "Food Price Index": 80.5,
+            "Meat & Fish": 87.1,
+            "Dairy": 61.3,
+            "Cereals & Grains": 91.1,
+            "Oils": 66.07,
+            "Sugar": 79.3
+        },
+        {
+            "date": "1996-08",
+            "Food Price Index": 80.1,
+            "Meat & Fish": 89.7,
+            "Dairy": 60.7,
+            "Cereals & Grains": 85.8,
+            "Oils": 69.1,
+            "Sugar": 76.6
+        },
+        {
+            "date": "1996-09",
+            "Food Price Index": 77.1,
+            "Meat & Fish": 89.3,
+            "Dairy": 60.1,
+            "Cereals & Grains": 75.3,
+            "Oils": 71.47,
+            "Sugar": 73.8
+        },
+        {
+            "date": "1996-10",
+            "Food Price Index": 74.4,
+            "Meat & Fish": 86.6,
+            "Dairy": 61.0,
+            "Cereals & Grains": 71.1,
+            "Oils": 69.08,
+            "Sugar": 68.8
+        },
+        {
+            "date": "1996-11",
+            "Food Price Index": 72.7,
+            "Meat & Fish": 85.4,
+            "Dairy": 59.9,
+            "Cereals & Grains": 67.4,
+            "Oils": 70.01,
+            "Sugar": 66.3
+        },
+        {
+            "date": "1996-12",
+            "Food Price Index": 71.5,
+            "Meat & Fish": 81.5,
+            "Dairy": 60.2,
+            "Cereals & Grains": 67.6,
+            "Oils": 70.17,
+            "Sugar": 66.5
+        },
+        {
+            "date": "1997-01",
+            "Food Price Index": 71.0,
+            "Meat & Fish": 79.1,
+            "Dairy": 60.3,
+            "Cereals & Grains": 68.1,
+            "Oils": 70.76,
+            "Sugar": 66.2
+        },
+        {
+            "date": "1997-02",
+            "Food Price Index": 71.2,
+            "Meat & Fish": 79.4,
+            "Dairy": 59.5,
+            "Cereals & Grains": 68.4,
+            "Oils": 71.49,
+            "Sugar": 66.9
+        },
+        {
+            "date": "1997-03",
+            "Food Price Index": 73.0,
+            "Meat & Fish": 83.1,
+            "Dairy": 59.3,
+            "Cereals & Grains": 70.6,
+            "Oils": 70.32,
+            "Sugar": 68.8
+        },
+        {
+            "date": "1997-04",
+            "Food Price Index": 73.5,
+            "Meat & Fish": 83.9,
+            "Dairy": 59.1,
+            "Cereals & Grains": 70.8,
+            "Oils": 71.11,
+            "Sugar": 69.9
+        },
+        {
+            "date": "1997-05",
+            "Food Price Index": 72.9,
+            "Meat & Fish": 83.8,
+            "Dairy": 58.8,
+            "Cereals & Grains": 68.8,
+            "Oils": 71.65,
+            "Sugar": 68.9
+        },
+        {
+            "date": "1997-06",
+            "Food Price Index": 70.3,
+            "Meat & Fish": 80.4,
+            "Dairy": 58.6,
+            "Cereals & Grains": 65.2,
+            "Oils": 68.96,
+            "Sugar": 70.7
+        },
+        {
+            "date": "1997-07",
+            "Food Price Index": 68.6,
+            "Meat & Fish": 79.7,
+            "Dairy": 58.1,
+            "Cereals & Grains": 62.4,
+            "Oils": 65.53,
+            "Sugar": 69.4
+        },
+        {
+            "date": "1997-08",
+            "Food Price Index": 70.0,
+            "Meat & Fish": 80.6,
+            "Dairy": 57.8,
+            "Cereals & Grains": 65.7,
+            "Oils": 65.4,
+            "Sugar": 72.4
+        },
+        {
+            "date": "1997-09",
+            "Food Price Index": 70.1,
+            "Meat & Fish": 80.2,
+            "Dairy": 59.0,
+            "Cereals & Grains": 65.1,
+            "Oils": 67.96,
+            "Sugar": 70.1
+        },
+        {
+            "date": "1997-10",
+            "Food Price Index": 69.9,
+            "Meat & Fish": 75.8,
+            "Dairy": 60.8,
+            "Cereals & Grains": 65.6,
+            "Oils": 72.78,
+            "Sugar": 70.6
+        },
+        {
+            "date": "1997-11",
+            "Food Price Index": 70.5,
+            "Meat & Fish": 76.0,
+            "Dairy": 61.0,
+            "Cereals & Grains": 64.2,
+            "Oils": 76.71,
+            "Sugar": 74.3
+        },
+        {
+            "date": "1997-12",
+            "Food Price Index": 68.1,
+            "Meat & Fish": 69.8,
+            "Dairy": 61.0,
+            "Cereals & Grains": 63.4,
+            "Oils": 75.55,
+            "Sugar": 76.3
+        },
+        {
+            "date": "1998-01",
+            "Food Price Index": 67.5,
+            "Meat & Fish": 67.7,
+            "Dairy": 60.9,
+            "Cereals & Grains": 62.7,
+            "Oils": 79.26,
+            "Sugar": 71.5
+        },
+        {
+            "date": "1998-02",
+            "Food Price Index": 67.7,
+            "Meat & Fish": 68.7,
+            "Dairy": 59.7,
+            "Cereals & Grains": 62.7,
+            "Oils": 81.88,
+            "Sugar": 66.3
+        },
+        {
+            "date": "1998-03",
+            "Food Price Index": 67.6,
+            "Meat & Fish": 68.4,
+            "Dairy": 57.8,
+            "Cereals & Grains": 63.2,
+            "Oils": 84.68,
+            "Sugar": 60.9
+        },
+        {
+            "date": "1998-04",
+            "Food Price Index": 67.0,
+            "Meat & Fish": 68.4,
+            "Dairy": 57.6,
+            "Cereals & Grains": 60.8,
+            "Oils": 86.01,
+            "Sugar": 60.0
+        },
+        {
+            "date": "1998-05",
+            "Food Price Index": 66.6,
+            "Meat & Fish": 66.8,
+            "Dairy": 56.5,
+            "Cereals & Grains": 60.2,
+            "Oils": 89.97,
+            "Sugar": 57.1
+        },
+        {
+            "date": "1998-06",
+            "Food Price Index": 64.4,
+            "Meat & Fish": 66.7,
+            "Dairy": 55.6,
+            "Cereals & Grains": 59.0,
+            "Oils": 82.76,
+            "Sugar": 50.1
+        },
+        {
+            "date": "1998-07",
+            "Food Price Index": 64.4,
+            "Meat & Fish": 67.0,
+            "Dairy": 55.3,
+            "Cereals & Grains": 57.5,
+            "Oils": 83.56,
+            "Sugar": 53.5
+        },
+        {
+            "date": "1998-08",
+            "Food Price Index": 62.6,
+            "Meat & Fish": 64.8,
+            "Dairy": 55.4,
+            "Cereals & Grains": 54.1,
+            "Oils": 83.17,
+            "Sugar": 52.5
+        },
+        {
+            "date": "1998-09",
+            "Food Price Index": 62.1,
+            "Meat & Fish": 65.1,
+            "Dairy": 53.9,
+            "Cereals & Grains": 53.9,
+            "Oils": 84.56,
+            "Sugar": 44.7
+        },
+        {
+            "date": "1998-10",
+            "Food Price Index": 62.9,
+            "Meat & Fish": 64.7,
+            "Dairy": 52.1,
+            "Cereals & Grains": 57.7,
+            "Oils": 84.44,
+            "Sugar": 46.2
+        },
+        {
+            "date": "1998-11",
+            "Food Price Index": 62.8,
+            "Meat & Fish": 63.2,
+            "Dairy": 52.1,
+            "Cereals & Grains": 58.2,
+            "Oils": 84.31,
+            "Sugar": 49.9
+        },
+        {
+            "date": "1998-12",
+            "Food Price Index": 62.2,
+            "Meat & Fish": 63.8,
+            "Dairy": 52.3,
+            "Cereals & Grains": 56.8,
+            "Oils": 82.04,
+            "Sugar": 50.0
+        },
+        {
+            "date": "1999-01",
+            "Food Price Index": 61.2,
+            "Meat & Fish": 62.7,
+            "Dairy": 52.4,
+            "Cereals & Grains": 57.1,
+            "Oils": 77.31,
+            "Sugar": 50.2
+        },
+        {
+            "date": "1999-02",
+            "Food Price Index": 58.6,
+            "Meat & Fish": 63.3,
+            "Dairy": 51.5,
+            "Cereals & Grains": 54.9,
+            "Oils": 68.4,
+            "Sugar": 42.2
+        },
+        {
+            "date": "1999-03",
+            "Food Price Index": 57.2,
+            "Meat & Fish": 63.4,
+            "Dairy": 50.7,
+            "Cereals & Grains": 55.2,
+            "Oils": 62.31,
+            "Sugar": 37.3
+        },
+        {
+            "date": "1999-04",
+            "Food Price Index": 56.0,
+            "Meat & Fish": 61.7,
+            "Dairy": 48.0,
+            "Cereals & Grains": 53.7,
+            "Oils": 64.88,
+            "Sugar": 33.5
+        },
+        {
+            "date": "1999-05",
+            "Food Price Index": 55.6,
+            "Meat & Fish": 62.2,
+            "Dairy": 47.4,
+            "Cereals & Grains": 52.8,
+            "Oils": 62.26,
+            "Sugar": 35.6
+        },
+        {
+            "date": "1999-06",
+            "Food Price Index": 54.8,
+            "Meat & Fish": 62.7,
+            "Dairy": 47.1,
+            "Cereals & Grains": 53.6,
+            "Oils": 54.79,
+            "Sugar": 37.3
+        },
+        {
+            "date": "1999-07",
+            "Food Price Index": 52.8,
+            "Meat & Fish": 62.9,
+            "Dairy": 46.4,
+            "Cereals & Grains": 51.4,
+            "Oils": 48.63,
+            "Sugar": 33.3
+        },
+        {
+            "date": "1999-08",
+            "Food Price Index": 54.6,
+            "Meat & Fish": 64.8,
+            "Dairy": 46.4,
+            "Cereals & Grains": 53.0,
+            "Oils": 52.29,
+            "Sugar": 35.6
+        },
+        {
+            "date": "1999-09",
+            "Food Price Index": 54.8,
+            "Meat & Fish": 63.4,
+            "Dairy": 46.8,
+            "Cereals & Grains": 52.6,
+            "Oils": 54.07,
+            "Sugar": 41.3
+        },
+        {
+            "date": "1999-10",
+            "Food Price Index": 53.5,
+            "Meat & Fish": 60.7,
+            "Dairy": 47.0,
+            "Cereals & Grains": 51.5,
+            "Oils": 52.96,
+            "Sugar": 41.9
+        },
+        {
+            "date": "1999-11",
+            "Food Price Index": 53.5,
+            "Meat & Fish": 61.8,
+            "Dairy": 47.5,
+            "Cereals & Grains": 51.3,
+            "Oils": 51.32,
+            "Sugar": 40.2
+        },
+        {
+            "date": "1999-12",
+            "Food Price Index": 52.1,
+            "Meat & Fish": 59.5,
+            "Dairy": 48.5,
+            "Cereals & Grains": 50.4,
+            "Oils": 49.49,
+            "Sugar": 37.2
+        },
+        {
+            "date": "2000-01",
+            "Food Price Index": 52.8,
+            "Meat & Fish": 60.6,
+            "Dairy": 50.2,
+            "Cereals & Grains": 52.1,
+            "Oils": 48.58,
+            "Sugar": 34.7
+        },
+        {
+            "date": "2000-02",
+            "Food Price Index": 52.5,
+            "Meat & Fish": 60.9,
+            "Dairy": 50.4,
+            "Cereals & Grains": 52.2,
+            "Oils": 46.37,
+            "Sugar": 32.7
+        },
+        {
+            "date": "2000-03",
+            "Food Price Index": 53.1,
+            "Meat & Fish": 62.8,
+            "Dairy": 50.1,
+            "Cereals & Grains": 51.7,
+            "Oils": 47.82,
+            "Sugar": 31.8
+        },
+        {
+            "date": "2000-04",
+            "Food Price Index": 53.7,
+            "Meat & Fish": 62.3,
+            "Dairy": 50.4,
+            "Cereals & Grains": 51.8,
+            "Oils": 49.5,
+            "Sugar": 37.3
+        },
+        {
+            "date": "2000-05",
+            "Food Price Index": 54.0,
+            "Meat & Fish": 63.3,
+            "Dairy": 50.9,
+            "Cereals & Grains": 52.8,
+            "Oils": 44.49,
+            "Sugar": 42.8
+        },
+        {
+            "date": "2000-06",
+            "Food Price Index": 54.2,
+            "Meat & Fish": 63.0,
+            "Dairy": 53.8,
+            "Cereals & Grains": 51.4,
+            "Oils": 42.93,
+            "Sugar": 51.8
+        },
+        {
+            "date": "2000-07",
+            "Food Price Index": 54.4,
+            "Meat & Fish": 62.7,
+            "Dairy": 55.6,
+            "Cereals & Grains": 49.8,
+            "Oils": 42.67,
+            "Sugar": 59.6
+        },
+        {
+            "date": "2000-08",
+            "Food Price Index": 53.5,
+            "Meat & Fish": 60.3,
+            "Dairy": 56.0,
+            "Cereals & Grains": 48.6,
+            "Oils": 41.7,
+            "Sugar": 64.6
+        },
+        {
+            "date": "2000-09",
+            "Food Price Index": 52.9,
+            "Meat & Fish": 59.4,
+            "Dairy": 57.4,
+            "Cereals & Grains": 49.4,
+            "Oils": 38.47,
+            "Sugar": 62.1
+        },
+        {
+            "date": "2000-10",
+            "Food Price Index": 53.7,
+            "Meat & Fish": 59.5,
+            "Dairy": 59.1,
+            "Cereals & Grains": 51.2,
+            "Oils": 36.38,
+            "Sugar": 66.5
+        },
+        {
+            "date": "2000-11",
+            "Food Price Index": 54.2,
+            "Meat & Fish": 60.4,
+            "Dairy": 59.6,
+            "Cereals & Grains": 52.1,
+            "Oils": 37.67,
+            "Sugar": 61.5
+        },
+        {
+            "date": "2000-12",
+            "Food Price Index": 54.8,
+            "Meat & Fish": 60.4,
+            "Dairy": 60.1,
+            "Cereals & Grains": 53.7,
+            "Oils": 38.14,
+            "Sugar": 62.0
+        },
+        {
+            "date": "2001-01",
+            "Food Price Index": 54.1,
+            "Meat & Fish": 58.3,
+            "Dairy": 59.7,
+            "Cereals & Grains": 53.9,
+            "Oils": 37.27,
+            "Sugar": 63.9
+        },
+        {
+            "date": "2001-02",
+            "Food Price Index": 54.6,
+            "Meat & Fish": 62.0,
+            "Dairy": 59.5,
+            "Cereals & Grains": 53.0,
+            "Oils": 35.83,
+            "Sugar": 61.1
+        },
+        {
+            "date": "2001-03",
+            "Food Price Index": 55.5,
+            "Meat & Fish": 64.9,
+            "Dairy": 59.7,
+            "Cereals & Grains": 52.2,
+            "Oils": 38.2,
+            "Sugar": 57.4
+        },
+        {
+            "date": "2001-04",
+            "Food Price Index": 55.0,
+            "Meat & Fish": 65.3,
+            "Dairy": 59.5,
+            "Cereals & Grains": 51.0,
+            "Oils": 38.03,
+            "Sugar": 54.1
+        },
+        {
+            "date": "2001-05",
+            "Food Price Index": 55.8,
+            "Meat & Fish": 65.6,
+            "Dairy": 62.0,
+            "Cereals & Grains": 51.7,
+            "Oils": 36.57,
+            "Sugar": 59.3
+        },
+        {
+            "date": "2001-06",
+            "Food Price Index": 55.2,
+            "Meat & Fish": 63.8,
+            "Dairy": 62.4,
+            "Cereals & Grains": 51.0,
+            "Oils": 38.85,
+            "Sugar": 56.0
+        },
+        {
+            "date": "2001-07",
+            "Food Price Index": 56.9,
+            "Meat & Fish": 64.1,
+            "Dairy": 62.9,
+            "Cereals & Grains": 51.7,
+            "Oils": 47.44,
+            "Sugar": 54.4
+        },
+        {
+            "date": "2001-08",
+            "Food Price Index": 57.0,
+            "Meat & Fish": 64.4,
+            "Dairy": 62.5,
+            "Cereals & Grains": 51.6,
+            "Oils": 50.02,
+            "Sugar": 50.2
+        },
+        {
+            "date": "2001-09",
+            "Food Price Index": 55.8,
+            "Meat & Fish": 64.3,
+            "Dairy": 62.1,
+            "Cereals & Grains": 51.2,
+            "Oils": 45.4,
+            "Sugar": 47.3
+        },
+        {
+            "date": "2001-10",
+            "Food Price Index": 54.5,
+            "Meat & Fish": 62.4,
+            "Dairy": 62.8,
+            "Cereals & Grains": 51.0,
+            "Oils": 43.3,
+            "Sugar": 42.0
+        },
+        {
+            "date": "2001-11",
+            "Food Price Index": 55.1,
+            "Meat & Fish": 60.6,
+            "Dairy": 60.6,
+            "Cereals & Grains": 51.9,
+            "Oils": 48.27,
+            "Sugar": 47.5
+        },
+        {
+            "date": "2001-12",
+            "Food Price Index": 54.6,
+            "Meat & Fish": 59.2,
+            "Dairy": 56.9,
+            "Cereals & Grains": 52.0,
+            "Oils": 50.61,
+            "Sugar": 48.5
+        },
+        {
+            "date": "2002-01",
+            "Food Price Index": 53.8,
+            "Meat & Fish": 59.4,
+            "Dairy": 53.0,
+            "Cereals & Grains": 51.7,
+            "Oils": 49.26,
+            "Sugar": 48.2
+        },
+        {
+            "date": "2002-02",
+            "Food Price Index": 52.0,
+            "Meat & Fish": 57.6,
+            "Dairy": 52.8,
+            "Cereals & Grains": 50.4,
+            "Oils": 47.79,
+            "Sugar": 40.5
+        },
+        {
+            "date": "2002-03",
+            "Food Price Index": 52.3,
+            "Meat & Fish": 60.1,
+            "Dairy": 50.7,
+            "Cereals & Grains": 49.6,
+            "Oils": 47.62,
+            "Sugar": 41.4
+        },
+        {
+            "date": "2002-04",
+            "Food Price Index": 51.4,
+            "Meat & Fish": 57.2,
+            "Dairy": 48.9,
+            "Cereals & Grains": 49.3,
+            "Oils": 48.97,
+            "Sugar": 42.6
+        },
+        {
+            "date": "2002-05",
+            "Food Price Index": 50.8,
+            "Meat & Fish": 56.2,
+            "Dairy": 44.8,
+            "Cereals & Grains": 50.2,
+            "Oils": 51.64,
+            "Sugar": 37.6
+        },
+        {
+            "date": "2002-06",
+            "Food Price Index": 51.6,
+            "Meat & Fish": 56.3,
+            "Dairy": 42.9,
+            "Cereals & Grains": 52.0,
+            "Oils": 55.8,
+            "Sugar": 35.6
+        },
+        {
+            "date": "2002-07",
+            "Food Price Index": 52.3,
+            "Meat & Fish": 55.9,
+            "Dairy": 40.6,
+            "Cereals & Grains": 54.6,
+            "Oils": 56.15,
+            "Sugar": 39.5
+        },
+        {
+            "date": "2002-08",
+            "Food Price Index": 53.7,
+            "Meat & Fish": 55.8,
+            "Dairy": 40.1,
+            "Cereals & Grains": 58.1,
+            "Oils": 59.65,
+            "Sugar": 39.0
+        },
+        {
+            "date": "2002-09",
+            "Food Price Index": 55.1,
+            "Meat & Fish": 55.1,
+            "Dairy": 41.6,
+            "Cereals & Grains": 63.8,
+            "Oils": 56.68,
+            "Sugar": 43.1
+        },
+        {
+            "date": "2002-10",
+            "Food Price Index": 55.5,
+            "Meat & Fish": 53.5,
+            "Dairy": 42.9,
+            "Cereals & Grains": 64.4,
+            "Oils": 58.76,
+            "Sugar": 46.5
+        },
+        {
+            "date": "2002-11",
+            "Food Price Index": 56.6,
+            "Meat & Fish": 53.9,
+            "Dairy": 45.5,
+            "Cereals & Grains": 63.0,
+            "Oils": 63.91,
+            "Sugar": 48.5
+        },
+        {
+            "date": "2002-12",
+            "Food Price Index": 56.0,
+            "Meat & Fish": 52.3,
+            "Dairy": 49.3,
+            "Cereals & Grains": 59.8,
+            "Oils": 65.51,
+            "Sugar": 49.2
+        },
+        {
+            "date": "2003-01",
+            "Food Price Index": 56.2,
+            "Meat & Fish": 53.9,
+            "Dairy": 51.3,
+            "Cereals & Grains": 58.0,
+            "Oils": 64.32,
+            "Sugar": 50.7
+        },
+        {
+            "date": "2003-02",
+            "Food Price Index": 56.9,
+            "Meat & Fish": 55.1,
+            "Dairy": 53.1,
+            "Cereals & Grains": 57.8,
+            "Oils": 62.35,
+            "Sugar": 55.7
+        },
+        {
+            "date": "2003-03",
+            "Food Price Index": 55.9,
+            "Meat & Fish": 55.7,
+            "Dairy": 53.7,
+            "Cereals & Grains": 56.5,
+            "Oils": 59.23,
+            "Sugar": 50.9
+        },
+        {
+            "date": "2003-04",
+            "Food Price Index": 55.9,
+            "Meat & Fish": 56.7,
+            "Dairy": 52.7,
+            "Cereals & Grains": 56.4,
+            "Oils": 59.57,
+            "Sugar": 48.0
+        },
+        {
+            "date": "2003-05",
+            "Food Price Index": 56.7,
+            "Meat & Fish": 57.4,
+            "Dairy": 52.6,
+            "Cereals & Grains": 58.2,
+            "Oils": 61.09,
+            "Sugar": 44.4
+        },
+        {
+            "date": "2003-06",
+            "Food Price Index": 56.4,
+            "Meat & Fish": 57.3,
+            "Dairy": 52.6,
+            "Cereals & Grains": 57.7,
+            "Oils": 61.96,
+            "Sugar": 41.6
+        },
+        {
+            "date": "2003-07",
+            "Food Price Index": 57.1,
+            "Meat & Fish": 61.5,
+            "Dairy": 53.2,
+            "Cereals & Grains": 56.5,
+            "Oils": 58.84,
+            "Sugar": 42.3
+        },
+        {
+            "date": "2003-08",
+            "Food Price Index": 57.8,
+            "Meat & Fish": 61.4,
+            "Dairy": 53.6,
+            "Cereals & Grains": 59.9,
+            "Oils": 57.09,
+            "Sugar": 42.3
+        },
+        {
+            "date": "2003-09",
+            "Food Price Index": 59.0,
+            "Meat & Fish": 63.7,
+            "Dairy": 55.2,
+            "Cereals & Grains": 60.5,
+            "Oils": 59.33,
+            "Sugar": 37.0
+        },
+        {
+            "date": "2003-10",
+            "Food Price Index": 60.6,
+            "Meat & Fish": 63.6,
+            "Dairy": 57.6,
+            "Cereals & Grains": 60.6,
+            "Oils": 67.39,
+            "Sugar": 36.9
+        },
+        {
+            "date": "2003-11",
+            "Food Price Index": 62.0,
+            "Meat & Fish": 62.9,
+            "Dairy": 58.6,
+            "Cereals & Grains": 64.8,
+            "Oils": 68.83,
+            "Sugar": 37.6
+        },
+        {
+            "date": "2003-12",
+            "Food Price Index": 62.9,
+            "Meat & Fish": 62.5,
+            "Dairy": 59.7,
+            "Cereals & Grains": 65.7,
+            "Oils": 71.56,
+            "Sugar": 38.9
+        },
+        {
+            "date": "2004-01",
+            "Food Price Index": 64.7,
+            "Meat & Fish": 67.2,
+            "Dairy": 60.9,
+            "Cereals & Grains": 66.9,
+            "Oils": 71.22,
+            "Sugar": 35.9
+        },
+        {
+            "date": "2004-02",
+            "Food Price Index": 65.5,
+            "Meat & Fish": 65.1,
+            "Dairy": 64.3,
+            "Cereals & Grains": 67.5,
+            "Oils": 76.06,
+            "Sugar": 36.2
+        },
+        {
+            "date": "2004-03",
+            "Food Price Index": 67.1,
+            "Meat & Fish": 67.6,
+            "Dairy": 65.2,
+            "Cereals & Grains": 68.5,
+            "Oils": 76.73,
+            "Sugar": 40.0
+        },
+        {
+            "date": "2004-04",
+            "Food Price Index": 67.7,
+            "Meat & Fish": 67.5,
+            "Dairy": 65.8,
+            "Cereals & Grains": 70.2,
+            "Oils": 76.45,
+            "Sugar": 40.7
+        },
+        {
+            "date": "2004-05",
+            "Food Price Index": 66.8,
+            "Meat & Fish": 67.0,
+            "Dairy": 67.8,
+            "Cereals & Grains": 68.8,
+            "Oils": 73.52,
+            "Sugar": 39.2
+        },
+        {
+            "date": "2004-06",
+            "Food Price Index": 66.4,
+            "Meat & Fish": 69.9,
+            "Dairy": 70.7,
+            "Cereals & Grains": 66.4,
+            "Oils": 66.06,
+            "Sugar": 42.9
+        },
+        {
+            "date": "2004-07",
+            "Food Price Index": 65.8,
+            "Meat & Fish": 71.6,
+            "Dairy": 72.6,
+            "Cereals & Grains": 60.7,
+            "Oils": 64.82,
+            "Sugar": 49.0
+        },
+        {
+            "date": "2004-08",
+            "Food Price Index": 64.8,
+            "Meat & Fish": 69.8,
+            "Dairy": 72.7,
+            "Cereals & Grains": 59.1,
+            "Oils": 65.44,
+            "Sugar": 46.9
+        },
+        {
+            "date": "2004-09",
+            "Food Price Index": 65.4,
+            "Meat & Fish": 70.2,
+            "Dairy": 73.3,
+            "Cereals & Grains": 60.0,
+            "Oils": 66.27,
+            "Sugar": 47.6
+        },
+        {
+            "date": "2004-10",
+            "Food Price Index": 64.9,
+            "Meat & Fish": 68.2,
+            "Dairy": 73.8,
+            "Cereals & Grains": 59.3,
+            "Oils": 65.8,
+            "Sugar": 52.3
+        },
+        {
+            "date": "2004-11",
+            "Food Price Index": 65.7,
+            "Meat & Fish": 69.2,
+            "Dairy": 75.1,
+            "Cereals & Grains": 60.0,
+            "Oils": 66.94,
+            "Sugar": 50.5
+        },
+        {
+            "date": "2004-12",
+            "Food Price Index": 66.0,
+            "Meat & Fish": 69.9,
+            "Dairy": 75.8,
+            "Cereals & Grains": 60.5,
+            "Oils": 66.02,
+            "Sugar": 51.0
+        },
+        {
+            "date": "2005-01",
+            "Food Price Index": 65.8,
+            "Meat & Fish": 69.9,
+            "Dairy": 76.2,
+            "Cereals & Grains": 60.5,
+            "Oils": 63.15,
+            "Sugar": 54.0
+        },
+        {
+            "date": "2005-02",
+            "Food Price Index": 66.2,
+            "Meat & Fish": 71.1,
+            "Dairy": 76.7,
+            "Cereals & Grains": 60.3,
+            "Oils": 62.27,
+            "Sugar": 56.3
+        },
+        {
+            "date": "2005-03",
+            "Food Price Index": 67.5,
+            "Meat & Fish": 71.7,
+            "Dairy": 77.0,
+            "Cereals & Grains": 61.5,
+            "Oils": 66.74,
+            "Sugar": 55.0
+        },
+        {
+            "date": "2005-04",
+            "Food Price Index": 66.0,
+            "Meat & Fish": 70.4,
+            "Dairy": 76.2,
+            "Cereals & Grains": 59.5,
+            "Oils": 65.07,
+            "Sugar": 53.2
+        },
+        {
+            "date": "2005-05",
+            "Food Price Index": 66.5,
+            "Meat & Fish": 72.6,
+            "Dairy": 76.5,
+            "Cereals & Grains": 59.4,
+            "Oils": 64.23,
+            "Sugar": 53.1
+        },
+        {
+            "date": "2005-06",
+            "Food Price Index": 67.4,
+            "Meat & Fish": 73.6,
+            "Dairy": 76.4,
+            "Cereals & Grains": 60.2,
+            "Oils": 64.64,
+            "Sugar": 56.0
+        },
+        {
+            "date": "2005-07",
+            "Food Price Index": 67.7,
+            "Meat & Fish": 72.6,
+            "Dairy": 77.1,
+            "Cereals & Grains": 61.2,
+            "Oils": 64.44,
+            "Sugar": 59.7
+        },
+        {
+            "date": "2005-08",
+            "Food Price Index": 67.6,
+            "Meat & Fish": 72.8,
+            "Dairy": 78.3,
+            "Cereals & Grains": 60.9,
+            "Oils": 62.51,
+            "Sugar": 61.5
+        },
+        {
+            "date": "2005-09",
+            "Food Price Index": 68.6,
+            "Meat & Fish": 73.9,
+            "Dairy": 78.7,
+            "Cereals & Grains": 61.5,
+            "Oils": 64.0,
+            "Sugar": 63.8
+        },
+        {
+            "date": "2005-10",
+            "Food Price Index": 69.5,
+            "Meat & Fish": 73.8,
+            "Dairy": 78.5,
+            "Cereals & Grains": 62.1,
+            "Oils": 66.81,
+            "Sugar": 68.8
+        },
+        {
+            "date": "2005-11",
+            "Food Price Index": 69.0,
+            "Meat & Fish": 74.1,
+            "Dairy": 78.0,
+            "Cereals & Grains": 60.6,
+            "Oils": 65.44,
+            "Sugar": 70.4
+        },
+        {
+            "date": "2005-12",
+            "Food Price Index": 69.8,
+            "Meat & Fish": 74.4,
+            "Dairy": 76.9,
+            "Cereals & Grains": 61.5,
+            "Oils": 63.49,
+            "Sugar": 82.6
+        },
+        {
+            "date": "2006-01",
+            "Food Price Index": 69.8,
+            "Meat & Fish": 71.2,
+            "Dairy": 74.3,
+            "Cereals & Grains": 62.7,
+            "Oils": 63.67,
+            "Sugar": 97.5
+        },
+        {
+            "date": "2006-02",
+            "Food Price Index": 70.8,
+            "Meat & Fish": 68.8,
+            "Dairy": 74.5,
+            "Cereals & Grains": 64.8,
+            "Oils": 64.99,
+            "Sugar": 111.1
+        },
+        {
+            "date": "2006-03",
+            "Food Price Index": 69.8,
+            "Meat & Fish": 68.0,
+            "Dairy": 73.1,
+            "Cereals & Grains": 63.9,
+            "Oils": 65.16,
+            "Sugar": 106.7
+        },
+        {
+            "date": "2006-04",
+            "Food Price Index": 70.1,
+            "Meat & Fish": 67.4,
+            "Dairy": 71.6,
+            "Cereals & Grains": 65.1,
+            "Oils": 66.76,
+            "Sugar": 108.2
+        },
+        {
+            "date": "2006-05",
+            "Food Price Index": 71.3,
+            "Meat & Fish": 69.0,
+            "Dairy": 71.3,
+            "Cereals & Grains": 67.8,
+            "Oils": 68.28,
+            "Sugar": 104.1
+        },
+        {
+            "date": "2006-06",
+            "Food Price Index": 71.4,
+            "Meat & Fish": 71.3,
+            "Dairy": 71.0,
+            "Cereals & Grains": 67.8,
+            "Oils": 67.94,
+            "Sugar": 95.3
+        },
+        {
+            "date": "2006-07",
+            "Food Price Index": 73.2,
+            "Meat & Fish": 72.7,
+            "Dairy": 71.3,
+            "Cereals & Grains": 69.9,
+            "Oils": 70.45,
+            "Sugar": 99.3
+        },
+        {
+            "date": "2006-08",
+            "Food Price Index": 73.1,
+            "Meat & Fish": 74.8,
+            "Dairy": 70.3,
+            "Cereals & Grains": 69.6,
+            "Oils": 73.55,
+            "Sugar": 83.2
+        },
+        {
+            "date": "2006-09",
+            "Food Price Index": 73.2,
+            "Meat & Fish": 75.3,
+            "Dairy": 70.3,
+            "Cereals & Grains": 72.5,
+            "Oils": 71.7,
+            "Sugar": 74.8
+        },
+        {
+            "date": "2006-10",
+            "Food Price Index": 75.1,
+            "Meat & Fish": 74.3,
+            "Dairy": 71.9,
+            "Cereals & Grains": 79.9,
+            "Oils": 72.7,
+            "Sugar": 72.0
+        },
+        {
+            "date": "2006-11",
+            "Food Price Index": 77.7,
+            "Meat & Fish": 72.6,
+            "Dairy": 75.4,
+            "Cereals & Grains": 85.3,
+            "Oils": 78.35,
+            "Sugar": 72.9
+        },
+        {
+            "date": "2006-12",
+            "Food Price Index": 78.8,
+            "Meat & Fish": 71.3,
+            "Dairy": 81.7,
+            "Cereals & Grains": 85.4,
+            "Oils": 83.01,
+            "Sugar": 71.6
+        },
+        {
+            "date": "2007-01",
+            "Food Price Index": 78.5,
+            "Meat & Fish": 70.7,
+            "Dairy": 84.2,
+            "Cereals & Grains": 85.1,
+            "Oils": 82.27,
+            "Sugar": 67.8
+        },
+        {
+            "date": "2007-02",
+            "Food Price Index": 80.0,
+            "Meat & Fish": 72.2,
+            "Dairy": 88.3,
+            "Cereals & Grains": 87.0,
+            "Oils": 82.87,
+            "Sugar": 65.4
+        },
+        {
+            "date": "2007-03",
+            "Food Price Index": 81.1,
+            "Meat & Fish": 73.9,
+            "Dairy": 91.8,
+            "Cereals & Grains": 86.4,
+            "Oils": 84.42,
+            "Sugar": 64.6
+        },
+        {
+            "date": "2007-04",
+            "Food Price Index": 83.9,
+            "Meat & Fish": 75.8,
+            "Dairy": 102.0,
+            "Cereals & Grains": 85.1,
+            "Oils": 92.76,
+            "Sugar": 60.2
+        },
+        {
+            "date": "2007-05",
+            "Food Price Index": 86.5,
+            "Meat & Fish": 77.5,
+            "Dairy": 105.3,
+            "Cereals & Grains": 86.6,
+            "Oils": 100.25,
+            "Sugar": 58.4
+        },
+        {
+            "date": "2007-06",
+            "Food Price Index": 91.4,
+            "Meat & Fish": 78.8,
+            "Dairy": 121.0,
+            "Cereals & Grains": 91.9,
+            "Oils": 104.92,
+            "Sugar": 57.5
+        },
+        {
+            "date": "2007-07",
+            "Food Price Index": 95.5,
+            "Meat & Fish": 79.9,
+            "Dairy": 135.0,
+            "Cereals & Grains": 94.9,
+            "Oils": 108.58,
+            "Sugar": 62.9
+        },
+        {
+            "date": "2007-08",
+            "Food Price Index": 99.1,
+            "Meat & Fish": 79.9,
+            "Dairy": 141.5,
+            "Cereals & Grains": 102.1,
+            "Oils": 112.8,
+            "Sugar": 60.7
+        },
+        {
+            "date": "2007-09",
+            "Food Price Index": 105.3,
+            "Meat & Fish": 81.4,
+            "Dairy": 145.1,
+            "Cereals & Grains": 117.2,
+            "Oils": 118.25,
+            "Sugar": 60.4
+        },
+        {
+            "date": "2007-10",
+            "Food Price Index": 107.9,
+            "Meat & Fish": 80.1,
+            "Dairy": 148.0,
+            "Cereals & Grains": 121.3,
+            "Oils": 125.85,
+            "Sugar": 61.9
+        },
+        {
+            "date": "2007-11",
+            "Food Price Index": 110.8,
+            "Meat & Fish": 81.1,
+            "Dairy": 154.0,
+            "Cereals & Grains": 121.0,
+            "Oils": 136.25,
+            "Sugar": 62.5
+        },
+        {
+            "date": "2007-12",
+            "Food Price Index": 114.7,
+            "Meat & Fish": 81.8,
+            "Dairy": 152.6,
+            "Cereals & Grains": 132.2,
+            "Oils": 138.56,
+            "Sugar": 66.3
+        },
+        {
+            "date": "2008-01",
+            "Food Price Index": 120.4,
+            "Meat & Fish": 82.8,
+            "Dairy": 150.6,
+            "Cereals & Grains": 141.0,
+            "Oils": 154.1,
+            "Sugar": 74.1
+        },
+        {
+            "date": "2008-02",
+            "Food Price Index": 128.4,
+            "Meat & Fish": 80.6,
+            "Dairy": 149.9,
+            "Cereals & Grains": 160.8,
+            "Oils": 168.63,
+            "Sugar": 83.6
+        },
+        {
+            "date": "2008-03",
+            "Food Price Index": 132.4,
+            "Meat & Fish": 85.6,
+            "Dairy": 152.6,
+            "Cereals & Grains": 163.3,
+            "Oils": 176.6,
+            "Sugar": 81.7
+        },
+        {
+            "date": "2008-04",
+            "Food Price Index": 130.7,
+            "Meat & Fish": 87.0,
+            "Dairy": 148.9,
+            "Cereals & Grains": 162.7,
+            "Oils": 169.41,
+            "Sugar": 77.7
+        },
+        {
+            "date": "2008-05",
+            "Food Price Index": 130.3,
+            "Meat & Fish": 91.8,
+            "Dairy": 144.3,
+            "Cereals & Grains": 157.4,
+            "Oils": 172.02,
+            "Sugar": 74.7
+        },
+        {
+            "date": "2008-06",
+            "Food Price Index": 132.7,
+            "Meat & Fish": 93.6,
+            "Dairy": 143.9,
+            "Cereals & Grains": 160.3,
+            "Oils": 178.32,
+            "Sugar": 75.0
+        },
+        {
+            "date": "2008-07",
+            "Food Price Index": 130.2,
+            "Meat & Fish": 100.4,
+            "Dairy": 144.1,
+            "Cereals & Grains": 148.2,
+            "Oils": 164.8,
+            "Sugar": 88.1
+        },
+        {
+            "date": "2008-08",
+            "Food Price Index": 121.2,
+            "Meat & Fish": 102.1,
+            "Dairy": 133.5,
+            "Cereals & Grains": 136.5,
+            "Oils": 135.62,
+            "Sugar": 90.4
+        },
+        {
+            "date": "2008-09",
+            "Food Price Index": 112.8,
+            "Meat & Fish": 100.9,
+            "Dairy": 120.5,
+            "Cereals & Grains": 125.3,
+            "Oils": 120.59,
+            "Sugar": 83.7
+        },
+        {
+            "date": "2008-10",
+            "Food Price Index": 97.8,
+            "Meat & Fish": 95.7,
+            "Dairy": 107.0,
+            "Cereals & Grains": 104.9,
+            "Oils": 92.21,
+            "Sugar": 73.6
+        },
+        {
+            "date": "2008-11",
+            "Food Price Index": 89.7,
+            "Meat & Fish": 87.9,
+            "Dairy": 97.8,
+            "Cereals & Grains": 96.0,
+            "Oils": 82.03,
+            "Sugar": 74.9
+        },
+        {
+            "date": "2008-12",
+            "Food Price Index": 86.3,
+            "Meat & Fish": 81.8,
+            "Dairy": 94.9,
+            "Cereals & Grains": 95.1,
+            "Oils": 78.55,
+            "Sugar": 72.7
+        },
+        {
+            "date": "2009-01",
+            "Food Price Index": 86.7,
+            "Meat & Fish": 78.1,
+            "Dairy": 88.2,
+            "Cereals & Grains": 100.4,
+            "Oils": 82.78,
+            "Sugar": 77.4
+        },
+        {
+            "date": "2009-02",
+            "Food Price Index": 84.5,
+            "Meat & Fish": 76.0,
+            "Dairy": 82.6,
+            "Cereals & Grains": 97.2,
+            "Oils": 82.24,
+            "Sugar": 81.9
+        },
+        {
+            "date": "2009-03",
+            "Food Price Index": 84.3,
+            "Meat & Fish": 76.1,
+            "Dairy": 80.9,
+            "Cereals & Grains": 97.2,
+            "Oils": 81.49,
+            "Sugar": 82.9
+        },
+        {
+            "date": "2009-04",
+            "Food Price Index": 87.4,
+            "Meat & Fish": 78.5,
+            "Dairy": 80.4,
+            "Cereals & Grains": 98.1,
+            "Oils": 93.8,
+            "Sugar": 84.5
+        },
+        {
+            "date": "2009-05",
+            "Food Price Index": 93.5,
+            "Meat & Fish": 81.3,
+            "Dairy": 83.5,
+            "Cereals & Grains": 103.3,
+            "Oils": 106.61,
+            "Sugar": 99.4
+        },
+        {
+            "date": "2009-06",
+            "Food Price Index": 93.4,
+            "Meat & Fish": 83.4,
+            "Dairy": 84.7,
+            "Cereals & Grains": 103.0,
+            "Oils": 100.72,
+            "Sugar": 101.7
+        },
+        {
+            "date": "2009-07",
+            "Food Price Index": 90.7,
+            "Meat & Fish": 85.2,
+            "Dairy": 85.1,
+            "Cereals & Grains": 94.5,
+            "Oils": 89.9,
+            "Sugar": 114.0
+        },
+        {
+            "date": "2009-08",
+            "Food Price Index": 93.5,
+            "Meat & Fish": 85.4,
+            "Dairy": 88.0,
+            "Cereals & Grains": 91.9,
+            "Oils": 97.85,
+            "Sugar": 138.8
+        },
+        {
+            "date": "2009-09",
+            "Food Price Index": 93.1,
+            "Meat & Fish": 84.5,
+            "Dairy": 95.1,
+            "Cereals & Grains": 89.8,
+            "Oils": 93.25,
+            "Sugar": 142.6
+        },
+        {
+            "date": "2009-10",
+            "Food Price Index": 94.8,
+            "Meat & Fish": 82.6,
+            "Dairy": 102.7,
+            "Cereals & Grains": 93.8,
+            "Oils": 95.17,
+            "Sugar": 140.1
+        },
+        {
+            "date": "2009-11",
+            "Food Price Index": 98.9,
+            "Meat & Fish": 83.9,
+            "Dairy": 113.1,
+            "Cereals & Grains": 98.0,
+            "Oils": 101.76,
+            "Sugar": 137.8
+        },
+        {
+            "date": "2009-12",
+            "Food Price Index": 100.8,
+            "Meat & Fish": 84.5,
+            "Dairy": 112.8,
+            "Cereals & Grains": 99.0,
+            "Oils": 107.56,
+            "Sugar": 145.6
+        },
+        {
+            "date": "2010-01",
+            "Food Price Index": 101.8,
+            "Meat & Fish": 86.0,
+            "Dairy": 109.0,
+            "Cereals & Grains": 98.4,
+            "Oils": 107.1,
+            "Sugar": 163.8
+        },
+        {
+            "date": "2010-02",
+            "Food Price Index": 99.3,
+            "Meat & Fish": 86.5,
+            "Dairy": 101.6,
+            "Cereals & Grains": 94.0,
+            "Oils": 107.31,
+            "Sugar": 157.4
+        },
+        {
+            "date": "2010-03",
+            "Food Price Index": 96.5,
+            "Meat & Fish": 87.5,
+            "Dairy": 101.6,
+            "Cereals & Grains": 91.8,
+            "Oils": 110.33,
+            "Sugar": 115.5
+        },
+        {
+            "date": "2010-04",
+            "Food Price Index": 97.1,
+            "Meat & Fish": 90.1,
+            "Dairy": 109.7,
+            "Cereals & Grains": 90.7,
+            "Oils": 109.36,
+            "Sugar": 101.8
+        },
+        {
+            "date": "2010-05",
+            "Food Price Index": 96.4,
+            "Meat & Fish": 90.1,
+            "Dairy": 111.8,
+            "Cereals & Grains": 90.6,
+            "Oils": 107.17,
+            "Sugar": 94.1
+        },
+        {
+            "date": "2010-06",
+            "Food Price Index": 95.9,
+            "Meat & Fish": 91.2,
+            "Dairy": 110.4,
+            "Cereals & Grains": 87.8,
+            "Oils": 106.03,
+            "Sugar": 98.1
+        },
+        {
+            "date": "2010-07",
+            "Food Price Index": 100.0,
+            "Meat & Fish": 92.0,
+            "Dairy": 112.8,
+            "Cereals & Grains": 95.3,
+            "Oils": 110.13,
+            "Sugar": 107.9
+        },
+        {
+            "date": "2010-08",
+            "Food Price Index": 107.8,
+            "Meat & Fish": 92.9,
+            "Dairy": 112.3,
+            "Cereals & Grains": 112.9,
+            "Oils": 121.81,
+            "Sugar": 114.6
+        },
+        {
+            "date": "2010-09",
+            "Food Price Index": 114.1,
+            "Meat & Fish": 92.5,
+            "Dairy": 116.0,
+            "Cereals & Grains": 125.9,
+            "Oils": 124.85,
+            "Sugar": 138.7
+        },
+        {
+            "date": "2010-10",
+            "Food Price Index": 120.1,
+            "Meat & Fish": 93.9,
+            "Dairy": 121.4,
+            "Cereals & Grains": 130.6,
+            "Oils": 139.18,
+            "Sugar": 152.3
+        },
+        {
+            "date": "2010-11",
+            "Food Price Index": 124.2,
+            "Meat & Fish": 96.4,
+            "Dairy": 118.7,
+            "Cereals & Grains": 132.4,
+            "Oils": 153.87,
+            "Sugar": 162.8
+        },
+        {
+            "date": "2010-12",
+            "Food Price Index": 129.4,
+            "Meat & Fish": 97.5,
+            "Dairy": 117.4,
+            "Cereals & Grains": 139.7,
+            "Oils": 166.26,
+            "Sugar": 173.8
+        },
+        {
+            "date": "2011-01",
+            "Food Price Index": 133.8,
+            "Meat & Fish": 97.9,
+            "Dairy": 122.8,
+            "Cereals & Grains": 144.9,
+            "Oils": 174.49,
+            "Sugar": 183.2
+        },
+        {
+            "date": "2011-02",
+            "Food Price Index": 137.7,
+            "Meat & Fish": 100.5,
+            "Dairy": 130.3,
+            "Cereals & Grains": 151.4,
+            "Oils": 175.43,
+            "Sugar": 182.4
+        },
+        {
+            "date": "2011-03",
+            "Food Price Index": 134.3,
+            "Meat & Fish": 103.6,
+            "Dairy": 135.8,
+            "Cereals & Grains": 145.5,
+            "Oils": 163.11,
+            "Sugar": 162.4
+        },
+        {
+            "date": "2011-04",
+            "Food Price Index": 136.3,
+            "Meat & Fish": 107.5,
+            "Dairy": 134.5,
+            "Cereals & Grains": 151.7,
+            "Oils": 162.79,
+            "Sugar": 150.7
+        },
+        {
+            "date": "2011-05",
+            "Food Price Index": 135.1,
+            "Meat & Fish": 108.0,
+            "Dairy": 134.2,
+            "Cereals & Grains": 150.9,
+            "Oils": 162.4,
+            "Sugar": 136.2
+        },
+        {
+            "date": "2011-06",
+            "Food Price Index": 134.8,
+            "Meat & Fish": 106.2,
+            "Dairy": 135.3,
+            "Cereals & Grains": 147.1,
+            "Oils": 160.78,
+            "Sugar": 156.0
+        },
+        {
+            "date": "2011-07",
+            "Food Price Index": 133.0,
+            "Meat & Fish": 105.8,
+            "Dairy": 133.6,
+            "Cereals & Grains": 140.5,
+            "Oils": 156.05,
+            "Sugar": 174.6
+        },
+        {
+            "date": "2011-08",
+            "Food Price Index": 132.7,
+            "Meat & Fish": 104.9,
+            "Dairy": 131.9,
+            "Cereals & Grains": 144.9,
+            "Oils": 151.48,
+            "Sugar": 171.7
+        },
+        {
+            "date": "2011-09",
+            "Food Price Index": 130.1,
+            "Meat & Fish": 106.1,
+            "Dairy": 127.1,
+            "Cereals & Grains": 140.5,
+            "Oils": 147.82,
+            "Sugar": 165.3
+        },
+        {
+            "date": "2011-10",
+            "Food Price Index": 125.6,
+            "Meat & Fish": 105.9,
+            "Dairy": 126.2,
+            "Cereals & Grains": 133.1,
+            "Oils": 137.99,
+            "Sugar": 157.5
+        },
+        {
+            "date": "2011-11",
+            "Food Price Index": 125.9,
+            "Meat & Fish": 107.8,
+            "Dairy": 125.1,
+            "Cereals & Grains": 130.9,
+            "Oils": 144.96,
+            "Sugar": 148.2
+        },
+        {
+            "date": "2011-12",
+            "Food Price Index": 121.9,
+            "Meat & Fish": 106.1,
+            "Dairy": 122.0,
+            "Cereals & Grains": 124.4,
+            "Oils": 140.45,
+            "Sugar": 142.6
+        },
+        {
+            "date": "2012-01",
+            "Food Price Index": 122.2,
+            "Meat & Fish": 102.6,
+            "Dairy": 120.3,
+            "Cereals & Grains": 127.2,
+            "Oils": 144.33,
+            "Sugar": 145.8
+        },
+        {
+            "date": "2012-02",
+            "Food Price Index": 125.3,
+            "Meat & Fish": 105.5,
+            "Dairy": 121.2,
+            "Cereals & Grains": 131.1,
+            "Oils": 148.34,
+            "Sugar": 149.3
+        },
+        {
+            "date": "2012-03",
+            "Food Price Index": 125.7,
+            "Meat & Fish": 106.2,
+            "Dairy": 118.1,
+            "Cereals & Grains": 130.6,
+            "Oils": 152.47,
+            "Sugar": 149.1
+        },
+        {
+            "date": "2012-04",
+            "Food Price Index": 124.4,
+            "Meat & Fish": 105.8,
+            "Dairy": 112.5,
+            "Cereals & Grains": 129.1,
+            "Oils": 156.29,
+            "Sugar": 141.3
+        },
+        {
+            "date": "2012-05",
+            "Food Price Index": 119.0,
+            "Meat & Fish": 103.7,
+            "Dairy": 105.5,
+            "Cereals & Grains": 126.3,
+            "Oils": 144.4,
+            "Sugar": 128.5
+        },
+        {
+            "date": "2012-06",
+            "Food Price Index": 115.8,
+            "Meat & Fish": 101.1,
+            "Dairy": 102.3,
+            "Cereals & Grains": 125.3,
+            "Oils": 135.26,
+            "Sugar": 126.7
+        },
+        {
+            "date": "2012-07",
+            "Food Price Index": 122.0,
+            "Meat & Fish": 99.8,
+            "Dairy": 99.7,
+            "Cereals & Grains": 143.9,
+            "Oils": 138.56,
+            "Sugar": 141.4
+        },
+        {
+            "date": "2012-08",
+            "Food Price Index": 123.2,
+            "Meat & Fish": 102.5,
+            "Dairy": 102.0,
+            "Cereals & Grains": 147.1,
+            "Oils": 138.31,
+            "Sugar": 129.2
+        },
+        {
+            "date": "2012-09",
+            "Food Price Index": 125.1,
+            "Meat & Fish": 106.7,
+            "Dairy": 111.0,
+            "Cereals & Grains": 146.8,
+            "Oils": 136.93,
+            "Sugar": 123.7
+        },
+        {
+            "date": "2012-10",
+            "Food Price Index": 124.0,
+            "Meat & Fish": 107.9,
+            "Dairy": 114.2,
+            "Cereals & Grains": 146.5,
+            "Oils": 124.9,
+            "Sugar": 125.7
+        },
+        {
+            "date": "2012-11",
+            "Food Price Index": 123.5,
+            "Meat & Fish": 107.4,
+            "Dairy": 114.9,
+            "Cereals & Grains": 148.5,
+            "Oils": 121.52,
+            "Sugar": 119.7
+        },
+        {
+            "date": "2012-12",
+            "Food Price Index": 122.8,
+            "Meat & Fish": 107.2,
+            "Dairy": 118.1,
+            "Cereals & Grains": 146.4,
+            "Oils": 118.38,
+            "Sugar": 119.5
+        },
+        {
+            "date": "2013-01",
+            "Food Price Index": 123.4,
+            "Meat & Fish": 106.6,
+            "Dairy": 121.0,
+            "Cereals & Grains": 145.2,
+            "Oils": 124.28,
+            "Sugar": 116.8
+        },
+        {
+            "date": "2013-02",
+            "Food Price Index": 123.3,
+            "Meat & Fish": 107.8,
+            "Dairy": 123.8,
+            "Cereals & Grains": 142.3,
+            "Oils": 125.55,
+            "Sugar": 113.0
+        },
+        {
+            "date": "2013-03",
+            "Food Price Index": 122.9,
+            "Meat & Fish": 108.2,
+            "Dairy": 128.0,
+            "Cereals & Grains": 139.9,
+            "Oils": 122.38,
+            "Sugar": 114.3
+        },
+        {
+            "date": "2013-04",
+            "Food Price Index": 122.9,
+            "Meat & Fish": 108.8,
+            "Dairy": 140.8,
+            "Cereals & Grains": 134.9,
+            "Oils": 120.64,
+            "Sugar": 110.2
+        },
+        {
+            "date": "2013-05",
+            "Food Price Index": 122.2,
+            "Meat & Fish": 105.7,
+            "Dairy": 140.0,
+            "Cereals & Grains": 136.4,
+            "Oils": 121.05,
+            "Sugar": 109.1
+        },
+        {
+            "date": "2013-06",
+            "Food Price Index": 120.9,
+            "Meat & Fish": 105.0,
+            "Dairy": 140.3,
+            "Cereals & Grains": 133.8,
+            "Oils": 120.68,
+            "Sugar": 105.8
+        },
+        {
+            "date": "2013-07",
+            "Food Price Index": 118.0,
+            "Meat & Fish": 104.7,
+            "Dairy": 141.0,
+            "Cereals & Grains": 126.4,
+            "Oils": 116.22,
+            "Sugar": 104.2
+        },
+        {
+            "date": "2013-08",
+            "Food Price Index": 116.2,
+            "Meat & Fish": 105.5,
+            "Dairy": 145.6,
+            "Cereals & Grains": 119.2,
+            "Oils": 111.89,
+            "Sugar": 105.4
+        },
+        {
+            "date": "2013-09",
+            "Food Price Index": 116.4,
+            "Meat & Fish": 106.0,
+            "Dairy": 149.0,
+            "Cereals & Grains": 116.7,
+            "Oils": 112.92,
+            "Sugar": 107.5
+        },
+        {
+            "date": "2013-10",
+            "Food Price Index": 118.7,
+            "Meat & Fish": 106.3,
+            "Dairy": 153.0,
+            "Cereals & Grains": 118.7,
+            "Oils": 116.04,
+            "Sugar": 115.5
+        },
+        {
+            "date": "2013-11",
+            "Food Price Index": 118.6,
+            "Meat & Fish": 105.4,
+            "Dairy": 151.9,
+            "Cereals & Grains": 118.0,
+            "Oils": 121.97,
+            "Sugar": 109.3
+        },
+        {
+            "date": "2013-12",
+            "Food Price Index": 118.2,
+            "Meat & Fish": 104.7,
+            "Dairy": 156.5,
+            "Cereals & Grains": 117.9,
+            "Oils": 120.38,
+            "Sugar": 102.4
+        },
+        {
+            "date": "2014-01",
+            "Food Price Index": 116.2,
+            "Meat & Fish": 103.2,
+            "Dairy": 156.2,
+            "Cereals & Grains": 117.0,
+            "Oils": 115.58,
+            "Sugar": 96.7
+        },
+        {
+            "date": "2014-02",
+            "Food Price Index": 118.6,
+            "Meat & Fish": 104.1,
+            "Dairy": 156.4,
+            "Cereals & Grains": 119.7,
+            "Oils": 120.84,
+            "Sugar": 102.6
+        },
+        {
+            "date": "2014-03",
+            "Food Price Index": 122.1,
+            "Meat & Fish": 106.3,
+            "Dairy": 154.8,
+            "Cereals & Grains": 125.4,
+            "Oils": 125.38,
+            "Sugar": 110.8
+        },
+        {
+            "date": "2014-04",
+            "Food Price Index": 121.5,
+            "Meat & Fish": 109.7,
+            "Dairy": 147.3,
+            "Cereals & Grains": 125.5,
+            "Oils": 121.53,
+            "Sugar": 109.0
+        },
+        {
+            "date": "2014-05",
+            "Food Price Index": 121.2,
+            "Meat & Fish": 111.7,
+            "Dairy": 141.8,
+            "Cereals & Grains": 125.2,
+            "Oils": 119.18,
+            "Sugar": 113.1
+        },
+        {
+            "date": "2014-06",
+            "Food Price Index": 119.2,
+            "Meat & Fish": 116.0,
+            "Dairy": 136.1,
+            "Cereals & Grains": 118.7,
+            "Oils": 115.22,
+            "Sugar": 112.5
+        },
+        {
+            "date": "2014-07",
+            "Food Price Index": 116.3,
+            "Meat & Fish": 117.4,
+            "Dairy": 130.2,
+            "Cereals & Grains": 112.2,
+            "Oils": 110.63,
+            "Sugar": 113.0
+        },
+        {
+            "date": "2014-08",
+            "Food Price Index": 112.8,
+            "Meat & Fish": 118.5,
+            "Dairy": 120.6,
+            "Cereals & Grains": 110.4,
+            "Oils": 101.65,
+            "Sugar": 106.6
+        },
+        {
+            "date": "2014-09",
+            "Food Price Index": 109.2,
+            "Meat & Fish": 117.5,
+            "Dairy": 110.8,
+            "Cereals & Grains": 107.4,
+            "Oils": 98.55,
+            "Sugar": 99.5
+        },
+        {
+            "date": "2014-10",
+            "Food Price Index": 109.3,
+            "Meat & Fish": 117.1,
+            "Dairy": 107.1,
+            "Cereals & Grains": 108.2,
+            "Oils": 100.09,
+            "Sugar": 103.6
+        },
+        {
+            "date": "2014-11",
+            "Food Price Index": 108.1,
+            "Meat & Fish": 114.8,
+            "Dairy": 102.6,
+            "Cereals & Grains": 109.3,
+            "Oils": 100.85,
+            "Sugar": 100.2
+        },
+        {
+            "date": "2014-12",
+            "Food Price Index": 105.2,
+            "Meat & Fish": 108.9,
+            "Dairy": 98.5,
+            "Cereals & Grains": 110.9,
+            "Oils": 97.89,
+            "Sugar": 94.8
+        },
+        {
+            "date": "2015-01",
+            "Food Price Index": 101.0,
+            "Meat & Fish": 104.6,
+            "Dairy": 92.4,
+            "Cereals & Grains": 105.9,
+            "Oils": 95.0,
+            "Sugar": 95.0
+        },
+        {
+            "date": "2015-02",
+            "Food Price Index": 98.7,
+            "Meat & Fish": 101.3,
+            "Dairy": 95.2,
+            "Cereals & Grains": 101.6,
+            "Oils": 95.18,
+            "Sugar": 90.3
+        },
+        {
+            "date": "2015-03",
+            "Food Price Index": 95.7,
+            "Meat & Fish": 97.1,
+            "Dairy": 95.1,
+            "Cereals & Grains": 99.5,
+            "Oils": 92.62,
+            "Sugar": 82.0
+        },
+        {
+            "date": "2015-04",
+            "Food Price Index": 94.6,
+            "Meat & Fish": 97.4,
+            "Dairy": 90.6,
+            "Cereals & Grains": 98.2,
+            "Oils": 91.87,
+            "Sugar": 80.9
+        },
+        {
+            "date": "2015-05",
+            "Food Price Index": 95.0,
+            "Meat & Fish": 99.6,
+            "Dairy": 89.9,
+            "Cereals & Grains": 95.7,
+            "Oils": 94.49,
+            "Sugar": 82.6
+        },
+        {
+            "date": "2015-06",
+            "Food Price Index": 94.6,
+            "Meat & Fish": 98.7,
+            "Dairy": 87.7,
+            "Cereals & Grains": 96.7,
+            "Oils": 95.89,
+            "Sugar": 77.1
+        },
+        {
+            "date": "2015-07",
+            "Food Price Index": 93.8,
+            "Meat & Fish": 99.0,
+            "Dairy": 82.2,
+            "Cereals & Grains": 98.9,
+            "Oils": 90.43,
+            "Sugar": 79.0
+        },
+        {
+            "date": "2015-08",
+            "Food Price Index": 89.5,
+            "Meat & Fish": 99.0,
+            "Dairy": 79.9,
+            "Cereals & Grains": 91.9,
+            "Oils": 82.29,
+            "Sugar": 71.2
+        },
+        {
+            "date": "2015-09",
+            "Food Price Index": 88.9,
+            "Meat & Fish": 96.7,
+            "Dairy": 83.2,
+            "Cereals & Grains": 90.5,
+            "Oils": 81.96,
+            "Sugar": 73.4
+        },
+        {
+            "date": "2015-10",
+            "Food Price Index": 90.3,
+            "Meat & Fish": 92.1,
+            "Dairy": 88.0,
+            "Cereals & Grains": 91.7,
+            "Oils": 87.76,
+            "Sugar": 86.1
+        },
+        {
+            "date": "2015-11",
+            "Food Price Index": 87.7,
+            "Meat & Fish": 89.2,
+            "Dairy": 80.5,
+            "Cereals & Grains": 90.5,
+            "Oils": 85.13,
+            "Sugar": 90.0
+        },
+        {
+            "date": "2015-12",
+            "Food Price Index": 87.0,
+            "Meat & Fish": 86.8,
+            "Dairy": 81.0,
+            "Cereals & Grains": 89.4,
+            "Oils": 86.68,
+            "Sugar": 90.6
+        },
+        {
+            "date": "2016-01",
+            "Food Price Index": 84.9,
+            "Meat & Fish": 84.4,
+            "Dairy": 79.4,
+            "Cereals & Grains": 87.6,
+            "Oils": 85.29,
+            "Sugar": 86.9
+        },
+        {
+            "date": "2016-02",
+            "Food Price Index": 86.1,
+            "Meat & Fish": 86.0,
+            "Dairy": 78.8,
+            "Cereals & Grains": 87.3,
+            "Oils": 92.15,
+            "Sugar": 81.6
+        },
+        {
+            "date": "2016-03",
+            "Food Price Index": 87.4,
+            "Meat & Fish": 86.1,
+            "Dairy": 76.7,
+            "Cereals & Grains": 86.5,
+            "Oils": 97.34,
+            "Sugar": 95.5
+        },
+        {
+            "date": "2016-04",
+            "Food Price Index": 89.1,
+            "Meat & Fish": 87.7,
+            "Dairy": 77.1,
+            "Cereals & Grains": 88.4,
+            "Oils": 101.17,
+            "Sugar": 93.9
+        },
+        {
+            "date": "2016-05",
+            "Food Price Index": 90.6,
+            "Meat & Fish": 90.2,
+            "Dairy": 72.7,
+            "Cereals & Grains": 91.1,
+            "Oils": 99.56,
+            "Sugar": 104.8
+        },
+        {
+            "date": "2016-06",
+            "Food Price Index": 93.8,
+            "Meat & Fish": 94.1,
+            "Dairy": 73.9,
+            "Cereals & Grains": 94.1,
+            "Oils": 97.93,
+            "Sugar": 120.4
+        },
+        {
+            "date": "2016-07",
+            "Food Price Index": 93.0,
+            "Meat & Fish": 95.3,
+            "Dairy": 76.0,
+            "Cereals & Grains": 90.4,
+            "Oils": 94.9,
+            "Sugar": 121.6
+        },
+        {
+            "date": "2016-08",
+            "Food Price Index": 95.3,
+            "Meat & Fish": 96.4,
+            "Dairy": 81.8,
+            "Cereals & Grains": 89.3,
+            "Oils": 102.39,
+            "Sugar": 124.6
+        },
+        {
+            "date": "2016-09",
+            "Food Price Index": 96.1,
+            "Meat & Fish": 94.9,
+            "Dairy": 90.9,
+            "Cereals & Grains": 86.3,
+            "Oils": 104.32,
+            "Sugar": 132.9
+        },
+        {
+            "date": "2016-10",
+            "Food Price Index": 95.9,
+            "Meat & Fish": 93.0,
+            "Dairy": 93.8,
+            "Cereals & Grains": 86.7,
+            "Oils": 101.85,
+            "Sugar": 137.5
+        },
+        {
+            "date": "2016-11",
+            "Food Price Index": 96.0,
+            "Meat & Fish": 93.9,
+            "Dairy": 94.5,
+            "Cereals & Grains": 86.0,
+            "Oils": 106.16,
+            "Sugar": 125.2
+        },
+        {
+            "date": "2016-12",
+            "Food Price Index": 95.3,
+            "Meat & Fish": 91.2,
+            "Dairy": 96.2,
+            "Cereals & Grains": 86.1,
+            "Oils": 110.26,
+            "Sugar": 114.5
+        },
+        {
+            "date": "2017-01",
+            "Food Price Index": 97.8,
+            "Meat & Fish": 92.2,
+            "Dairy": 98.6,
+            "Cereals & Grains": 88.7,
+            "Oils": 112.19,
+            "Sugar": 125.8
+        },
+        {
+            "date": "2017-02",
+            "Food Price Index": 98.1,
+            "Meat & Fish": 94.0,
+            "Dairy": 99.2,
+            "Cereals & Grains": 90.0,
+            "Oils": 107.97,
+            "Sugar": 125.6
+        },
+        {
+            "date": "2017-03",
+            "Food Price Index": 96.2,
+            "Meat & Fish": 95.4,
+            "Dairy": 100.6,
+            "Cereals & Grains": 87.9,
+            "Oils": 101.59,
+            "Sugar": 111.9
+        },
+        {
+            "date": "2017-04",
+            "Food Price Index": 95.0,
+            "Meat & Fish": 97.3,
+            "Dairy": 100.0,
+            "Cereals & Grains": 86.9,
+            "Oils": 97.58,
+            "Sugar": 101.7
+        },
+        {
+            "date": "2017-05",
+            "Food Price Index": 97.3,
+            "Meat & Fish": 99.3,
+            "Dairy": 104.8,
+            "Cereals & Grains": 88.3,
+            "Oils": 101.96,
+            "Sugar": 99.4
+        },
+        {
+            "date": "2017-06",
+            "Food Price Index": 97.8,
+            "Meat & Fish": 100.1,
+            "Dairy": 109.7,
+            "Cereals & Grains": 92.4,
+            "Oils": 97.47,
+            "Sugar": 86.0
+        },
+        {
+            "date": "2017-07",
+            "Food Price Index": 100.0,
+            "Meat & Fish": 100.6,
+            "Dairy": 113.9,
+            "Cereals & Grains": 96.9,
+            "Oils": 96.66,
+            "Sugar": 90.5
+        },
+        {
+            "date": "2017-08",
+            "Food Price Index": 99.2,
+            "Meat & Fish": 100.0,
+            "Dairy": 116.9,
+            "Cereals & Grains": 92.3,
+            "Oils": 99.16,
+            "Sugar": 88.9
+        },
+        {
+            "date": "2017-09",
+            "Food Price Index": 99.7,
+            "Meat & Fish": 98.6,
+            "Dairy": 118.4,
+            "Cereals & Grains": 92.1,
+            "Oils": 103.83,
+            "Sugar": 89.0
+        },
+        {
+            "date": "2017-10",
+            "Food Price Index": 98.8,
+            "Meat & Fish": 98.2,
+            "Dairy": 115.4,
+            "Cereals & Grains": 91.8,
+            "Oils": 102.68,
+            "Sugar": 88.7
+        },
+        {
+            "date": "2017-11",
+            "Food Price Index": 98.8,
+            "Meat & Fish": 98.0,
+            "Dairy": 111.4,
+            "Cereals & Grains": 92.1,
+            "Oils": 103.85,
+            "Sugar": 92.7
+        },
+        {
+            "date": "2017-12",
+            "Food Price Index": 96.4,
+            "Meat & Fish": 96.0,
+            "Dairy": 107.3,
+            "Cereals & Grains": 92.4,
+            "Oils": 97.96,
+            "Sugar": 89.0
+        },
+        {
+            "date": "2018-01",
+            "Food Price Index": 96.7,
+            "Meat & Fish": 95.3,
+            "Dairy": 106.0,
+            "Cereals & Grains": 95.2,
+            "Oils": 98.25,
+            "Sugar": 87.2
+        },
+        {
+            "date": "2018-02",
+            "Food Price Index": 97.8,
+            "Meat & Fish": 96.6,
+            "Dairy": 108.8,
+            "Cereals & Grains": 98.4,
+            "Oils": 95.6,
+            "Sugar": 83.9
+        },
+        {
+            "date": "2018-03",
+            "Food Price Index": 98.8,
+            "Meat & Fish": 96.6,
+            "Dairy": 111.3,
+            "Cereals & Grains": 101.8,
+            "Oils": 95.36,
+            "Sugar": 80.9
+        },
+        {
+            "date": "2018-04",
+            "Food Price Index": 98.4,
+            "Meat & Fish": 95.4,
+            "Dairy": 110.0,
+            "Cereals & Grains": 104.0,
+            "Oils": 94.02,
+            "Sugar": 76.8
+        },
+        {
+            "date": "2018-05",
+            "Food Price Index": 98.5,
+            "Meat & Fish": 94.9,
+            "Dairy": 111.4,
+            "Cereals & Grains": 105.5,
+            "Oils": 92.15,
+            "Sugar": 76.4
+        },
+        {
+            "date": "2018-06",
+            "Food Price Index": 96.8,
+            "Meat & Fish": 94.7,
+            "Dairy": 112.3,
+            "Cereals & Grains": 100.8,
+            "Oils": 89.33,
+            "Sugar": 77.4
+        },
+        {
+            "date": "2018-07",
+            "Food Price Index": 95.0,
+            "Meat & Fish": 94.3,
+            "Dairy": 110.1,
+            "Cereals & Grains": 98.7,
+            "Oils": 86.9,
+            "Sugar": 72.5
+        },
+        {
+            "date": "2018-08",
+            "Food Price Index": 95.8,
+            "Meat & Fish": 95.4,
+            "Dairy": 108.5,
+            "Cereals & Grains": 103.5,
+            "Oils": 84.43,
+            "Sugar": 68.6
+        },
+        {
+            "date": "2018-09",
+            "Food Price Index": 94.0,
+            "Meat & Fish": 93.4,
+            "Dairy": 108.3,
+            "Cereals & Grains": 100.3,
+            "Oils": 82.33,
+            "Sugar": 70.4
+        },
+        {
+            "date": "2018-10",
+            "Food Price Index": 93.2,
+            "Meat & Fish": 91.9,
+            "Dairy": 102.8,
+            "Cereals & Grains": 100.9,
+            "Oils": 81.33,
+            "Sugar": 76.5
+        },
+        {
+            "date": "2018-11",
+            "Food Price Index": 91.9,
+            "Meat & Fish": 92.1,
+            "Dairy": 100.0,
+            "Cereals & Grains": 99.6,
+            "Oils": 76.59,
+            "Sugar": 79.9
+        },
+        {
+            "date": "2018-12",
+            "Food Price Index": 92.0,
+            "Meat & Fish": 92.3,
+            "Dairy": 97.8,
+            "Cereals & Grains": 101.1,
+            "Oils": 76.84,
+            "Sugar": 78.3
+        },
+        {
+            "date": "2019-01",
+            "Food Price Index": 93.1,
+            "Meat & Fish": 91.6,
+            "Dairy": 100.9,
+            "Cereals & Grains": 101.8,
+            "Oils": 80.26,
+            "Sugar": 79.3
+        },
+        {
+            "date": "2019-02",
+            "Food Price Index": 93.8,
+            "Meat & Fish": 92.5,
+            "Dairy": 103.8,
+            "Cereals & Grains": 100.7,
+            "Oils": 81.78,
+            "Sugar": 80.3
+        },
+        {
+            "date": "2019-03",
+            "Food Price Index": 93.0,
+            "Meat & Fish": 94.0,
+            "Dairy": 105.6,
+            "Cereals & Grains": 97.5,
+            "Oils": 78.41,
+            "Sugar": 78.7
+        },
+        {
+            "date": "2019-04",
+            "Food Price Index": 93.5,
+            "Meat & Fish": 97.3,
+            "Dairy": 106.1,
+            "Cereals & Grains": 94.6,
+            "Oils": 79.11,
+            "Sugar": 79.3
+        },
+        {
+            "date": "2019-05",
+            "Food Price Index": 94.2,
+            "Meat & Fish": 100.2,
+            "Dairy": 106.6,
+            "Cereals & Grains": 94.4,
+            "Oils": 78.5,
+            "Sugar": 76.7
+        },
+        {
+            "date": "2019-06",
+            "Food Price Index": 95.4,
+            "Meat & Fish": 101.2,
+            "Dairy": 102.9,
+            "Cereals & Grains": 99.2,
+            "Oils": 77.46,
+            "Sugar": 79.9
+        },
+        {
+            "date": "2019-07",
+            "Food Price Index": 95.1,
+            "Meat & Fish": 102.3,
+            "Dairy": 101.1,
+            "Cereals & Grains": 97.6,
+            "Oils": 78.09,
+            "Sugar": 79.4
+        },
+        {
+            "date": "2019-08",
+            "Food Price Index": 93.8,
+            "Meat & Fish": 101.6,
+            "Dairy": 100.3,
+            "Cereals & Grains": 92.6,
+            "Oils": 82.59,
+            "Sugar": 76.2
+        },
+        {
+            "date": "2019-09",
+            "Food Price Index": 93.2,
+            "Meat & Fish": 100.6,
+            "Dairy": 99.6,
+            "Cereals & Grains": 91.8,
+            "Oils": 83.89,
+            "Sugar": 73.5
+        },
+        {
+            "date": "2019-10",
+            "Food Price Index": 95.0,
+            "Meat & Fish": 100.9,
+            "Dairy": 100.8,
+            "Cereals & Grains": 96.0,
+            "Oils": 84.11,
+            "Sugar": 77.8
+        },
+        {
+            "date": "2019-11",
+            "Food Price Index": 98.2,
+            "Meat & Fish": 105.4,
+            "Dairy": 102.5,
+            "Cereals & Grains": 95.6,
+            "Oils": 93.16,
+            "Sugar": 79.2
+        },
+        {
+            "date": "2019-12",
+            "Food Price Index": 100.8,
+            "Meat & Fish": 106.0,
+            "Dairy": 103.5,
+            "Cereals & Grains": 97.4,
+            "Oils": 101.5,
+            "Sugar": 83.0
+        },
+        {
+            "date": "2020-01",
+            "Food Price Index": 102.5,
+            "Meat & Fish": 103.5,
+            "Dairy": 103.8,
+            "Cereals & Grains": 100.7,
+            "Oils": 108.73,
+            "Sugar": 87.5
+        },
+        {
+            "date": "2020-02",
+            "Food Price Index": 99.6,
+            "Meat & Fish": 101.0,
+            "Dairy": 102.8,
+            "Cereals & Grains": 99.6,
+            "Oils": 97.55,
+            "Sugar": 91.4
+        },
+        {
+            "date": "2020-03",
+            "Food Price Index": 95.2,
+            "Meat & Fish": 99.5,
+            "Dairy": 101.6,
+            "Cereals & Grains": 98.0,
+            "Oils": 85.42,
+            "Sugar": 73.9
+        },
+        {
+            "date": "2020-04",
+            "Food Price Index": 92.4,
+            "Meat & Fish": 96.5,
+            "Dairy": 95.9,
+            "Cereals & Grains": 99.6,
+            "Oils": 81.18,
+            "Sugar": 63.2
+        },
+        {
+            "date": "2020-05",
+            "Food Price Index": 91.2,
+            "Meat & Fish": 95.4,
+            "Dairy": 94.5,
+            "Cereals & Grains": 98.0,
+            "Oils": 77.77,
+            "Sugar": 67.8
+        },
+        {
+            "date": "2020-06",
+            "Food Price Index": 93.1,
+            "Meat & Fish": 94.5,
+            "Dairy": 98.3,
+            "Cereals & Grains": 97.3,
+            "Oils": 86.61,
+            "Sugar": 74.9
+        },
+        {
+            "date": "2020-07",
+            "Food Price Index": 93.8,
+            "Meat & Fish": 91.4,
+            "Dairy": 101.8,
+            "Cereals & Grains": 97.3,
+            "Oils": 93.2,
+            "Sugar": 76.0
+        },
+        {
+            "date": "2020-08",
+            "Food Price Index": 95.7,
+            "Meat & Fish": 91.4,
+            "Dairy": 102.1,
+            "Cereals & Grains": 99.2,
+            "Oils": 98.7,
+            "Sugar": 81.1
+        },
+        {
+            "date": "2020-09",
+            "Food Price Index": 97.9,
+            "Meat & Fish": 91.2,
+            "Dairy": 102.3,
+            "Cereals & Grains": 104.3,
+            "Oils": 104.6,
+            "Sugar": 79.0
+        },
+        {
+            "date": "2020-10",
+            "Food Price Index": 101.3,
+            "Meat & Fish": 91.6,
+            "Dairy": 104.5,
+            "Cereals & Grains": 112.1,
+            "Oils": 106.45,
+            "Sugar": 84.7
+        },
+        {
+            "date": "2020-11",
+            "Food Price Index": 105.5,
+            "Meat & Fish": 93.1,
+            "Dairy": 105.4,
+            "Cereals & Grains": 114.8,
+            "Oils": 121.9,
+            "Sugar": 87.5
+        },
+        {
+            "date": "2020-12",
+            "Food Price Index": 108.5,
+            "Meat & Fish": 94.7,
+            "Dairy": 108.7,
+            "Cereals & Grains": 116.4,
+            "Oils": 131.2,
+            "Sugar": 87.1
+        },
+        {
+            "date": "2021-01",
+            "Food Price Index": 113.5,
+            "Meat & Fish": 95.9,
+            "Dairy": 111.1,
+            "Cereals & Grains": 125.0,
+            "Oils": 138.87,
+            "Sugar": 94.2
+        },
+        {
+            "date": "2021-02",
+            "Food Price Index": 116.5,
+            "Meat & Fish": 97.7,
+            "Dairy": 112.8,
+            "Cereals & Grains": 126.1,
+            "Oils": 147.46,
+            "Sugar": 100.2
+        },
+        {
+            "date": "2021-03",
+            "Food Price Index": 119.1,
+            "Meat & Fish": 100.5,
+            "Dairy": 117.2,
+            "Cereals & Grains": 123.9,
+            "Oils": 159.3,
+            "Sugar": 96.2
+        },
+        {
+            "date": "2021-04",
+            "Food Price Index": 122.1,
+            "Meat & Fish": 104.4,
+            "Dairy": 119.0,
+            "Cereals & Grains": 126.2,
+            "Oils": 162.19,
+            "Sugar": 100.0
+        },
+        {
+            "date": "2021-05",
+            "Food Price Index": 128.4,
+            "Meat & Fish": 108.1,
+            "Dairy": 121.2,
+            "Cereals & Grains": 133.7,
+            "Oils": 174.9,
+            "Sugar": 106.8
+        },
+        {
+            "date": "2021-06",
+            "Food Price Index": 125.4,
+            "Meat & Fish": 110.9,
+            "Dairy": 120.1,
+            "Cereals & Grains": 130.3,
+            "Oils": 157.7,
+            "Sugar": 107.7
+        },
+        {
+            "date": "2021-07",
+            "Food Price Index": 124.4,
+            "Meat & Fish": 113.3,
+            "Dairy": 117.2,
+            "Cereals & Grains": 126.3,
+            "Oils": 155.5,
+            "Sugar": 109.6
+        },
+        {
+            "date": "2021-08",
+            "Food Price Index": 128.0,
+            "Meat & Fish": 113.1,
+            "Dairy": 117.2,
+            "Cereals & Grains": 130.4,
+            "Oils": 165.9,
+            "Sugar": 120.5
+        },
+        {
+            "date": "2021-09",
+            "Food Price Index": 129.1,
+            "Meat & Fish": 112.1,
+            "Dairy": 119.2,
+            "Cereals & Grains": 132.8,
+            "Oils": 168.6,
+            "Sugar": 121.2
+        },
+        {
+            "date": "2021-10",
+            "Food Price Index": 133.3,
+            "Meat & Fish": 111.6,
+            "Dairy": 122.6,
+            "Cereals & Grains": 137.1,
+            "Oils": 184.8,
+            "Sugar": 119.1
+        },
+        {
+            "date": "2021-11",
+            "Food Price Index": 135.4,
+            "Meat & Fish": 112.4,
+            "Dairy": 127.2,
+            "Cereals & Grains": 141.4,
+            "Oils": 184.6,
+            "Sugar": 120.2
+        },
+        {
+            "date": "2021-12",
+            "Food Price Index": 133.7,
+            "Meat & Fish": 110.5,
+            "Dairy": 130.4,
+            "Cereals & Grains": 140.5,
+            "Oils": 178.5,
+            "Sugar": 116.4
+        },
+        {
+            "date": "2022-01",
+            "Food Price Index": 135.7,
+            "Meat & Fish": 111.7,
+            "Dairy": 134.3,
+            "Cereals & Grains": 140.6,
+            "Oils": 185.9,
+            "Sugar": 112.7
+        },
+        {
+            "date": "2022-02",
+            "Food Price Index": 141.7,
+            "Meat & Fish": 113.7,
+            "Dairy": 145.0,
+            "Cereals & Grains": 145.3,
+            "Oils": 201.7,
+            "Sugar": 110.5
+        },
+        {
+            "date": "2022-03",
+            "Food Price Index": 160.2,
+            "Meat & Fish": 119.3,
+            "Dairy": 149.6,
+            "Cereals & Grains": 170.1,
+            "Oils": 251.8,
+            "Sugar": 117.9
+        },
+        {
+            "date": "2022-04",
+            "Food Price Index": 158.8,
+            "Meat & Fish": 121.3,
+            "Dairy": 150.7,
+            "Cereals & Grains": 169.7,
+            "Oils": 237.5,
+            "Sugar": 121.5
+        },
+        {
+            "date": "2022-05",
+            "Food Price Index": 158.7,
+            "Meat & Fish": 122.5,
+            "Dairy": 149.7,
+            "Cereals & Grains": 173.5,
+            "Oils": 229.2,
+            "Sugar": 120.4
+        },
+        {
+            "date": "2022-06",
+            "Food Price Index": 155.7,
+            "Meat & Fish": 125.4,
+            "Dairy": 158.2,
+            "Cereals & Grains": 166.3,
+            "Oils": 211.8,
+            "Sugar": 117.3
+        },
+        {
+            "date": "2022-07",
+            "Food Price Index": 141.6,
+            "Meat & Fish": 123.3,
+            "Dairy": 155.6,
+            "Cereals & Grains": 147.3,
+            "Oils": 168.8,
+            "Sugar": 112.8
+        },
+        {
+            "date": "2022-08",
+            "Food Price Index": 138.7,
+            "Meat & Fish": 120.3,
+            "Dairy": 153.1,
+            "Cereals & Grains": 145.6,
+            "Oils": 163.3,
+            "Sugar": 110.5
+        },
+        {
+            "date": "2022-09",
+            "Food Price Index": 137.3,
+            "Meat & Fish": 119.9,
+            "Dairy": 152.8,
+            "Cereals & Grains": 147.9,
+            "Oils": 152.6,
+            "Sugar": 109.7
+        },
+        {
+            "date": "2022-10",
+            "Food Price Index": 136.7,
+            "Meat & Fish": 116.5,
+            "Dairy": 149.2,
+            "Cereals & Grains": 152.3,
+            "Oils": 151.3,
+            "Sugar": 108.6
+        },
+        {
+            "date": "2022-11",
+            "Food Price Index": 136.0,
+            "Meat & Fish": 114.1,
+            "Dairy": 147.4,
+            "Cereals & Grains": 150.1,
+            "Oils": 154.7,
+            "Sugar": 114.4
+        },
+        {
+            "date": "2022-12",
+            "Food Price Index": 133.1,
+            "Meat & Fish": 111.9,
+            "Dairy": 148.6,
+            "Cereals & Grains": 147.3,
+            "Oils": 144.6,
+            "Sugar": 117.2
+        },
+        {
+            "date": "2023-01",
+            "Food Price Index": 131.4,
+            "Meat & Fish": 110.5,
+            "Dairy": 144.7,
+            "Cereals & Grains": 147.5,
+            "Oils": 140.4,
+            "Sugar": 116.8
+        },
+        {
+            "date": "2023-02",
+            "Food Price Index": 130.7,
+            "Meat & Fish": 112.1,
+            "Dairy": 138.7,
+            "Cereals & Grains": 146.7,
+            "Oils": 135.9,
+            "Sugar": 125.2
+        },
+        {
+            "date": "2023-03",
+            "Food Price Index": 128.0,
+            "Meat & Fish": 114.1,
+            "Dairy": 135.3,
+            "Cereals & Grains": 138.6,
+            "Oils": 131.8,
+            "Sugar": 127.0
+        },
+        {
+            "date": "2023-04",
+            "Food Price Index": 128.4,
+            "Meat & Fish": 116.0,
+            "Dairy": 129.3,
+            "Cereals & Grains": 136.1,
+            "Oils": 130.0,
+            "Sugar": 149.4
+        },
+        {
+            "date": "2023-05",
+            "Food Price Index": 124.5,
+            "Meat & Fish": 117.4,
+            "Dairy": 121.7,
+            "Cereals & Grains": 129.3,
+            "Oils": 118.7,
+            "Sugar": 157.2
+        },
+        {
+            "date": "2023-06",
+            "Food Price Index": 123.0,
+            "Meat & Fish": 118.6,
+            "Dairy": 119.9,
+            "Cereals & Grains": 126.6,
+            "Oils": 115.8,
+            "Sugar": 152.2
+        },
+        {
+            "date": "2023-07",
+            "Food Price Index": 124.4,
+            "Meat & Fish": 117.9,
+            "Dairy": 119.1,
+            "Cereals & Grains": 125.9,
+            "Oils": 129.8,
+            "Sugar": 146.3
+        },
+        {
+            "date": "2023-08",
+            "Food Price Index": 121.8,
+            "Meat & Fish": 114.5,
+            "Dairy": 114.3,
+            "Cereals & Grains": 125.0,
+            "Oils": 125.8,
+            "Sugar": 148.2
+        },
+        {
+            "date": "2023-09",
+            "Food Price Index": 121.7,
+            "Meat & Fish": 113.4,
+            "Dairy": 112.0,
+            "Cereals & Grains": 126.3,
+            "Oils": 120.9,
+            "Sugar": 162.7
+        },
+        {
+            "date": "2023-10",
+            "Food Price Index": 120.7,
+            "Meat & Fish": 112.0,
+            "Dairy": 114.6,
+            "Cereals & Grains": 124.8,
+            "Oils": 120.0,
+            "Sugar": 159.2
+        },
+        {
+            "date": "2023-11",
+            "Food Price Index": 120.6,
+            "Meat & Fish": 111.6,
+            "Dairy": 116.5,
+            "Cereals & Grains": 121.0,
+            "Oils": 124.1,
+            "Sugar": 161.4
+        },
+        {
+            "date": "2023-12",
+            "Food Price Index": 119.1,
+            "Meat & Fish": 111.2,
+            "Dairy": 118.7,
+            "Cereals & Grains": 122.8,
+            "Oils": 122.3,
+            "Sugar": 134.2
+        },
+        {
+            "date": "2024-01",
+            "Food Price Index": 117.6,
+            "Meat & Fish": 108.9,
+            "Dairy": 118.7,
+            "Cereals & Grains": 119.9,
+            "Oils": 122.5,
+            "Sugar": 136.4
+        },
+        {
+            "date": "2024-02",
+            "Food Price Index": 117.4,
+            "Meat & Fish": 112.5,
+            "Dairy": 120.7,
+            "Cereals & Grains": 113.8,
+            "Oils": 120.9,
+            "Sugar": 140.8
+        },
+        {
+            "date": "2024-03",
+            "Food Price Index": 118.9,
+            "Meat & Fish": 114.9,
+            "Dairy": 124.0,
+            "Cereals & Grains": 110.9,
+            "Oils": 130.6,
+            "Sugar": 133.4
+        },
+        {
+            "date": "2024-04",
+            "Food Price Index": 119.2,
+            "Meat & Fish": 116.6,
+            "Dairy": 123.8,
+            "Cereals & Grains": 111.6,
+            "Oils": 130.9,
+            "Sugar": 126.6
+        },
+        {
+            "date": "2024-05",
+            "Food Price Index": 120.5,
+            "Meat & Fish": 116.7,
+            "Dairy": 126.3,
+            "Cereals & Grains": 118.7,
+            "Oils": 127.8,
+            "Sugar": 117.1
+        },
+        {
+            "date": "2024-06",
+            "Food Price Index": 121.0,
+            "Meat & Fish": 118.1,
+            "Dairy": 127.9,
+            "Cereals & Grains": 115.2,
+            "Oils": 131.8,
+            "Sugar": 119.4
+        },
+        {
+            "date": "2024-07",
+            "Food Price Index": 120.9,
+            "Meat & Fish": 120.0,
+            "Dairy": 127.8,
+            "Cereals & Grains": 110.7,
+            "Oils": 135.0,
+            "Sugar": 119.5
+        },
+        {
+            "date": "2024-08",
+            "Food Price Index": 121.7,
+            "Meat & Fish": 122.0,
+            "Dairy": 131.3,
+            "Cereals & Grains": 110.2,
+            "Oils": 136.1,
+            "Sugar": 113.9
+        },
+        {
+            "date": "2024-09",
+            "Food Price Index": 124.6,
+            "Meat & Fish": 119.9,
+            "Dairy": 136.5,
+            "Cereals & Grains": 113.6,
+            "Oils": 142.4,
+            "Sugar": 126.3
+        },
+        {
+            "date": "2024-10",
+            "Food Price Index": 126.9,
+            "Meat & Fish": 119.2,
+            "Dairy": 138.6,
+            "Cereals & Grains": 114.4,
+            "Oils": 152.7,
+            "Sugar": 129.6
+        },
+        {
+            "date": "2024-11",
+            "Food Price Index": 127.7,
+            "Meat & Fish": 118.7,
+            "Dairy": 139.8,
+            "Cereals & Grains": 111.4,
+            "Oils": 164.1,
+            "Sugar": 126.4
+        },
+        {
+            "date": "2024-12",
+            "Food Price Index": 127.3,
+            "Meat & Fish": 119.6,
+            "Dairy": 141.2,
+            "Cereals & Grains": 111.4,
+            "Oils": 162.1,
+            "Sugar": 119.3
+        },
+        {
+            "date": "2025-01",
+            "Food Price Index": 124.6,
+            "Meat & Fish": 116.6,
+            "Dairy": 143.1,
+            "Cereals & Grains": 111.8,
+            "Oils": 153.0,
+            "Sugar": 111.2
+        },
+        {
+            "date": "2025-02",
+            "Food Price Index": 126.6,
+            "Meat & Fish": 116.9,
+            "Dairy": 147.7,
+            "Cereals & Grains": 112.6,
+            "Oils": 156.0,
+            "Sugar": 118.5
+        },
+        {
+            "date": "2025-03",
+            "Food Price Index": 127.2,
+            "Meat & Fish": 118.3,
+            "Dairy": 148.7,
+            "Cereals & Grains": 109.7,
+            "Oils": 161.8,
+            "Sugar": 116.9
+        },
+        {
+            "date": "2025-04",
+            "Food Price Index": 128.2,
+            "Meat & Fish": 121.6,
+            "Dairy": 151.7,
+            "Cereals & Grains": 110.9,
+            "Oils": 158.0,
+            "Sugar": 112.3
+        },
+        {
+            "date": "2025-05",
+            "Food Price Index": 127.1,
+            "Meat & Fish": 122.8,
+            "Dairy": 153.6,
+            "Cereals & Grains": 109.0,
+            "Oils": 152.2,
+            "Sugar": 109.4
+        },
+        {
+            "date": "2025-06",
+            "Food Price Index": 128.1,
+            "Meat & Fish": 126.0,
+            "Dairy": 155.5,
+            "Cereals & Grains": 107.3,
+            "Oils": 155.7,
+            "Sugar": 103.6
+        },
+        {
+            "date": "2025-07",
+            "Food Price Index": 129.8,
+            "Meat & Fish": 126.6,
+            "Dairy": 154.6,
+            "Cereals & Grains": 106.5,
+            "Oils": 166.8,
+            "Sugar": 103.3
+        },
+        {
+            "date": "2025-08",
+            "Food Price Index": 130.0,
+            "Meat & Fish": 127.8,
+            "Dairy": 152.2,
+            "Cereals & Grains": 105.7,
+            "Oils": 169.1,
+            "Sugar": 103.6
+        },
+        {
+            "date": "2025-09",
+            "Food Price Index": 128.6,
+            "Meat & Fish": 127.9,
+            "Dairy": 147.2,
+            "Cereals & Grains": 104.9,
+            "Oils": 167.9,
+            "Sugar": 99.4
+        },
+        {
+            "date": "2025-10",
+            "Food Price Index": 126.4,
+            "Meat & Fish": 125.0,
+            "Dairy": 141.7,
+            "Cereals & Grains": 103.6,
+            "Oils": 169.4,
+            "Sugar": 94.1
+        },
+        {
+            "date": "2025-11",
+            "Food Price Index": 125.2,
+            "Meat & Fish": 125.5,
+            "Dairy": 136.2,
+            "Cereals & Grains": 105.5,
+            "Oils": 165.0,
+            "Sugar": 88.6
+        },
+        {
+            "date": "2025-12",
+            "Food Price Index": 124.5,
+            "Meat & Fish": 124.8,
+            "Dairy": 128.2,
+            "Cereals & Grains": 107.3,
+            "Oils": 165.2,
+            "Sugar": 90.7
+        },
+        {
+            "date": "2026-01",
+            "Food Price Index": 124.2,
+            "Meat & Fish": 125.2,
+            "Dairy": 120.7,
+            "Cereals & Grains": 107.5,
+            "Oils": 168.6,
+            "Sugar": 89.8
+        },
+        {
+            "date": "2026-02",
+            "Food Price Index": 125.3,
+            "Meat & Fish": 126.2,
+            "Dairy": 119.3,
+            "Cereals & Grains": 108.6,
+            "Oils": 174.2,
+            "Sugar": 86.2
+        }
+    ],
+    "crisis_events": [
+        {
+            "id": 1,
+            "start": "2007-09",
+            "end": "2008-09",
+            "label": "Global Food Crisis",
+            "commodities": [
+                "Cereals & Grains",
+                "Oils"
+            ],
+            "description": "Oil price surge, biofuel demand, and Australian drought caused food riots in 30+ countries.",
+            "articles": [
+                {
+                    "title": "Factbox: 2008 food price crisis – what caused it?",
+                    "url": "https://www.reuters.com/article/business/energy/factbox-2008-food-price-crisis-what-caused-it-idUSTRE7590IJ/",
+                    "source": "Reuters"
+                },
+                {
+                    "title": "Commodity price dynamics and global crisis",
+                    "url": "https://www.imf.org/en/news/articles/2015/09/28/04/53/sonew070108a",
+                    "source": "IMF"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "start": "2010-07",
+            "end": "2015-02",
+            "label": "Sustained Price Shock",
+            "commodities": [
+                "Cereals & Grains",
+                "Oils",
+                "Sugar"
+            ],
+            "description": "Russian drought and wheat export ban (2010), Arab Spring food unrest (2011), prolonged supply tightness through 2014.",
+            "articles": [
+                {
+                    "title": "UN calls emergency meeting over global food crisis",
+                    "url": "https://www.theguardian.com/environment/2010/sep/24/food-crisis-un-emergency-meeting-rome",
+                    "source": "The Guardian"
+                },
+                {
+                    "title": "Did food prices spur the Arab Spring?",
+                    "url": "https://www.pbs.org/newshour/world/world-july-dec11-food_09-07",
+                    "source": "PBS NewsHour"
+                },
+                {
+                    "title": "Why food riots are likely to become the new normal",
+                    "url": "https://www.theguardian.com/environment/blog/2013/mar/06/food-riots-new-normal",
+                    "source": "The Guardian"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "start": "2020-10",
+            "end": "2021-06",
+            "label": "COVID Supply Shock",
+            "commodities": [
+                "Oils",
+                "Sugar"
+            ],
+            "description": "Pandemic disrupted global logistics, labour shortages hit harvests, panic buying inflated demand.",
+            "articles": [
+                {
+                    "title": "Tyson Foods warns food supply chain is breaking",
+                    "url": "https://edition.cnn.com/2020/04/26/business/tyson-foods-nyt-ad",
+                    "source": "CNN"
+                },
+                {
+                    "title": "COVID-19 risks to global food security",
+                    "url": "https://www.science.org/doi/full/10.1126/science.abc4765",
+                    "source": "Science"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "start": "2022-03",
+            "end": "2022-12",
+            "label": "Ukraine War",
+            "commodities": [
+                "Cereals & Grains",
+                "Oils"
+            ],
+            "description": "Russia invaded Ukraine in February 2022. Together they supply ~30% of global wheat and ~60% of sunflower oil.",
+            "articles": [
+                {
+                    "title": "The war in Ukraine is fuelling a global food crisis",
+                    "url": "https://www.reuters.com/graphics/UKRAINE-CRISIS/FOOD/zjvqkgomjvx/",
+                    "source": "Reuters"
+                },
+                {
+                    "title": "Ukraine war piles pressure on global food system already in crisis",
+                    "url": "https://www.theguardian.com/food/2022/mar/09/ukraine-war-piles-pressure-on-global-food-system-already-in-crisis",
+                    "source": "The Guardian"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "start": "2024-01",
+            "end": "2026-03",
+            "label": "Red Sea & Iran Conflict",
+            "commodities": [
+                "Oils",
+                "Cereals & Grains",
+                "Sugar"
+            ],
+            "description": "Houthi Red Sea attacks from 2023, escalating to US-Israel strikes on Iran and Hormuz closure in 2026.",
+            "articles": [
+                {
+                    "title": "Aid groups warn Iran war is hindering global food supply",
+                    "url": "https://apnews.com/article/eae99c347456ced2989e9f253448b56b",
+                    "source": "AP News"
+                },
+                {
+                    "title": "How could strait of Hormuz closure affect UK food and medicine supplies?",
+                    "url": "https://www.theguardian.com/world/2026/apr/02/strait-of-hormuz-iran-closure-uk-food-medicine-supplies",
+                    "source": "The Guardian"
+                },
+                {
+                    "title": "UK food inflation heading towards 10% due to Iran war",
+                    "url": "https://www.reuters.com/business/uk-food-inflation-heading-towards-10-due-iran-war-industry-says-2026-04-01/",
+                    "source": "Reuters"
+                }
+            ]
+        }
+    ],
+    "categories": [
+        "Cereals & Grains",
+        "Oils",
+        "Sugar",
+        "Meat & Fish",
+        "Dairy"
+    ]
+}

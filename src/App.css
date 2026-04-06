@@ -20,7 +20,7 @@
   --teal:       #0d9488;
   --panel-w:    380px;
   --timeline-h: 60px;
-  --timeline-expanded-h: 320px;
+  --timeline-expanded-h: 370px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -384,14 +384,14 @@ body {
 
 .timeline-handle:hover .handle-label { color: var(--white); }
 
-.timeline-inner { padding: 0 16px 12px; height: calc(100% - 36px); overflow: hidden; }
+.timeline-inner { padding: 0 16px 10px; height: calc(100% - 36px); overflow: visible; }
 
 .timeline-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 0;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .timeline-title {
@@ -422,7 +422,12 @@ body {
 
 .line-toggle.active { opacity: 1; }
 
-.chart-wrapper { height: 180px; }
+.chart-wrapper {
+  height: 230px;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+ }
 
 /* ── CRISIS MARKERS ───────────────────────────────── */
 .crisis-markers {
@@ -430,8 +435,11 @@ body {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  padding-top: 8px;
+  padding-top: 12px;
+  margin-top: 6px;
   border-top: 1px solid #ffffff08;
+  position: relative;
+  z-index: 5;
 }
 
 .crisis-markers-label { font-size: 10px; color: var(--grey); letter-spacing: 1px; white-space: nowrap; }
@@ -443,10 +451,13 @@ body {
   background: var(--navy-light);
   border: 1px solid #ffffff10;
   border-radius: 4px;
-  padding: 4px 10px;
+  padding: 6px 10px;
   cursor: pointer;
   font-family: 'DM Sans', sans-serif;
   transition: all 0.15s;
+  position: relative;
+  z-index: 6;
+  pointer-events: auto;
 }
 
 .crisis-marker-btn:hover { border-color: var(--red); }
@@ -713,4 +724,17 @@ body {
   padding: 1px 4px;
   border-radius: 2px;
   font-family: 'DM Mono', monospace;
+}
+
+/* ── DIM BACKGROUND WHEN CRISIS MODAL OPEN ────────── */
+body.modal-open .map-wrapper,
+body.modal-open .map-legend,
+body.modal-open .category-bar,
+body.modal-open .country-panel {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+body.modal-open .map-wrapper {
+  filter: brightness(0.7);
 }

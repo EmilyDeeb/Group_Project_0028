@@ -1,7 +1,16 @@
 // src/components/CrisisModal.jsx
 // Shows when user clicks a crisis event on the timeline
 // Displays: description, affected commodities, news article placeholders
+import { useEffect } from "react";
+
 export default function CrisisModal({ crisis, onClose }) {
+  useEffect(() => {
+    document.body.classList.add("modal-open");
+    return () => {
+      document.body.classList.remove("modal-open");
+    };
+  }, []);
+
   const CATEGORY_COLORS = {
     "Cereals & Grains": "#ffd700",
     "Oils":             "#ff8c00",
@@ -45,13 +54,6 @@ export default function CrisisModal({ crisis, onClose }) {
               </span>
             ))}
           </div>
-        </div>
-
-        {/* Map instruction */}
-        <div className="crisis-map-note">
-          <span className="map-note-icon">🗺️</span>
-          The map now highlights trade routes for affected commodities.
-          Click a country to see which imports were disrupted.
         </div>
 
         {/* News articles */}

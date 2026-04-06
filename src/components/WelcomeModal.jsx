@@ -1,5 +1,5 @@
 // src/components/WelcomeModal.jsx
-export default function WelcomeModal({ onStart }) {
+export default function WelcomeModal({ onStart, onSkip }) {
   return (
     <div className="modal-overlay">
       <div className="modal welcome-modal">
@@ -50,7 +50,7 @@ export default function WelcomeModal({ onStart }) {
           <button className="btn-primary" onClick={onStart}>
             Start Tour →
           </button>
-          <button className="btn-ghost" onClick={onStart}>
+          <button className="btn-ghost" onClick={onSkip}>
             Skip to map
           </button>
         </div>
