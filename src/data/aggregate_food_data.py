@@ -1,25 +1,16 @@
 """
-Food Shock — Data Aggregation Script (FIXED)
-============================================
-Verified column names from actual CSV files:
+Food Shock — Data Aggregation Script (REWRITTEN)
+=================================================
+Key fix: nutrition_by_country.json now correctly multiplies
+nutritional density values (kcal/kg, protein kg/kg, etc.)
+by trade quantity (tonnes → kg) before summing, then divides
+by population × 365 to get per-person per-day values.
 
-bilateral:  fbs_item_code, reporter_ISO3, reporter_country,
-            partner_iso3, partner_country, export_quantity,
-            share_sea_predict, reporter_country_code, partner_country_code
-
-SUA:        reporter_country_code, reporter_country, fbs_item_code,
-            Export Quantity, Import Quantity, Production,
-            Domestic supply quantity
-
-supply:     admin1, iso3c, fbs_item, domestic supply quantity,
-            food demand, losses, production, stock variation, pct_loss
-
-nutrition:  reporter_country_code, reporter_country, fbs_item_code,
-            Energy (kcal), Protein (kg), Fat (kg), Carbs (kg)
-
-FAO price:  row 1 = title, row 2 = subtitle, row 3 = blank,
-            row 4 = header: Date, Food Price Index, Meat, Dairy,
-                            Cereals, Oils, Sugar
+Output units in nutrition_by_country.json:
+  energy  → kcal / person / day
+  protein → g    / person / day
+  fat     → g    / person / day
+  carbs   → g    / person / day
 
 Run:
     cd C:\\Users\\emily\\OneDrive\\Desktop\\CASA_MSc_Desktop\\MSc_Term02\\Group_Project_0028\\src\\data
@@ -42,6 +33,7 @@ FILES = {
     "supply":    "foodgroup1_totalsupply_utilization_admin1.csv",
     "nutrition": "foodgroup1_tradenutritionconversions_bycountry_byitem.csv",
     "fao_price": "food_price_indices_data_csv_mar.csv",
+    "population": "population.json",  # must exist in DATA_DIR already
 }
 
 CATEGORY_MAP = {
@@ -96,11 +88,9 @@ def save_json(data, filename):
             json.dump(data, f, separators=(",", ":"))
         print(f"  ✓ {path}")
 
+
 # ═══════════════════════════════════════════════════════
 # STEP 0: ISO lookup
-# bilateral has reporter_country_code ↔ reporter_ISO3
-# SUA only has reporter_country_code, no ISO
-# So we build lookup from bilateral then join to SUA
 # ═══════════════════════════════════════════════════════
 print("\n=== STEP 0: Building ISO lookup ===")
 bil_raw = load_csv(os.path.join(DATA_DIR, FILES["bilateral"]))
@@ -108,7 +98,6 @@ bil_raw = load_csv(os.path.join(DATA_DIR, FILES["bilateral"]))
 code_to_iso  = {}
 code_to_name = {}
 
-# From reporter side
 for _, row in bil_raw[["reporter_country_code", "reporter_ISO3", "reporter_country"]].drop_duplicates().iterrows():
     try:
         code = int(row["reporter_country_code"])
@@ -120,7 +109,6 @@ for _, row in bil_raw[["reporter_country_code", "reporter_ISO3", "reporter_count
     except:
         continue
 
-# From partner side
 for _, row in bil_raw[["partner_country_code", "partner_iso3", "partner_country"]].drop_duplicates().iterrows():
     try:
         code = int(row["partner_country_code"])
@@ -134,33 +122,35 @@ for _, row in bil_raw[["partner_country_code", "partner_iso3", "partner_country"
 
 print(f"  ISO lookup: {len(code_to_iso)} countries")
 
+
+# ═══════════════════════════════════════════════════════
+# STEP 0b: Load population lookup
+# ═══════════════════════════════════════════════════════
+print("\n=== STEP 0b: Loading population data ===")
+pop_path = os.path.join(DATA_DIR, FILES["population"])
+with open(pop_path, encoding="utf-8") as f:
+    pop_data = json.load(f)
+# pop_data = { "ISO3": { "name": "...", "population": 12345 }, ... }
+iso_to_pop = {iso: v["population"] for iso, v in pop_data.items()}
+print(f"  Population entries: {len(iso_to_pop)}")
+
+
 # ═══════════════════════════════════════════════════════
 # OUTPUT 1: countries_supply.json
-# Source: SUA file
-# Columns used:
-#   reporter_country_code → join to ISO lookup
-#   Export Quantity, Import Quantity,
-#   Production, Domestic supply quantity
 # ═══════════════════════════════════════════════════════
 print("\n=== OUTPUT 1: countries_supply.json ===")
 try:
     sua = load_csv(os.path.join(DATA_DIR, FILES["sua"]))
     print(f"  SUA rows: {len(sua)}")
-    print(f"  SUA cols: {list(sua.columns)}")
 
-    # Add category and ISO
     sua["category"] = sua["fbs_item_code"].apply(get_category)
     sua["iso3"]     = sua["reporter_country_code"].apply(
         lambda x: code_to_iso.get(int(x), None) if pd.notna(x) else None
     )
 
-    # Keep only rows with a known ISO
     sua_ok = sua[sua["iso3"].notna()].copy()
-    # Exclude "World" (code 1) — it's a global aggregate not a country
     sua_ok = sua_ok[sua_ok["iso3"] != "nan"]
-    print(f"  Rows with ISO (excl World): {len(sua_ok)}")
 
-    # Aggregate by ISO + category
     agg = sua_ok.groupby(["iso3", "category"]).agg(
         export_qty      = ("Export Quantity",          "sum"),
         import_qty      = ("Import Quantity",          "sum"),
@@ -168,7 +158,6 @@ try:
         domestic_supply = ("Domestic supply quantity", "sum"),
     ).reset_index()
 
-    # Build result dict keyed by ISO3
     result = {}
     iso_to_code = {v: k for k, v in code_to_iso.items()}
 
@@ -189,44 +178,29 @@ try:
         }
 
     print(f"  Countries built: {len(result)}")
-    print(f"  Sample ISO keys: {list(result.keys())[:10]}")
-
-    # Spot check
-    for chk in ["UKR", "GBR", "USA", "CHN"]:
-        if chk in result:
-            c = result[chk]["categories"].get("Cereals & Grains", {})
-            print(f"  {chk} Cereals → export:{c.get('export_qty',0):,} import:{c.get('import_qty',0):,}")
-
     save_json(result, "countries_supply.json")
 
 except Exception as e:
     import traceback; traceback.print_exc()
 
+
 # ═══════════════════════════════════════════════════════
 # OUTPUT 2: bilateral_trade.json
-# Source: bilateral file
-# Columns: reporter_ISO3, partner_iso3,
-#          export_quantity, share_sea_predict, category
 # ═══════════════════════════════════════════════════════
 print("\n=== OUTPUT 2: bilateral_trade.json ===")
 try:
     bil = bil_raw.copy()
     bil["category"] = bil["fbs_item_code"].apply(get_category)
 
-    # Sea routes only (share_sea_predict > 0.3)
     bil_sea = bil[bil["share_sea_predict"] > 0.3].copy()
-    print(f"  Sea route rows: {len(bil_sea)}")
 
-    # Aggregate by reporter → partner → category
     agg_bil = bil_sea.groupby([
         "reporter_ISO3", "reporter_country",
         "partner_iso3",  "partner_country",
         "category"
     ])["export_quantity"].sum().reset_index()
 
-    # Drop tiny flows
     agg_bil = agg_bil[agg_bil["export_quantity"] > 1000]
-    print(f"  Flows > 1000t: {len(agg_bil)}")
 
     arcs = []
     for _, row in agg_bil.iterrows():
@@ -249,70 +223,159 @@ try:
 except Exception as e:
     import traceback; traceback.print_exc()
 
+
 # ═══════════════════════════════════════════════════════
-# OUTPUT 3: nutrition_by_country.json
-# Source: nutrition file
-# Columns: reporter_country_code, fbs_item_code,
-#          Energy (kcal), Protein (kg), Fat (kg), Carbs (kg)
+# OUTPUT 3: nutrition_by_country.json  ← KEY FIX HERE
+#
+# The nutrition CSV contains per-item nutritional DENSITIES:
+#   Energy (kcal) = kcal per kg of this food item
+#   Protein (kg)  = kg of protein per kg of this food item
+#   Fat (kg)      = kg of fat per kg of this food item
+#   Carbs (kg)    = kg of carbs per kg of this food item
+#
+# To get national totals we must multiply by the trade quantity
+# for that country × item, then convert units:
+#   trade quantity is in TONNES → × 1000 to get kg
+#
+# Then to get per-person per-day:
+#   ÷ population ÷ 365
+#
+# Final output units:
+#   energy  → kcal / person / day
+#   protein → g    / person / day  (kg/person/day × 1000)
+#   fat     → g    / person / day
+#   carbs   → g    / person / day
 # ═══════════════════════════════════════════════════════
-print("\n=== OUTPUT 3: nutrition_by_country.json ===")
+print("\n=== OUTPUT 3: nutrition_by_country.json (FIXED) ===")
 try:
     nut = load_csv(os.path.join(DATA_DIR, FILES["nutrition"]))
-    print(f"  Nutrition cols: {list(nut.columns[:8])}")
+    print(f"  Nutrition rows: {len(nut)}")
+    print(f"  Nutrition cols: {list(nut.columns[:10])}")
 
-    # Add ISO and category
+    # Add ISO and category to nutrition density table
     nut["iso3"]     = nut["reporter_country_code"].apply(
         lambda x: code_to_iso.get(int(x), None) if pd.notna(x) else None
     )
     nut["category"] = nut["fbs_item_code"].apply(get_category)
     nut_ok = nut[nut["iso3"].notna()].copy()
+    nut_ok = nut_ok[nut_ok["iso3"] != "nan"]
 
-    # Column names from your sample:
-    # Energy (kcal), Protein (kg), Fat (kg), Carbs (kg)
-    eng_col  = "Energy (kcal)"
-    pro_col  = "Protein (kg)"
-    fat_col  = "Fat (kg)"
-    carb_col = "Carbs (kg)"
+    eng_col  = "Energy (kcal)"   # kcal per kg of food
+    pro_col  = "Protein (kg)"    # kg protein per kg of food
+    fat_col  = "Fat (kg)"        # kg fat per kg of food
+    carb_col = "Carbs (kg)"      # kg carbs per kg of food
 
-    # Check columns exist
-    available = {k: v for k, v in {
-        "energy": eng_col, "protein": pro_col,
-        "fat": fat_col, "carbs": carb_col
-    }.items() if v in nut_ok.columns}
-    print(f"  Available nutrition cols: {available}")
+    # Check which columns exist
+    for col in [eng_col, pro_col, fat_col, carb_col]:
+        if col not in nut_ok.columns:
+            print(f"  WARNING: column '{col}' not found!")
 
-    agg_nut = nut_ok.groupby(["iso3", "category"]).agg(
-        **{k: (v, "sum") for k, v in available.items()}
+    # ── Join with SUA to get quantities ─────────────────────────────────────
+    # CRITICAL: aggregate SUA to ONE row per (country, item) BEFORE merging
+    # to prevent row multiplication inflating all values.
+    sua_raw = load_csv(os.path.join(DATA_DIR, FILES["sua"]))
+    sua_raw["import_qty_tonnes"]   = pd.to_numeric(sua_raw["Import Quantity"], errors="coerce").fillna(0)
+    sua_raw["production_tonnes"]   = pd.to_numeric(sua_raw["Production"],      errors="coerce").fillna(0)
+
+    # Sum to exactly one row per (reporter_country_code, fbs_item_code)
+    sua_agg = sua_raw.groupby(
+        ["reporter_country_code", "fbs_item_code"], as_index=False
+    ).agg(
+        import_qty_tonnes = ("import_qty_tonnes", "sum"),
+        production_tonnes = ("production_tonnes", "sum"),
+    )
+    print(f"  SUA aggregated rows: {len(sua_agg)} (unique country+item combos)")
+
+    # Also check nutrition table for duplicates
+    nut_ok_dedup = nut_ok.groupby(
+        ["reporter_country_code", "fbs_item_code"], as_index=False
+    ).agg({
+        eng_col:  "mean",  # densities should be identical per item — take mean to be safe
+        pro_col:  "mean",
+        fat_col:  "mean",
+        carb_col: "mean",
+        "iso3":     "first",
+        "category": "first",
+    })
+    print(f"  Nutrition deduplicated rows: {len(nut_ok_dedup)}")
+
+    # Now merge — guaranteed one-to-one
+    nut_merged = nut_ok_dedup.merge(
+        sua_agg,
+        on=["reporter_country_code", "fbs_item_code"],
+        how="left"
+    )
+    nut_merged["import_qty_tonnes"] = nut_merged["import_qty_tonnes"].fillna(0)
+    nut_merged["production_tonnes"] = nut_merged["production_tonnes"].fillna(0)
+
+    # Total food available = imports + domestic production (tonnes)
+    nut_merged["total_food_tonnes"] = nut_merged["import_qty_tonnes"] + nut_merged["production_tonnes"]
+
+    # Convert density × quantity to national totals
+    # Energy col = kcal/tonne,  qty in tonnes → kcal total (no unit conversion needed)
+    # Protein/Fat/Carbs col = kg/tonne = dimensionless ratio, qty in tonnes → kg total
+    nut_merged["total_energy_kcal"] = nut_merged[eng_col]  * nut_merged["total_food_tonnes"]
+    nut_merged["total_protein_kg"]  = nut_merged[pro_col]  * nut_merged["total_food_tonnes"]
+    nut_merged["total_fat_kg"]      = nut_merged[fat_col]  * nut_merged["total_food_tonnes"]
+    nut_merged["total_carbs_kg"]    = nut_merged[carb_col] * nut_merged["total_food_tonnes"]
+
+    # Aggregate by country + category
+    agg_nut = nut_merged.groupby(["iso3", "category"]).agg(
+        energy_kcal_total  = ("total_energy_kcal", "sum"),
+        protein_kg_total   = ("total_protein_kg",  "sum"),
+        fat_kg_total       = ("total_fat_kg",       "sum"),
+        carbs_kg_total     = ("total_carbs_kg",     "sum"),
     ).reset_index()
 
+    # Build output: divide by (population × 365) → per-person per-day
     result_nut = {}
+    missing_pop = []
+
     for _, row in agg_nut.iterrows():
         iso = str(row["iso3"]).strip()
         if not iso or iso == "nan":
             continue
+
+        pop = iso_to_pop.get(iso)
+        if not pop or pop == 0:
+            missing_pop.append(iso)
+            continue
+
+        person_days = pop * 365
         cat = row["category"]
+
         if iso not in result_nut:
             result_nut[iso] = {}
+
         result_nut[iso][cat] = {
-            k: round(float(row.get(k, 0) or 0), 2)
-            for k in available.keys()
+            "energy":  round(row["energy_kcal_total"] / person_days, 2),         # kcal/person/day
+            "protein": round((row["protein_kg_total"]  / person_days) * 1000, 2), # g/person/day
+            "fat":     round((row["fat_kg_total"]       / person_days) * 1000, 2), # g/person/day
+            "carbs":   round((row["carbs_kg_total"]     / person_days) * 1000, 2), # g/person/day
         }
 
-    print(f"  Countries: {len(result_nut)}")
+    print(f"  Countries with nutrition data: {len(result_nut)}")
+    if missing_pop:
+        print(f"  Skipped (no population data): {missing_pop[:10]}")
+
+    # Spot check
+    for chk in ["UKR", "NER", "GBR", "USA", "AFG"]:
+        if chk in result_nut:
+            cereals = result_nut[chk].get("Cereals & Grains", {})
+            all_energy = sum(v.get("energy", 0) for v in result_nut[chk].values())
+            all_protein = sum(v.get("protein", 0) for v in result_nut[chk].values())
+            print(f"  {chk}: total energy={all_energy:.0f} kcal/p/day | "
+                  f"cereals energy={cereals.get('energy', 0):.0f} | "
+                  f"total protein={all_protein:.1f} g/p/day")
+
     save_json(result_nut, "nutrition_by_country.json")
 
 except Exception as e:
     import traceback; traceback.print_exc()
 
+
 # ═══════════════════════════════════════════════════════
 # OUTPUT 4: fao_price_index.json
-# FAO CSV structure:
-#   Row 1: "FAO Food Price Index,..."  (title)
-#   Row 2: "2014-2016=100,..."         (subtitle)
-#   Row 3: blank
-#   Row 4: Date, Food Price Index, Meat, Dairy, Cereals, Oils, Sugar
-#   Row 5+: data
-# So skiprows=3 gets us to the header on row 4
 # ═══════════════════════════════════════════════════════
 print("\n=== OUTPUT 4: fao_price_index.json ===")
 try:
@@ -320,12 +383,7 @@ try:
     fao = pd.read_csv(fao_path, skiprows=3, header=0, encoding="utf-8")
     fao.columns = [str(c).strip() for c in fao.columns]
     fao = fao.dropna(how="all")
-    print(f"  FAO cols: {list(fao.columns[:8])}")
-    print(f"  FAO rows: {len(fao)}")
-    print(f"  First date: {fao.iloc[0, 0]}")
 
-    # Map our category labels to actual column names
-    # From your file: Date, Food Price Index, Meat, Dairy, Cereals, Oils, Sugar
     col_map = {
         "Food Price Index": "Food Price Index",
         "Cereals & Grains": "Cereals",
@@ -334,13 +392,9 @@ try:
         "Meat & Fish":      "Meat",
         "Dairy":            "Dairy",
     }
-
-    # Filter to only columns that exist
     col_map = {k: v for k, v in col_map.items() if v in fao.columns}
-    print(f"  Matched price cols: {col_map}")
 
-    date_col = fao.columns[0]  # "Date"
-
+    date_col = fao.columns[0]
     records = []
     for _, row in fao.iterrows():
         date_val = str(row[date_col]).strip()
@@ -355,7 +409,6 @@ try:
         records.append(rec)
 
     print(f"  Records: {len(records)}")
-    print(f"  Date range: {records[0]['date']} → {records[-1]['date']}")
 
     crisis_events = [
         {
@@ -420,5 +473,11 @@ try:
 except Exception as e:
     import traceback; traceback.print_exc()
 
+
 print("\n=== ALL DONE ===")
-print(f"Check public/data/ folder — all 4 JSON files should be updated")
+print("Spot-check the values printed above.")
+print("Expected ranges per person per day:")
+print("  Energy:  1500–4000 kcal  (dietary supply, not just trade)")
+print("  Protein: 40–120 g")
+print("  Fat:     30–150 g")
+print("  Carbs:   200–600 g")

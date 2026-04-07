@@ -7,57 +7,66 @@ import Timeline from "./components/Timeline";
 import "./App.css";
 
 export default function App() {
-  const [step, setStep] = useState("welcome"); // welcome | tour | app
+  const [step, setStep]                   = useState("welcome");
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [activeCrisis, setActiveCrisis] = useState(null);
+  const [activeCrisis, setActiveCrisis]   = useState(null);
+  const [timelineExpanded, setTimelineExpanded] = useState(false);
+  const [activeTab, setActiveTab]         = useState("trade"); // #4: preserve tab across countries
+
+  // #2: Timeline expand → fully close panel
+  const handleTimelineExpand = (expanded) => {
+    setTimelineExpanded(expanded);
+    if (expanded) setSelectedCountry(null);
+  };
+
+  // #3: Clicking a country → collapse timeline, open panel
+  const handleSelectCountry = (country) => {
+    setSelectedCountry(country);
+    if (country) setTimelineExpanded(false);
+  };
 
   return (
     <div className="app">
-      {/* Welcome Modal */}
       {step === "welcome" && (
-        <WelcomeModal 
-        onStart={() => setStep("tour")}
-        onSkip={() => setStep("app")}
+        <WelcomeModal
+          onStart={() => setStep("tour")}
+          onSkip={() => setStep("app")}
         />
       )}
 
-      {/* Guided Tour */}
       {step === "tour" && (
         <Tour onFinish={() => setStep("app")} />
       )}
 
-      {/* Main App */}
       {step === "app" && (
         <div className="app-layout">
-          {/* Header */}
           <header className="app-header">
             <div className="header-left">
               <span className="pulse-dot" />
               <span className="app-title">FOOD SHOCK</span>
               <span className="app-subtitle">Global Food Supply Crisis Tracker</span>
             </div>
-            <div className="header-right">
-              <span className="live-badge">● LIVE DATA</span>
-            </div>
           </header>
 
-          {/* Map Area */}
           <div className="map-area">
             <WorldMap
               selectedCountry={selectedCountry}
-              onSelectCountry={setSelectedCountry}
+              onSelectCountry={handleSelectCountry}
               selectedCategory={selectedCategory}
               onSelectCategory={setSelectedCategory}
               activeCrisis={activeCrisis}
+              activeTab={activeTab}         // #4: pass tab down
+              onTabChange={setActiveTab}    // #4: pass setter down
             />
           </div>
 
-          {/* Timeline */}
           <div className="timeline-area">
             <Timeline
               activeCrisis={activeCrisis}
               onSelectCrisis={setActiveCrisis}
+              onExpandChange={handleTimelineExpand}
+              isExpanded={timelineExpanded}  // controlled from outside now
             />
           </div>
         </div>

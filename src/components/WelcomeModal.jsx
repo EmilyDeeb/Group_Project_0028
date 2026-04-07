@@ -24,23 +24,37 @@ export default function WelcomeModal({ onStart, onSkip }) {
           they pay for it.
         </p>
 
-        {/* Crisis pills */}
-        <div className="crisis-pills">
-          {["COVID-19 2020", "Ukraine War 2022", "Iran/US/Israel 2026"].map(c => (
-            <span key={c} className="crisis-pill">{c}</span>
-          ))}
+        {/* Feature icons */}
+        <div className="welcome-features">
+          <div className="welcome-feature">
+            <i className="fa-solid fa-earth-africa welcome-feature-icon" />
+            <span>Interactive world map</span>
+          </div>
+          <div className="welcome-feature">
+            <i className="fa-solid fa-ship welcome-feature-icon" />
+            <span>Maritime trade flows</span>
+          </div>
+          <div className="welcome-feature">
+            <i className="fa-solid fa-chart-line welcome-feature-icon" />
+            <span>FAO price timeline</span>
+          </div>
+          <div className="welcome-feature">
+            <i className="fa-solid fa-wheat-awn welcome-feature-icon" />
+            <span>7 food categories</span>
+          </div>
         </div>
 
         {/* Data sources */}
         <div className="modal-sources">
-          <span className="sources-label">Data sources:</span>
+          <span className="sources-label">
+            <i className="fa-solid fa-database" style={{ marginRight: 4 }} />
+            Data:
+          </span>
           <a href="https://www.fao.org/faostat" target="_blank" rel="noreferrer">FAOSTAT</a>
           <span>·</span>
           <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/BLVPFU" target="_blank" rel="noreferrer">Global Food Twin</a>
           <span>·</span>
           <a href="https://www.fao.org/worldfoodsituation/foodpricesindex/en" target="_blank" rel="noreferrer">FAO Price Index</a>
-          <span>·</span>
-          <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
         </div>
 
         <div className="modal-divider" />
@@ -48,14 +62,38 @@ export default function WelcomeModal({ onStart, onSkip }) {
         {/* CTA */}
         <div className="modal-actions">
           <button className="btn-primary" onClick={onStart}>
-            Start Tour →
+            <i className="fa-solid fa-compass" style={{ marginRight: 8 }} />
+            Start Tour
           </button>
           <button className="btn-ghost" onClick={onSkip}>
+            <i className="fa-solid fa-map" style={{ marginRight: 8 }} />
             Skip to map
           </button>
         </div>
 
+        {/* Secondary links */}
+        <div className="modal-secondary-links">
+          <a
+            href="https://github.com/EmilyDeeb/Group_Project_0028"
+            target="_blank"
+            rel="noreferrer"
+            className="modal-link-btn"
+          >
+            <i className="fa-brands fa-github" />
+            <span>GitHub</span>
+          </a>
+          <a
+            href="/data/food_shock_design_doc.pdf"
+            download="Food_Shock_Design_Doc.pdf"
+            className="modal-link-btn"
+          >
+            <i className="fa-solid fa-file-pdf" />
+            <span>Design Doc</span>
+          </a>
+        </div>
+
         <p className="modal-footnote">
+          <i className="fa-solid fa-graduation-cap" style={{ marginRight: 6 }} />
           UCL CASA · Spatial Design Stories · 2026
         </p>
       </div>

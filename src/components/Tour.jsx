@@ -4,27 +4,27 @@ import { useState } from "react";
 const STEPS = [
   {
     title: "The World Map",
-    icon: "🌍",
+    icon: "fa-solid fa-earth-africa",
     body: "The dark map shows every country in the world. Click any country to explore its food import and export profile.",
   },
   {
     title: "Food Categories",
-    icon: "🌾",
+    icon: "fa-solid fa-layer-group",
     body: "When you click a country, choose a food category — Cereals & Grains, Oils, Sugar, Meat & Fish, Dairy, Fruits & Veg, or All — to see trade flows.",
   },
   {
     title: "Trade Flow Arcs",
-    icon: "🔗",
+    icon: "fa-solid fa-ship",
     body: "Animated arcs show where food flows from origin countries into the selected country. Thicker arcs = larger trade volume.",
   },
   {
     title: "Crisis Timeline",
-    icon: "📅",
+    icon: "fa-solid fa-chart-line",
     body: "Scroll up the timeline at the bottom to explore global food price shocks. Click a highlighted crisis event to see which countries and categories were affected.",
   },
   {
     title: "You're ready!",
-    icon: "🚀",
+    icon: "fa-solid fa-circle-check",
     body: "Start by clicking any country on the map, or scroll the timeline to a crisis event. The data covers 2020 trade flows and FAO price data from 1990 to 2026.",
   },
 ];
@@ -38,7 +38,6 @@ export default function Tour({ onFinish }) {
     <div className="modal-overlay">
       <div className="modal tour-modal">
 
-        {/* Progress dots */}
         <div className="tour-dots">
           {STEPS.map((_, i) => (
             <div
@@ -49,15 +48,15 @@ export default function Tour({ onFinish }) {
           ))}
         </div>
 
-        {/* Step content */}
-        <div className="tour-icon">{step.icon}</div>
+        {/* Font Awesome icon — explicit open+close tags, no self-close */}
+        <div style={{ fontSize: 40, color: "#ff2d78", textAlign: "center", margin: "8px 0 16px" }}>
+          <i className={step.icon}></i>
+        </div>
+
         <h2 className="tour-title">{step.title}</h2>
         <p className="tour-body">{step.body}</p>
-
-        {/* Step counter */}
         <p className="tour-counter">{current + 1} / {STEPS.length}</p>
 
-        {/* Actions */}
         <div className="modal-actions">
           {current > 0 && (
             <button className="btn-ghost" onClick={() => setCurrent(c => c - 1)}>

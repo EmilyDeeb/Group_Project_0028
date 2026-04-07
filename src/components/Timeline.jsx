@@ -1,6 +1,4 @@
 // src/components/Timeline.jsx
-// FAO Food Price Index chart + crisis event markers
-// Click a crisis spike → activeCrisis updates → map highlights affected arcs
 import { useEffect, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine } from "recharts";
 import CrisisModal from "./CrisisModal";
@@ -14,13 +12,12 @@ const LINE_COLORS = {
   "Dairy":            "#87ceeb",
 };
 
-export default function Timeline({ activeCrisis, onSelectCrisis }) {
-  const [priceData, setPriceData]     = useState([]);
+export default function Timeline({ activeCrisis, onSelectCrisis, onExpandChange, isExpanded }) {
+  const [priceData, setPriceData]       = useState([]);
   const [crisisEvents, setCrisisEvents] = useState([]);
-  const [categories, setCategories]   = useState(["Cereals & Grains", "Oils", "Sugar", "Meat & Fish", "Dairy"]);
-  const [activeLines, setActiveLines] = useState(["Food Price Index", "Cereals & Grains", "Oils"]);
-  const [modalCrisis, setModalCrisis] = useState(null);
-  const [isExpanded, setIsExpanded]   = useState(false);
+  const [categories, setCategories]     = useState(["Cereals & Grains", "Oils", "Sugar", "Meat & Fish", "Dairy"]);
+  const [activeLines, setActiveLines]   = useState(["Food Price Index", "Cereals & Grains", "Oils"]);
+  const [modalCrisis, setModalCrisis]   = useState(null);
 
   useEffect(() => {
     fetch("/data/fao_price_index.json")
@@ -28,7 +25,6 @@ export default function Timeline({ activeCrisis, onSelectCrisis }) {
       .then(d => {
         setPriceData(d.prices || []);
         setCrisisEvents(d.crisis_events || []);
-        // setCategories(d.categories || []);
       })
       .catch(() => console.warn("fao_price_index.json not found"));
   }, []);
@@ -39,6 +35,11 @@ export default function Timeline({ activeCrisis, onSelectCrisis }) {
     );
   };
 
+  // #2: toggle tells App, App controls the state
+  const handleToggle = () => {
+    onExpandChange(!isExpanded);
+  };
+
   const handleCrisisClick = (crisis) => {
     onSelectCrisis(crisis);
     setModalCrisis(crisis);
@@ -47,24 +48,20 @@ export default function Timeline({ activeCrisis, onSelectCrisis }) {
   return (
     <div className={`timeline-container ${isExpanded ? "expanded" : ""}`}>
 
-      {/* Toggle handle */}
-      <div className="timeline-handle" onClick={() => setIsExpanded(e => !e)}>
+      <div className="timeline-handle" onClick={handleToggle}>
         <span className="handle-label">
           {isExpanded ? "▼ Food Price Timeline" : "▲ Food Price Timeline — click to expand"}
         </span>
       </div>
 
       <div className="timeline-inner">
-        {/* Chart header */}
         <div className="timeline-header">
           <div className="timeline-title">
             FAO Food Price Index
             <span className="timeline-subtitle">Indexed to 2014–2016 average (100) · Monthly data · 1990–2026</span>
           </div>
-
-          {/* Line toggles */}
           <div className="line-toggles">
-            {["Food Price Index", ...(categories)].map(cat => (
+            {["Food Price Index", ...categories].map(cat => (
               <button
                 key={cat}
                 className={`line-toggle ${activeLines.includes(cat) ? "active" : ""}`}
@@ -77,7 +74,6 @@ export default function Timeline({ activeCrisis, onSelectCrisis }) {
           </div>
         </div>
 
-        {/* Price chart */}
         <div className="chart-wrapper">
           <ResponsiveContainer width="100%" height={270}>
             <LineChart data={priceData} margin={{ top: 30, right: 20, bottom: 55, left: 0 }}>
@@ -100,27 +96,15 @@ export default function Timeline({ activeCrisis, onSelectCrisis }) {
                 labelStyle={{ color: "#ffffff80", fontSize: 11 }}
                 itemStyle={{ fontSize: 11 }}
               />
-
-              {/* Crisis reference lines */}
               {crisisEvents.map(crisis => (
                 <ReferenceLine
                   key={crisis.id}
                   x={crisis.start}
                   stroke="#ff222260"
                   strokeDasharray="4 4"
-                  label={{
-                    value: crisis.label,
-                    position: "top",
-                    fill: "#ff4444",
-                    fontSize: 9,
-                    angle: -15,
-                    textAnchor: "middle",
-                    dy: -4,
-                  }}
+                  label={{ value: crisis.label, position: "top", fill: "#ff4444", fontSize: 9, angle: -15, textAnchor: "middle", dy: -4 }}
                 />
               ))}
-
-              {/* Data lines */}
               {activeLines.map(cat => (
                 <Line
                   key={cat}
@@ -136,7 +120,6 @@ export default function Timeline({ activeCrisis, onSelectCrisis }) {
           </ResponsiveContainer>
         </div>
 
-        {/* Crisis event markers */}
         <div className="crisis-markers">
           <span className="crisis-markers-label">Crisis Events:</span>
           {crisisEvents.map(crisis => (
@@ -153,7 +136,6 @@ export default function Timeline({ activeCrisis, onSelectCrisis }) {
         </div>
       </div>
 
-      {/* Crisis modal */}
       {modalCrisis && (
         <CrisisModal
           crisis={modalCrisis}

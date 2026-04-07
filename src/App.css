@@ -111,11 +111,11 @@ body {
 
 /* ── CATEGORY BAR ─────────────────────────────────── */
 .category-bar {
-  position: absolute;
-  top: 12px;
+  position: fixed;
+  top: 56px;           /* just below the 44px header */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
+  z-index: 1100;       /* above panel and timeline */
   display: flex;
   gap: 4px;
   background: rgba(6, 13, 24, 0.9);
@@ -737,4 +737,199 @@ body.modal-open .country-panel {
 
 body.modal-open .map-wrapper {
   filter: brightness(0.7);
+}
+
+/* ── ADDITIONS TO App.css ─────────────────────────────
+   Add these at the bottom of your existing App.css
+   ───────────────────────────────────────────────────── */
+
+/* Map shifts left when panel is open so panel doesn't overlap */
+/* category-bar is fixed — never shifts */
+
+/* Welcome modal feature grid */
+.welcome-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.welcome-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff06;
+  border: 1px solid #ffffff10;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: var(--grey-light);
+}
+
+.welcome-feature-icon {
+  font-size: 16px;
+  color: var(--red);
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Category buttons — remove active red, use per-category color via inline style */
+.cat-btn.active {
+  font-weight: 500;
+  /* background + color set via inline style in WorldMap */
+}
+
+/* Panel cat buttons — icon colored, remove emoji */
+.panel-cat-btn i {
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* Hover tooltip with country name */
+.hover-tooltip {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: rgba(6,13,24,0.9);
+  border: 1px solid #ff2d7860;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--white);
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+/* ── WELCOME MODAL — feature grid ──────────────────── */
+.welcome-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.welcome-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff06;
+  border: 1px solid #ffffff10;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: var(--grey-light);
+}
+
+.welcome-feature-icon {
+  font-size: 16px;
+  color: var(--red);
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ── WELCOME MODAL — secondary links (GitHub + PDF) ── */
+.modal-secondary-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.modal-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: #ffffff08;
+  border: 1px solid #ffffff15;
+  color: #9ca3af;
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.modal-link-btn:hover {
+  background: #ffffff15;
+  color: #e0e0e0;
+  border-color: #ffffff30;
+}
+
+.modal-link-btn .fa-file-pdf { color: #ff6b6b; }
+
+/* ── MAP LAYOUT — flex row, panel right, no pan ──────── */
+.map-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-container-inner {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+  height: 100%;
+}
+
+/* ── COUNTRY PANEL — slides in from right ────────────── */
+.country-panel {
+  position: relative;
+  width: var(--panel-w, 380px);
+  min-width: var(--panel-w, 380px);
+  height: 100%;
+  background: rgba(6, 13, 24, 0.97);
+  border-left: 1px solid #ffffff12;
+  display: flex;
+  flex-direction: column;
+  z-index: 500;
+  overflow: hidden;
+  animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* ── PANEL CATEGORY BUTTONS — centered text, no icon ─── */
+.panel-cat-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.panel-cat-btn .cat-label { margin: 0; }
+
+/* NOTE: do NOT add .panel-cat-btn i { display:none } here —
+   that would also hide tour modal icons */
+
+/* ── PIE CHART — fade in animation ──────────────────── */
+@keyframes fadeInPie {
+  from { opacity: 0; transform: translateY(-50%) scale(0.95); }
+  to   { opacity: 1; transform: translateY(-50%) scale(1); }
+}
+
+/* ── HOVER TOOLTIP ───────────────────────────────────── */
+.hover-tooltip {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: rgba(6,13,24,0.9);
+  border: 1px solid #ff2d7860;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--white);
+  pointer-events: none;
 }
