@@ -405,6 +405,14 @@ body {
 
 .timeline-subtitle { font-size: 10px; color: var(--grey); font-weight: 400; }
 
+.line-toggles-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-hint { font-size: 10px; color: var(--grey); font-style: normal; white-space: nowrap; }
+
 .line-toggles { display: flex; gap: 6px; flex-wrap: wrap; }
 
 .line-toggle {
@@ -726,19 +734,6 @@ body {
   font-family: 'DM Mono', monospace;
 }
 
-/* ── DIM BACKGROUND WHEN CRISIS MODAL OPEN ────────── */
-body.modal-open .map-wrapper,
-body.modal-open .map-legend,
-body.modal-open .category-bar,
-body.modal-open .country-panel {
-  opacity: 0.3;
-  transition: opacity 0.3s ease;
-}
-
-body.modal-open .map-wrapper {
-  filter: brightness(0.7);
-}
-
 /* ── ADDITIONS TO App.css ─────────────────────────────
    Add these at the bottom of your existing App.css
    ───────────────────────────────────────────────────── */
@@ -932,4 +927,91 @@ body.modal-open .map-wrapper {
   font-size: 12px;
   color: var(--white);
   pointer-events: none;
+}
+
+/* crisis panel only */
+.crisis-overlay-left {
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  pointer-events: none;
+}
+
+.crisis-modal-left {
+  position: fixed;
+  top: 72px;
+  left: 24px;
+  z-index: 3000;
+  width: 420px;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  pointer-events: auto;
+  padding: 24px;
+  border-radius: 10px;
+  background: rgba(13, 20, 37);
+  border: 1px solid #ffffff18;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* don't dim or blur the site when modal is open */
+body.modal-open .map-wrapper,
+body.modal-open .category-bar,
+body.modal-open .country-panel,
+body.modal-open .timeline-area,
+body.modal-open .timeline-container {
+  opacity: 1;
+  filter: none;
+}
+
+body.modal-open .map-legend {
+  display: none;
+}
+
+.article-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--navy-light);
+  border: 1px solid #ffffff08;
+  border-radius: 6px;
+  padding: 12px 16px;
+  text-decoration: none;
+  transition: border-color 0.15s, transform 0.15s;
+  gap: 12px;
+}
+
+.article-link:hover {
+  border-color: #ffffff30;
+  transform: translateY(-1px);
+}
+
+.article-link.placeholder {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.article-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.article-preview-global {
+  position: fixed;
+  width: 320px;
+  height: 180px;
+  background: #000;
+  border: 1px solid #ffffff20;
+  border-radius: 8px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5000;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.article-preview-global img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }

@@ -1,6 +1,6 @@
 // src/components/Timeline.jsx
 import { useEffect, useState } from "react";
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine, ReferenceArea } from "recharts";
 import CrisisModal from "./CrisisModal";
 
 const LINE_COLORS = {
@@ -43,6 +43,7 @@ export default function Timeline({ activeCrisis, onSelectCrisis, onExpandChange,
   const handleCrisisClick = (crisis) => {
     onSelectCrisis(crisis);
     setModalCrisis(crisis);
+    onExpandChange(false); // auto-collapse timeline when crisis is selected
   };
 
   return (
@@ -58,19 +59,22 @@ export default function Timeline({ activeCrisis, onSelectCrisis, onExpandChange,
         <div className="timeline-header">
           <div className="timeline-title">
             FAO Food Price Index
-            <span className="timeline-subtitle">Indexed to 2014–2016 average (100) · Monthly data · 1990–2026</span>
+            <span className="timeline-subtitle">Indexed to 2014–2016 average (100 = base) · Monthly data · 1990–2026</span>
           </div>
-          <div className="line-toggles">
-            {["Food Price Index", ...categories].map(cat => (
-              <button
-                key={cat}
-                className={`line-toggle ${activeLines.includes(cat) ? "active" : ""}`}
-                style={{ "--toggle-color": LINE_COLORS[cat] || "#aaa" }}
-                onClick={() => toggleLine(cat)}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="line-toggles-row">
+            <span className="toggle-hint">Click categories to show / hide</span>
+            <div className="line-toggles">
+              {["Food Price Index", ...categories].map(cat => (
+                <button
+                  key={cat}
+                  className={`line-toggle ${activeLines.includes(cat) ? "active" : ""}`}
+                  style={{ "--toggle-color": LINE_COLORS[cat] || "#aaa" }}
+                  onClick={() => toggleLine(cat)}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -96,13 +100,42 @@ export default function Timeline({ activeCrisis, onSelectCrisis, onExpandChange,
                 labelStyle={{ color: "#ffffff80", fontSize: 11 }}
                 itemStyle={{ fontSize: 11 }}
               />
-              {crisisEvents.map(crisis => (
+              {crisisEvents.map((crisis) => (
+                <ReferenceArea
+                  key={`area-${crisis.id}`}
+                  x1={crisis.start}
+                  x2={crisis.end}
+                  y1={0}
+                  y2="auto"
+                  ifOverflow="extendDomain"
+                  fill="#ff4444"
+                  fillOpacity={0.10}
+                  strokeOpacity={0}
+                />
+              ))}
+              {crisisEvents.map((crisis) => (
                 <ReferenceLine
-                  key={crisis.id}
+                  key={`start-${crisis.id}`}
                   x={crisis.start}
-                  stroke="#ff222260"
+                  stroke="#ff444260"
                   strokeDasharray="4 4"
-                  label={{ value: crisis.label, position: "top", fill: "#ff4444", fontSize: 9, angle: -15, textAnchor: "middle", dy: -4 }}
+                  label={{
+                    value: crisis.label,
+                    position: "top",
+                    fill: "#ff4444",
+                    fontSize: 9,
+                    angle: -15,
+                    textAnchor: "middle",
+                    dy: -4,
+                  }}
+                />
+              ))}
+              {crisisEvents.map((crisis) => (
+                <ReferenceLine
+                  key={`end-${crisis.id}`}
+                  x={crisis.end}
+                  stroke="#ff444430"
+                  strokeDasharray="2 4"
                 />
               ))}
               {activeLines.map(cat => (
@@ -130,7 +163,7 @@ export default function Timeline({ activeCrisis, onSelectCrisis, onExpandChange,
             >
               <span className="marker-dot" />
               <span className="marker-label">{crisis.label}</span>
-              <span className="marker-date">{crisis.start}</span>
+              <span className="marker-date">{crisis.start} → {crisis.end}</span>
             </button>
           ))}
         </div>
