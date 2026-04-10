@@ -1,7 +1,7 @@
 // src/components/CrisisModal.jsx
 // Shows when user clicks a crisis event on the timeline
 // Displays: description, affected commodities, news article placeholders
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function CrisisModal({ crisis, onClose }) {
   useEffect(() => {
@@ -21,9 +21,37 @@ export default function CrisisModal({ crisis, onClose }) {
     "Other":            "#aaaaaa",
   };
 
+  const [hoverPreview, setHoverPreview] = useState(null);
+
+  function handleArticleEnter(e, article) {
+    if (!article.image) return;
+
+    setHoverPreview({
+      image: article.image,
+      x: e.clientX + 18,
+      y: e.clientY - 55,
+    });
+  }
+
+  function handleArticleMove(e) {
+    setHoverPreview((prev) => {
+      if (!prev) return null;
+
+      return {
+        ...prev,
+        x: e.clientX + 18,
+        y: e.clientY - 55,
+      };
+    });
+  }
+
+  function handleArticleLeave() {
+    setHoverPreview(null);
+  }
+
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal crisis-modal" onClick={e => e.stopPropagation()}>
+    <div className="crisis-overlay-left">
+      <div className="modal crisis-modal crisis-modal-left">
 
         {/* Header */}
         <div className="crisis-modal-header">
@@ -44,11 +72,11 @@ export default function CrisisModal({ crisis, onClose }) {
         <div className="crisis-section">
           <div className="crisis-section-label">Affected food categories</div>
           <div className="crisis-commodities">
-            {crisis.commodities.map(cat => (
+            {crisis.commodities.map((cat) => (
               <span
                 key={cat}
                 className="commodity-tag"
-                style={{ borderColor: CATEGORY_COLORS[cat], color: CATEGORY_COLORS[cat] }}
+                style={{ borderColor: CATEGORY_COLORS[cat], color: CATEGORY_COLORS[cat], }}
               >
                 {cat}
               </span>
@@ -60,21 +88,34 @@ export default function CrisisModal({ crisis, onClose }) {
         <div className="crisis-section">
           <div className="crisis-section-label">Related news & sources</div>
           <div className="articles-list">
-            {crisis.articles.map((article, i) => (
-              <a
-                key={i}
-                href={article.url}
-                target="_blank"
-                rel="noreferrer"
-                className={`article-link ${article.url === "#" ? "placeholder" : ""}`}
-              >
-                <div className="article-source">{article.source}</div>
-                <div className="article-title">{article.title}</div>
-                <span className="article-arrow">→</span>
-              </a>
-            ))}
+            {crisis.articles.map((article, i) => {
+              const isPlaceholder = article.url === "#";
+
+              return (
+                <a
+                  key={i}
+                  href={article.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`article-link ${isPlaceholder ? "placeholder" : ""}`}
+                  onMouseEnter={(e) => handleArticleEnter(e, article)}
+                  onMouseMove={handleArticleMove}
+                  onMouseLeave={handleArticleLeave}
+                  onClick={(e) => {
+                    if (isPlaceholder) e.preventDefault();
+                  }}
+                >
+                  <div className="article-text">
+                    <div className="article-source">{article.source}</div>
+                    <div className="article-title">{article.title}</div>
+                  </div>
+
+                  <span className="article-arrow">→</span>
+                </a>
+              );
+            })}
           </div>
-          {crisis.articles.every(a => a.url === "#") && (
+          {crisis.articles.every((a) => a.url === "#") && (
             <p className="articles-placeholder-note">
               Add your curated articles to <code>fao_price_index.json</code> crisis_events section
             </p>
@@ -85,6 +126,19 @@ export default function CrisisModal({ crisis, onClose }) {
           Back to map
         </button>
       </div>
+
+      {/* Global floating preview */}
+      {hoverPreview && (
+        <div
+          className="article-preview-global"
+          style={{
+            left: `${hoverPreview.x}px`,
+            top: `${hoverPreview.y}px`,
+          }}
+        >
+          <img src={hoverPreview.image} alt="news preview" />
+        </div>
+      )}
     </div>
   );
 }

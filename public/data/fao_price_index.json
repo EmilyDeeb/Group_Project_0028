@@ -3890,8 +3890,8 @@
         },
         {
             "date": "2026-01",
-            "Food Price Index": 124.2,
-            "Meat & Fish": 125.2,
+            "Food Price Index": 124.1,
+            "Meat & Fish": 124.9,
             "Dairy": 120.7,
             "Cereals & Grains": 107.5,
             "Oils": 168.6,
@@ -3899,12 +3899,21 @@
         },
         {
             "date": "2026-02",
-            "Food Price Index": 125.3,
-            "Meat & Fish": 126.2,
-            "Dairy": 119.3,
-            "Cereals & Grains": 108.6,
+            "Food Price Index": 125.5,
+            "Meat & Fish": 126.5,
+            "Dairy": 119.4,
+            "Cereals & Grains": 108.7,
             "Oils": 174.2,
             "Sugar": 86.2
+        },
+        {
+            "date": "2026-03",
+            "Food Price Index": 128.5,
+            "Meat & Fish": 127.7,
+            "Dairy": 120.9,
+            "Cereals & Grains": 110.4,
+            "Oils": 183.1,
+            "Sugar": 92.4
         }
     ],
     "crisis_events": [
@@ -3922,12 +3931,14 @@
                 {
                     "title": "Factbox: 2008 food price crisis – what caused it?",
                     "url": "https://www.reuters.com/article/business/energy/factbox-2008-food-price-crisis-what-caused-it-idUSTRE7590IJ/",
-                    "source": "Reuters"
+                    "source": "Reuters",
+                    "image": "/images/reuters_2008.png"
                 },
                 {
                     "title": "Commodity price dynamics and global crisis",
                     "url": "https://www.imf.org/en/news/articles/2015/09/28/04/53/sonew070108a",
-                    "source": "IMF"
+                    "source": "IMF",
+                    "image": "/images/imf_2008.png"
                 }
             ]
         },
@@ -3946,17 +3957,20 @@
                 {
                     "title": "UN calls emergency meeting over global food crisis",
                     "url": "https://www.theguardian.com/environment/2010/sep/24/food-crisis-un-emergency-meeting-rome",
-                    "source": "The Guardian"
+                    "source": "The Guardian",
+                    "image": "/images/un_2010.png"
                 },
                 {
                     "title": "Did food prices spur the Arab Spring?",
                     "url": "https://www.pbs.org/newshour/world/world-july-dec11-food_09-07",
-                    "source": "PBS NewsHour"
+                    "source": "PBS NewsHour",
+                    "image": "/images/arab_spring.png"
                 },
                 {
                     "title": "Why food riots are likely to become the new normal",
                     "url": "https://www.theguardian.com/environment/blog/2013/mar/06/food-riots-new-normal",
-                    "source": "The Guardian"
+                    "source": "The Guardian",
+                    "image": "/images/guardian_2013.png"
                 }
             ]
         },
@@ -3974,12 +3988,14 @@
                 {
                     "title": "Tyson Foods warns food supply chain is breaking",
                     "url": "https://edition.cnn.com/2020/04/26/business/tyson-foods-nyt-ad",
-                    "source": "CNN"
+                    "source": "CNN",
+                    "image": "/images/cnn_tyson.png"
                 },
                 {
                     "title": "COVID-19 risks to global food security",
                     "url": "https://www.science.org/doi/full/10.1126/science.abc4765",
-                    "source": "Science"
+                    "source": "Science",
+                    "image": "/images/science_covid.png"
                 }
             ]
         },
@@ -3997,12 +4013,14 @@
                 {
                     "title": "The war in Ukraine is fuelling a global food crisis",
                     "url": "https://www.reuters.com/graphics/UKRAINE-CRISIS/FOOD/zjvqkgomjvx/",
-                    "source": "Reuters"
+                    "source": "Reuters",
+                    "image": "/images/reuters_ukraine.png"
                 },
                 {
                     "title": "Ukraine war piles pressure on global food system already in crisis",
                     "url": "https://www.theguardian.com/food/2022/mar/09/ukraine-war-piles-pressure-on-global-food-system-already-in-crisis",
-                    "source": "The Guardian"
+                    "source": "The Guardian",
+                    "image": "/images/guardian_ukraine.png"
                 }
             ]
         },
@@ -4021,17 +4039,20 @@
                 {
                     "title": "Aid groups warn Iran war is hindering global food supply",
                     "url": "https://apnews.com/article/eae99c347456ced2989e9f253448b56b",
-                    "source": "AP News"
+                    "source": "AP News",
+                    "image": "/images/ap_iran.png"
                 },
                 {
                     "title": "How could strait of Hormuz closure affect UK food and medicine supplies?",
                     "url": "https://www.theguardian.com/world/2026/apr/02/strait-of-hormuz-iran-closure-uk-food-medicine-supplies",
-                    "source": "The Guardian"
+                    "source": "The Guardian",
+                    "image": "/images/uk_affect.png"
                 },
                 {
                     "title": "UK food inflation heading towards 10% due to Iran war",
                     "url": "https://www.reuters.com/business/uk-food-inflation-heading-towards-10-due-iran-war-industry-says-2026-04-01/",
-                    "source": "Reuters"
+                    "source": "Reuters",
+                    "image": "/images/reuters_uk.png"
                 }
             ]
         }
