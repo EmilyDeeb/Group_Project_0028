@@ -19,6 +19,7 @@ export default function Timeline({ activeCrisis, onSelectCrisis, onExpandChange,
   const [activeLines, setActiveLines]   = useState(["Food Price Index", "Cereals & Grains", "Oils"]);
   const [modalCrisis, setModalCrisis]   = useState(null);
 
+
   useEffect(() => {
     fetch("/data/fao_price_index.json")
       .then(r => r.json())
@@ -41,9 +42,10 @@ export default function Timeline({ activeCrisis, onSelectCrisis, onExpandChange,
   };
 
   const handleCrisisClick = (crisis) => {
-    onSelectCrisis(crisis);
-    setModalCrisis(crisis);
-    onExpandChange(false); // auto-collapse timeline when crisis is selected
+    const isAlreadyActive = activeCrisis?.id === crisis.id;
+    onSelectCrisis(isAlreadyActive ? null : crisis);
+    if (!isAlreadyActive) setModalCrisis(crisis);
+    onExpandChange(false);
   };
 
   return (

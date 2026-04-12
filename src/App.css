@@ -1015,3 +1015,139 @@ body.modal-open .map-legend {
   object-fit: cover;
   display: block;
 }
+/* ── CRISIS EXPOSURE POPUP (bottom-right, country click in crisis mode) ───── */
+.crisis-exposure-popup {
+  position: absolute;
+  top: 56px;
+  right: 16px;
+  width: 300px;
+  background: rgba(13, 20, 37, 0.98);
+  border: 1px solid #ffffff18;
+  border-radius: 10px;
+  z-index: 1000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  animation: slideInRight 0.25s ease;
+}
+
+.crisis-exposure-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 14px 10px;
+  border-bottom: 1px solid #ffffff10;
+}
+
+.crisis-exposure-country {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+
+.crisis-exposure-subtitle {
+  font-size: 10px;
+  margin-top: 2px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.crisis-exposure-none {
+  padding: 24px 16px;
+  text-align: center;
+  color: var(--grey-light);
+  font-size: 12px;
+}
+
+.crisis-exposure-headline {
+  margin: 12px 14px 8px;
+  padding: 10px 12px;
+  background: #ffffff06;
+  border: 1px solid;
+  border-radius: 7px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.crisis-exposure-pct {
+  font-size: 28px;
+  font-weight: 800;
+  font-family: 'DM Mono', monospace;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.crisis-exposure-pct-label {
+  font-size: 11px;
+  color: #c0c0c0;
+  line-height: 1.4;
+}
+
+.crisis-exposure-cats {
+  padding: 4px 14px 10px;
+}
+
+.crisis-exposure-cats-label {
+  font-size: 9px;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.crisis-exposure-cat-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+}
+
+.crisis-exposure-cat-name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 110px;
+  flex-shrink: 0;
+  font-size: 10px;
+  color: #d0d0d0;
+}
+
+.crisis-exposure-cat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.crisis-exposure-bar-wrap {
+  flex: 1;
+  height: 5px;
+  background: #ffffff12;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.crisis-exposure-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+  min-width: 2px;
+}
+
+.crisis-exposure-cat-pct {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 700;
+  width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.crisis-exposure-footer {
+  padding: 8px 14px 12px;
+  font-size: 10px;
+  color: var(--grey);
+  border-top: 1px solid #ffffff08;
+}
