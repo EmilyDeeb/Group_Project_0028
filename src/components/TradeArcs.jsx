@@ -75,7 +75,7 @@ const geoCache = {};
 
 async function loadGeoJSON(filename) {
   if (geoCache[filename]) return geoCache[filename];
-  const res = await fetch(`/data/${filename}`);
+  const res = await fetch(`${import.meta.env.BASE_URL}data/${filename}`);
   if (!res.ok) throw new Error(`Failed to fetch ${filename}`);
   const data = await res.json();
   geoCache[filename] = data;

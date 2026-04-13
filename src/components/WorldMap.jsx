@@ -159,21 +159,21 @@ export default function WorldMap({
   const activeCrisisRef = useRef(null);
 
   useEffect(() => {
-    fetch("/data/countries.geojson")
+    fetch(`${import.meta.env.BASE_URL}data/countries.geojson`)
       .then(r => r.json())
       .then(setGeoData)
       .catch(() => setGeoData({ type: "FeatureCollection", features: [] }));
   }, []);
 
   useEffect(() => {
-    fetch("/data/countries_supply.json")
+    fetch(`${import.meta.env.BASE_URL}data/countries_supply.json`)
       .then(r => r.json())
       .then(d => { setSupplyData(d); supplyDataRef.current = d; })
       .catch(() => setSupplyData({}));
   }, []);
 
   useEffect(() => {
-    fetch("/data/crisis_exposure.json")
+    fetch(`${import.meta.env.BASE_URL}data/crisis_exposure.json`)
       .then(r => r.json())
       .then(setExposureData)
       .catch(() => setExposureData({}));

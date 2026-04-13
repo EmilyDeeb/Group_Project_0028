@@ -21,7 +21,7 @@ export default function Timeline({ activeCrisis, onSelectCrisis, onExpandChange,
 
 
   useEffect(() => {
-    fetch("/data/fao_price_index.json")
+    fetch(`${import.meta.env.BASE_URL}data/fao_price_index.json`)
       .then(r => r.json())
       .then(d => {
         setPriceData(d.prices || []);

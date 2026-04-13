@@ -245,7 +245,7 @@ function NutritionTab({ iso, category }) {
 
   useEffect(() => {
     setNutState({ data: null, loaded: false });
-    fetch("/data/nutrition_by_country.json")
+    fetch(`${import.meta.env.BASE_URL}data/nutrition_by_country.json`)
       .then(r => r.json())
       .then(nutData => setNutState({ data: nutData[iso] || null, loaded: true }))
       .catch(() => setNutState({ data: null, loaded: true }));
