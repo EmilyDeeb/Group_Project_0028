@@ -8,4 +8,5 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  base: "/Group_Project_0028/",
 })
