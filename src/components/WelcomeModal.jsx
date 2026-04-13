@@ -84,7 +84,7 @@ export default function WelcomeModal({ onStart, onSkip }) {
             <span>GitHub</span>
           </a>
           <a
-            href="public/data/food_shock_design_doc.pdf"
+            href={`${import.meta.env.BASE_URL}data/food_shock_design_doc.pdf`}
             download="Food_Shock_Design_Doc.pdf"
             className="modal-link-btn"
           >
