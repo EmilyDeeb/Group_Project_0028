@@ -18,11 +18,12 @@ export default function WelcomeModal({ onStart, onSkip }) {
 
         {/* About */}
         <p className="modal-body">
-          This tool visualises how geopolitical crises — from COVID-19 to the
-          Ukraine War to the Iran/US/Israel conflict — cascade through global
+          This tool visualises how geopolitical crises, from COVID-19 to the
+          Ukraine War to the Iran/US/Israel conflict, cascade through global
           food supply chains, disrupting what billions of people eat and what
           they pay for it.
         </p>
+        
 
         {/* Feature icons */}
         <div className="welcome-features">

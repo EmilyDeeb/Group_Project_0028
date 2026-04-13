@@ -376,7 +376,33 @@ export default function CountryPanel({ country, category, onClose, onSelectCateg
         {tab === "trade" && (
           !country.data
             ? <div style={{ padding: 16, color: "#9ca3af", fontSize: 12, fontStyle: "italic" }}>No supply data for {displayName}</div>
-            : <><TradeBar catData={catData} /><MaritimeImports iso={country.iso} category={category} /></>
+            : <>
+                <TradeBar catData={catData} />
+                <MaritimeImports iso={country.iso} category={category} />
+                {LANDLOCKED.has(country.iso) && (
+                  <div style={{
+                    margin: "8px 16px 12px",
+                    padding: "10px 12px",
+                    background: "#ffffff06",
+                    border: "1px solid #ffffff12",
+                    borderLeft: "3px solid #ff8c0080",
+                    borderRadius: 6,
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: 8,
+                  }}>
+                    <span style={{ fontSize: 14, lineHeight: 1 }}>🌍</span>
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 600, color: "#ff8c00", marginBottom: 2 }}>
+                        No maritime access
+                      </div>
+                      <div style={{ fontSize: 11, color: "#9ca3af", lineHeight: 1.4 }}>
+                        {displayName} is landlocked — all imports arrive overland. Maritime flow data is not available.
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
         )}
         {tab === "nutrition" && <NutritionTab iso={country.iso} category={category} />}
       </div>

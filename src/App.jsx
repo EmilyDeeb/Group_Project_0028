@@ -56,8 +56,9 @@ export default function App() {
               selectedCategory={selectedCategory}
               onSelectCategory={setSelectedCategory}
               activeCrisis={activeCrisis}
-              activeTab={activeTab}         // #4: pass tab down
-              onTabChange={setActiveTab}    // #4: pass setter down
+              onSelectCrisis={setActiveCrisis}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
             />
           </div>
 
