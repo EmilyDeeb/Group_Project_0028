@@ -27,7 +27,7 @@ export default function CrisisModal({ crisis, onClose }) {
     if (!article.image) return;
 
     setHoverPreview({
-      image: article.image,
+      image: `${import.meta.env.BASE_URL}${article.image.replace(/^\//, '')}`,
       x: e.clientX + 18,
       y: e.clientY - 55,
     });
